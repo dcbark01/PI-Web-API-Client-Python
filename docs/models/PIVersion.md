@@ -1,0 +1,10 @@
+# PIVersion
+
+## Properties
+Name | Type | Notes
+------------ | ------------- | -------------
+**full_version** | **str**
+**major_minor_revision** | **str**
+**build** | **str**
+
+[[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
