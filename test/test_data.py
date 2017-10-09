@@ -25,6 +25,7 @@ class TestData(unittest.TestCase):
     def getPIWebApiClient(self):
         return PIWebApiClient("https://webserver/piwebapi", False, "username", "password", True)
 
+
     def test_data_convertPathToWebId(self):
         client = self.getPIWebApiClient()
         webId = client.data.convert_path_to_web_id("pi:\\JUPITER001\sinusoid")

@@ -16,10 +16,6 @@
 """
 
 
-import requests
-import urllib3
-from requests.auth import HTTPBasicAuth
-
 
 from osisoft.pidevclub.piwebapi import api_client
 from osisoft.pidevclub.piwebapi.api.home_api import HomeApi

@@ -26,8 +26,7 @@ from osisoft.pidevclub.piwebapi.rest import ApiException
 class TestMain(unittest.TestCase):
 
     def getPIWebApiClient(self):
-		return PIWebApiClient("https://webserver/piwebapi", False, "username", "password", True)
-
+        return PIWebApiClient("https://webserver/piwebapi", False, "username", "password", True)
 
 
     def test_getHome(self):
