@@ -3,7 +3,7 @@
 ## **Constructor**
 > PIWebApiClient(String baseUrl, bool String username, String password, Boolean verifySsl, Boolean debug)
 
-Creates an instance of the PI Web API client top level object. Currently, only Basic authentication can be used. Do not try to use Kerberos Authentication.
+Creates an instance of the PI Web API client top level object. Only Basic authentication can be used.
 
 ### Parameters
 
