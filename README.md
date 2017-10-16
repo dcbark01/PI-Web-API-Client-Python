@@ -17,8 +17,7 @@ If the python package is hosted on Github, you can install directly from Github
 ```sh
 pip install git+https://github.com/osimloeff/PI-Web-API-Client-Python.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/osimloeff/PI-Web-API-Client-Python.git`)
-You must have Git installed on your machine.
+You may need to run `pip` with root permission: `sudo pip install git+https://github.com/osimloeff/PI-Web-API-Client-Python.git`. If you are using Windows, remember to open the command prompt running as administrator. You must have Git installed on your machine.
 
 Then import the package:
 ```python
