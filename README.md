@@ -54,6 +54,7 @@ Please check the [test_main.py](/test/test_main.py) from this repository. Below 
 ### Create an instance of the PI Web API top level object.
 
 ```python
+    from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
     client = PIWebApiClient("https://test.osisoft.com/piwebapi", False, "username", "password", True)  
 ``` 
 
