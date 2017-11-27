@@ -65,13 +65,24 @@ class DataApi(object):
 		return  -1
 
 
-	def convert_multiple_streams_to_df(self, items, gatherInOneDataFrame, web_ids, paths):
+	def convert_multiple_streams_to_df(self, items, gatherInOneDataFrame, web_ids, selected_fields, paths):
+		if (items is None):
+			raise Exception('The returned data is Null or None')
+
 		streamsLength = len(items)
+		if (streamsLength == 0):
+			raise Exception('The returned data is Null or None')
+
+		for i in range(0, streamsLength):
+			if ((items[i] == None) or (items[i].items == None)):
+				raise Exception('Some items are Null or None.')
+
+
 		if (gatherInOneDataFrame == True):
 			main_df = df_ = pd.DataFrame()
 			for i in range(0, streamsLength):
 				j = self.calculateItemsIndex(web_ids[i], items);
-				df = self.convert_to_df(items[j].items)
+				df = self.convert_to_df(items[j].items, selected_fields)
 				df = self.rename_df(df, i)
 				main_df = pd.concat([main_df , df], axis = 1)
 			return main_df
@@ -80,38 +91,88 @@ class DataApi(object):
 			for i in range(0, streamsLength):
 				key = paths[i]
 				j = self.calculateItemsIndex(web_ids[i], items)
-				df = self.convert_to_df(items[j].items)
+				df = self.convert_to_df(items[j].items, selected_fields)
 				dfs[key] = df
 			return dfs
 
 
 
-	def convert_to_df(self, items):
-		columns = ['Value', 'Timestamp', 'UnitsAbbreviation', 'Good', 'Questionable', 'Substituted']
+	def convert_to_df(self, items, selected_fields):
+
+		if (items is None):
+			raise Exception('The returned data is Null or None')
+
+		streamsLength = len(items)
+		if (streamsLength == 0):
+			raise Exception('The returned data is Null or None')
+
+
+		addValues = False
+		addTimeStamp = False
+		addUnitAbbr = False
+		addGood = False
+		addQuestionable = False
+		addSubstituded = False
 		value = []
 		timestamp = []
 		unitsAbbreviation = []
 		good = []
 		questionable = []
 		substituted = []
+
+		if (selected_fields != None and selected_fields != ""):
+			if ("timestamp" in selected_fields):
+				addTimeStamp = True
+			if ("value" in selected_fields):
+				addValues = True
+
+			if ("questionable" in selected_fields):
+				addQuestionable = True
+
+			if ("unitabbr" in selected_fields):
+				addUnitAbbr = True
+
+			if ("good" in selected_fields):
+				addGood = True
+
+			if ("substituted" in selected_fields):
+				addSubstituded = True
+		else:
+			addValues = True
+			addTimeStamp = True
+			addUnitAbbr = True
+			addGood = True
+			addQuestionable = True
+			addSubstituded = True
+
+
 		for	item in items:
-			value.append(item.value)
-			timestamp.append(item.timestamp)
-			unitsAbbreviation.append(item.units_abbreviation)
-			good.append(item.good)
-			questionable.append(item.questionable)
-			substituted.append(item.substituted)
+			if (addValues == True):
+				value.append(item.value)
+			if (addTimeStamp == True):
+				timestamp.append(item.timestamp)
+			if (addUnitAbbr == True):
+				unitsAbbreviation.append(item.units_abbreviation)
+			if (addGood == True):
+				good.append(item.good)
+			if (addQuestionable == True):
+				questionable.append(item.questionable)
+			if (addSubstituded == True):
+				substituted.append(item.substituted)
 
-
-
-		data = {
-			'Value': value,
-			'Timestamp': timestamp,
-			'UnitsAbbreviation': unitsAbbreviation,
-			'Good': good,
-			'Questionable': questionable,
-			'Substituted': substituted
-		}
+		data = {}
+		if (addValues == True):
+			data['Value'] = value;
+		if (addTimeStamp == True):
+			data['Timestamp'] = timestamp;
+		if (addUnitAbbr == True):
+			data['UnitsAbbreviation'] = unitsAbbreviation;
+		if (addGood == True):
+			data['Good'] = good;
+		if (addQuestionable == True):
+			data['Questionable'] = questionable;
+		if (addSubstituded == True):
+			data['Substituted'] = substituted;
 		df = pd.DataFrame(data)
 		return  df
 
@@ -122,7 +183,7 @@ class DataApi(object):
 
 		web_id = self.convert_path_to_web_id(path)
 		res = self.streamApi.get_recorded(web_id, boundary_type, desired_units, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone)
-		df = self.convert_to_df(res.items)
+		df = self.convert_to_df(res.items, selected_fields)
 		return df
 
 
@@ -134,7 +195,7 @@ class DataApi(object):
 
 		web_id = self.convert_path_to_web_id(path)
 		res = self.streamApi.get_interpolated(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone)
-		df = self.convert_to_df(res.items)
+		df = self.convert_to_df(res.items, selected_fields)
 		return df
 
 
@@ -145,7 +206,7 @@ class DataApi(object):
 
 		web_id = self.convert_path_to_web_id(path)
 		res = self.streamApi.get_plot(web_id, desired_units, end_time, intervals, selected_fields, start_time, time_zone)
-		df = self.convert_to_df(res.items)
+		df = self.convert_to_df(res.items, selected_fields)
 		return df
 
 	def get_multiple_interpolated_values(self, paths, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone):
@@ -155,7 +216,7 @@ class DataApi(object):
 
 		web_ids = self.convert_paths_to_web_ids(paths)
 		res = self.streamSetApi.get_interpolated_ad_hoc(web_ids,  end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone)
-		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, None)
+		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, selected_fields, None)
 		return df
 
 	def get_multiple_plot_values(self, paths, end_time, intervals, selected_fields, start_time, time_zone):
@@ -165,7 +226,7 @@ class DataApi(object):
 
 		web_ids = self.convert_paths_to_web_ids(paths)
 		res = self.streamSetApi.get_plot_ad_hoc(web_ids, end_time, intervals, selected_fields, start_time, time_zone)
-		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, None)
+		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, selected_fields, None)
 		return df
 
 	def get_multiple_recorded_values(self, paths,  boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone):
@@ -175,7 +236,7 @@ class DataApi(object):
 
 		web_ids = self.convert_paths_to_web_ids(paths)
 		res = self.streamSetApi.get_recorded_ad_hoc(web_ids, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone)
-		df = self.convert_multiple_streams_to_df(res.items, False, web_ids, paths)
+		df = self.convert_multiple_streams_to_df(res.items, False, web_ids, selected_fields, paths)
 		return df
 
 

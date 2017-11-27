@@ -67,9 +67,13 @@ Only Basic Authentication is available in this version. Therefore, the variable 
     df1 = client.data.get_recorded_values("pi:\\\\JUPITER001\\cdt158", None, None, "*-9d", None, None, None, None, "*-10d", None)df4 = client.data.get_multiple_recorded_values(["pi:\\JUPITER001\sinusoid", "pi:\\JUPITER001\sinusoidu", "pi:\\JUPITER001\cdt158"],None, "*", None, None, None, None, "*-1d", None)
     df2 = client.data.get_interpolated_values("pi:\\JUPITER001\\sinusoidu",None, "*", None, None, "2h", None, "*-1d", None)
     df3 = client.data.get_plot_values("pi:\\\\JUPITER001\\sinusoidu", None, "*", 10, None, "*-3d", None)
-    dfs1 = client.data.get_multiple_recorded_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"],None, "*", None, None, None, None, "*-1d", None)
+    df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
+    df5 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.good;items.questionable;items.substituted", "*-1d", None)
+	dfs1 = client.data.get_multiple_recorded_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"],None, "*", None, None, None, None, "*-1d", None)
     dfs2 = client.data.get_multiple_interpolated_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"], "*", None, None, "1d", None, "*-5d", None)
     dfs3 = client.data.get_multiple_plot_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"], "*", 10, None, "*-1d", None)
+    dfs4 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp", "*-1d", None)
+    dfs5 = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1h", "items.items.value;items.items.timestamp", "*-5d", None)
 ```
 
 The path from the methods above should start with "pi:" (if your stream is a PI Point) or "af:" (if your stream is an AF attribute).
