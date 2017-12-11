@@ -1,12 +1,12 @@
-PI Web API Client libraries for Python
+PI Web API client library for Python
 ===
 
 ## Overview
-This repository has the source code package of the PI Web API Client libraries for Python.
+This repository has the source code package of the PI Web API client library for Python.
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python 2.7 or 3.4+
 
 
 ## Installation
@@ -38,7 +38,7 @@ Then import the package:
 import osisoft.pidevclub.piwebapi
 ```
 
-This library was tested using PyCharm 2017.1.5 and Anaconda3 5.0.0
+This library was tested using PyCharm 2017.1.5.
 
 ## Documentation
 
