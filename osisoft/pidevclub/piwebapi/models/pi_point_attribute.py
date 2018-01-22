@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,19 +23,22 @@ class PIPointAttribute(object):
 	swagger_types = {
 		'name': 'str',
 		'value': 'object',
-		'links': 'dict(str, str)',
+		'links': 'PIPointAttributeLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'name': 'Name',
 		'value': 'Value',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, name=None, value=None, links=None):
+	def __init__(self, name=None, value=None, links=None, web_exception=None):
 
 		self._name = None
 		self._value = None
 		self._links = None
+		self._web_exception = None
 
 		if name is not None:
 			self.name = name
@@ -43,6 +46,8 @@ class PIPointAttribute(object):
 			self.value = value
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def name(self):
@@ -67,6 +72,14 @@ class PIPointAttribute(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

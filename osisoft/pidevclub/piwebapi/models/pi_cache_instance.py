@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -26,6 +26,7 @@ class PICacheInstance(object):
 		'will_refresh_after': 'str',
 		'scheduled_expiration_time': 'str',
 		'user': 'str',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -34,14 +35,16 @@ class PICacheInstance(object):
 		'will_refresh_after': 'WillRefreshAfter',
 		'scheduled_expiration_time': 'ScheduledExpirationTime',
 		'user': 'User',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, id=None, last_refresh_time=None, will_refresh_after=None, scheduled_expiration_time=None, user=None):
+	def __init__(self, id=None, last_refresh_time=None, will_refresh_after=None, scheduled_expiration_time=None, user=None, web_exception=None):
 
 		self._id = None
 		self._last_refresh_time = None
 		self._will_refresh_after = None
 		self._scheduled_expiration_time = None
 		self._user = None
+		self._web_exception = None
 
 		if id is not None:
 			self.id = id
@@ -53,6 +56,8 @@ class PICacheInstance(object):
 			self.scheduled_expiration_time = scheduled_expiration_time
 		if user is not None:
 			self.user = user
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def id(self):
@@ -93,6 +98,14 @@ class PICacheInstance(object):
 	@user.setter
 	def user(self, user):
 		self._user = user
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

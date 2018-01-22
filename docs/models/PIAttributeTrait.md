@@ -12,6 +12,7 @@ Name | Type | Notes
 **is_u_o_m_inherited** | **bool**
 **require_numeric** | **bool**
 **require_string** | **bool**
-**links** | **dict(str, str)**
+**links** | **[**PIAttributeTraitLinks**](../models/PIAttributeTraitLinks.md)**
+**web_exception** | **[**PIWebException**](../models/PIWebException.md)**
 
 [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)

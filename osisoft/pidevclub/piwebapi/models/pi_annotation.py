@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -29,7 +29,8 @@ class PIAnnotation(object):
 		'creation_date': 'str',
 		'modifier': 'str',
 		'modify_date': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PIAnnotationLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -42,8 +43,9 @@ class PIAnnotation(object):
 		'modifier': 'Modifier',
 		'modify_date': 'ModifyDate',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, id=None, name=None, description=None, value=None, creator=None, creation_date=None, modifier=None, modify_date=None, links=None):
+	def __init__(self, id=None, name=None, description=None, value=None, creator=None, creation_date=None, modifier=None, modify_date=None, links=None, web_exception=None):
 
 		self._id = None
 		self._name = None
@@ -54,6 +56,7 @@ class PIAnnotation(object):
 		self._modifier = None
 		self._modify_date = None
 		self._links = None
+		self._web_exception = None
 
 		if id is not None:
 			self.id = id
@@ -73,6 +76,8 @@ class PIAnnotation(object):
 			self.modify_date = modify_date
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def id(self):
@@ -145,6 +150,14 @@ class PIAnnotation(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

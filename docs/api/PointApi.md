@@ -8,12 +8,11 @@ Method | HTTP request | Description
 [**delete**](PointApi.md#delete) | **DELETE** /points/{webId} | Delete a point.
 [**get_attributes**](PointApi.md#getattributes) | **GET** /points/{webId}/attributes | Get point attributes.
 [**get_attribute_by_name**](PointApi.md#getattributebyname) | **GET** /points/{webId}/attributes/{name} | Get a point attribute by name.
-[**update_attribute_value**](PointApi.md#updateattributevalue) | **PUT** /points/{webId}/attributes/{name} | Update a point attribute value.
 [**get_multiple**](PointApi.md#getmultiple) | **GET** /points/multiple | Retrieve multiple points by web id or path.
 
 
 # **get_by_path**
-> get_by_path('path', 'selected_fields')
+> get_by_path('path', 'selected_fields', 'web_id_type')
 
 Get a point by path.
 
@@ -23,6 +22,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| The path to the point.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get**
-> get('web_id', 'selected_fields')
+> get('web_id', 'selected_fields', 'web_id_type')
 
 Get a point.
 
@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the point.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -88,7 +89,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_attributes**
-> get_attributes('web_id', 'name', 'name_filter', 'selected_fields')
+> get_attributes('web_id', 'name', 'name_filter', 'selected_fields', 'web_id_type')
 
 Get point attributes.
 
@@ -100,6 +101,7 @@ Name | Type | Description | Notes
  **name** | **list[str]**| The name of a point attribute to be returned. Multiple attributes may be specified with multiple instances of the parameter.. | [optional]
  **name_filter** | **str**| The filter to the names of the list of point attributes to be returned. The default is no filter.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -109,7 +111,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_attribute_by_name**
-> get_attribute_by_name('name', 'web_id', 'selected_fields')
+> get_attribute_by_name('name', 'web_id', 'selected_fields', 'web_id_type')
 
 Get a point attribute by name.
 
@@ -120,6 +122,7 @@ Name | Type | Description | Notes
  **name** | **str**| The name of the attribute.. | [required]
  **web_id** | **str**| The ID of the point.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -128,28 +131,8 @@ Name | Type | Description | Notes
 
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
-# **update_attribute_value**
-> update_attribute_value('web_id', 'name', 'value')
-
-Update a point attribute value.
-
-### Parameters
-
-Name | Type | Description | Notes
-------------- | ------------- | ------------- | -------------
- **web_id** | **str**| The ID of the point.. | [required]
- **name** | **str**| The name of the attribute to be updated.. | [required]
- **value** | **object**| The new value of the attribute to be updated.. | [required]
-
-
-### Return type
-
-object
-
-[[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
-
 # **get_multiple**
-> get_multiple('as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id')
+> get_multiple('as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type')
 
 Retrieve multiple points by web id or path.
 
@@ -162,6 +145,7 @@ Name | Type | Description | Notes
  **path** | **list[str]**| The path of a point. Multiple points may be specified with multiple instances of the parameter.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **web_id** | **list[str]**| The ID of a point. Multiple points may be specified with multiple instances of the parameter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type

@@ -117,6 +117,8 @@ class RESTClientObject(object):
 
         post_params = post_params or {}
         headers = headers or {}
+        headers['X-Requested-With'] = 'PIWebApiWrapper'
+
 
         timeout = None
         if _request_timeout:

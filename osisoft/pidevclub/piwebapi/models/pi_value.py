@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,21 +23,26 @@ class PIValue(object):
 	swagger_types = {
 		'value': 'object',
 		'exception': 'PIErrors',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'value': 'Value',
 		'exception': 'Exception',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, value=None, exception=None):
+	def __init__(self, value=None, exception=None, web_exception=None):
 
 		self._value = None
 		self._exception = None
+		self._web_exception = None
 
 		if value is not None:
 			self.value = value
 		if exception is not None:
 			self.exception = exception
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def value(self):
@@ -54,6 +59,14 @@ class PIValue(object):
 	@exception.setter
 	def exception(self, exception):
 		self._exception = exception
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

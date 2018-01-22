@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,21 +23,26 @@ class PISubstatus(object):
 	swagger_types = {
 		'substatus': 'int',
 		'message': 'str',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'substatus': 'Substatus',
 		'message': 'Message',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, substatus=None, message=None):
+	def __init__(self, substatus=None, message=None, web_exception=None):
 
 		self._substatus = None
 		self._message = None
+		self._web_exception = None
 
 		if substatus is not None:
 			self.substatus = substatus
 		if message is not None:
 			self.message = message
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def substatus(self):
@@ -54,6 +59,14 @@ class PISubstatus(object):
 	@message.setter
 	def message(self, message):
 		self._message = message
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

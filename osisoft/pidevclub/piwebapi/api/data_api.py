@@ -33,10 +33,10 @@ class DataApi(object):
 		system = fullPath[0:3]
 		path = fullPath[3:None]
 		if (system == "af:"):
-			res = self.attributeApi.get_by_path(path, None)
+			res = self.attributeApi.get_by_path(path, None, None)
 			return (res.web_id)
 		elif (system == "pi:"):
-			res = self.pointApi.get_by_path(path, None)
+			res = self.pointApi.get_by_path(path, None, None)
 			return (res.web_id)
 		else:
 			print("Error: invalid path. It needs to start with \"pi\" or \"af\"")
@@ -188,18 +188,18 @@ class DataApi(object):
 
 
 
-	def get_interpolated_values(self, path, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone):
+	def get_interpolated_values(self, path, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone):
 		if (path is None):
 			print("The variable path cannot be null.")
 			return
 
 		web_id = self.convert_path_to_web_id(path)
-		res = self.streamApi.get_interpolated(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone)
+		res = self.streamApi.get_interpolated(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone)
 		df = self.convert_to_df(res.items, selected_fields)
 		return df
 
 
-	def get_plot_values(self, path, desired_units, end_time, intervals, selected_fields, start_time, time_zone, **kwargs):
+	def get_plot_values(self, path, desired_units, end_time, intervals, selected_fields, start_time, time_zone):
 		if (path is None):
 			print("The variable path cannot be null.")
 			return
@@ -209,33 +209,33 @@ class DataApi(object):
 		df = self.convert_to_df(res.items, selected_fields)
 		return df
 
-	def get_multiple_interpolated_values(self, paths, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone):
+	def get_multiple_interpolated_values(self, paths, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type):
 		if (paths is None):
 			print("The variable paths cannot be null.")
 			return
 
 		web_ids = self.convert_paths_to_web_ids(paths)
-		res = self.streamSetApi.get_interpolated_ad_hoc(web_ids,  end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone)
+		res = self.streamSetApi.get_interpolated_ad_hoc(web_ids, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type)
 		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, selected_fields, None)
 		return df
 
-	def get_multiple_plot_values(self, paths, end_time, intervals, selected_fields, start_time, time_zone):
+	def get_multiple_plot_values(self, paths, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type):
 		if (paths is None):
 			print("The variable paths cannot be null.")
 			return
 
 		web_ids = self.convert_paths_to_web_ids(paths)
-		res = self.streamSetApi.get_plot_ad_hoc(web_ids, end_time, intervals, selected_fields, start_time, time_zone)
+		res = self.streamSetApi.get_plot_ad_hoc(web_ids, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type)
 		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, selected_fields, None)
 		return df
 
-	def get_multiple_recorded_values(self, paths,  boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone):
+	def get_multiple_recorded_values(self, paths,  boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type):
 		if (paths is None):
 			print("The variable paths cannot be null.")
 			return
 
 		web_ids = self.convert_paths_to_web_ids(paths)
-		res = self.streamSetApi.get_recorded_ad_hoc(web_ids, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone)
+		res = self.streamSetApi.get_recorded_ad_hoc(web_ids, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type)
 		df = self.convert_multiple_streams_to_df(res.items, False, web_ids, selected_fields, paths)
 		return df
 

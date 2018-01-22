@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**find_element_attributes**](ElementApi.md#findelementattributes) | **GET** /elements/{webId}/elementattributes | Retrieves a list of element attributes matching the specified filters from the specified element.
 [**get_elements**](ElementApi.md#getelements) | **GET** /elements/{webId}/elements | Retrieve elements based on the specified conditions. By default, this method selects immediate children of the specified element.
 [**create_element**](ElementApi.md#createelement) | **POST** /elements/{webId}/elements | Create a child element.
-[**get_event_frames**](ElementApi.md#geteventframes) | **GET** /elements/{webId}/eventframes | Retrieve event frames that reference this element based on the specified conditions. By default, returns all event frames that reference this element with a start time in the past 8 hours.
+[**get_event_frames**](ElementApi.md#geteventframes) | **GET** /elements/{webId}/eventframes | Retrieve event frames that reference this element based on the specified conditions. By default, returns all event frames that reference this element that have been active in the past 8 hours.
 [**get_referenced_elements**](ElementApi.md#getreferencedelements) | **GET** /elements/{webId}/referencedelements | Retrieve referenced elements based on the specified conditions. By default, this method selects all referenced elements of the current resource.
 [**add_referenced_element**](ElementApi.md#addreferencedelement) | **POST** /elements/{webId}/referencedelements | Add a reference to an existing element to the child elements collection.
 [**remove_referenced_element**](ElementApi.md#removereferencedelement) | **DELETE** /elements/{webId}/referencedelements | Remove a reference to an existing element from the child elements collection.
@@ -26,12 +26,13 @@ Method | HTTP request | Description
 [**update_security_entry**](ElementApi.md#updatesecurityentry) | **PUT** /elements/{webId}/securityentries/{name} | Update a security entry owned by the element.
 [**delete_security_entry**](ElementApi.md#deletesecurityentry) | **DELETE** /elements/{webId}/securityentries/{name} | Delete a security entry owned by the element.
 [**get_multiple**](ElementApi.md#getmultiple) | **GET** /elements/multiple | Retrieve multiple elements by web id or path.
+[**get_elements_query**](ElementApi.md#getelementsquery) | **GET** /elements/search | Retrieve elements based on the specified conditions. By default, returns all the elements.
 [**create_search_by_attribute**](ElementApi.md#createsearchbyattribute) | **POST** /elements/searchbyattribute | Create a link for a "Search Elements By Attribute Value" operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root Element. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the Elements. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
 [**execute_search_by_attribute**](ElementApi.md#executesearchbyattribute) | **GET** /elements/searchbyattribute/{searchId} | Execute a "Search Elements By Attribute Value" operation.
 
 
 # **get_by_path**
-> get_by_path('path', 'selected_fields')
+> get_by_path('path', 'selected_fields', 'web_id_type')
 
 Retrieve an element by path.
 
@@ -41,6 +42,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| The path to the element.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -50,7 +52,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get**
-> get('web_id', 'selected_fields')
+> get('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve an element.
 
@@ -60,6 +62,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the element.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -106,7 +109,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_analyses**
-> get_analyses('web_id', 'max_count', 'selected_fields', 'sort_field', 'sort_order', 'start_index')
+> get_analyses('web_id', 'max_count', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type')
 
 Retrieve analyses based on the specified conditions.
 
@@ -120,6 +123,7 @@ Name | Type | Description | Notes
  **sort_field** | **str**| The field or property of the object used to sort the returned collection. The default is 'Name'.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -129,7 +133,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_analysis**
-> create_analysis('web_id', 'analysis')
+> create_analysis('web_id', 'analysis', 'web_id_type')
 
 Create an Analysis.
 
@@ -139,6 +143,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the element on which to create the Analysis.. | [required]
  **analysis** | **PIAnalysis**| The new Analysis definition.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -148,7 +153,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_attributes**
-> get_attributes('web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type')
+> get_attributes('web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type', 'web_id_type')
 
 Get the attributes of the specified element.
 
@@ -169,6 +174,7 @@ Name | Type | Description | Notes
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
  **template_name** | **str**| Specify that returned attributes must be members of this template. The default is no template filter.. | [optional]
  **value_type** | **str**| Specify that returned attributes' value type must be the given value type. The default is no value type filter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -178,7 +184,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_attribute**
-> create_attribute('web_id', 'attribute')
+> create_attribute('web_id', 'attribute', 'web_id_type')
 
 Create a new attribute of the specified element.
 
@@ -188,6 +194,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the element on which to create the attribute.. | [required]
  **attribute** | **PIAttribute**| The definition of the new attribute.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -197,7 +204,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_categories**
-> get_categories('web_id', 'selected_fields')
+> get_categories('web_id', 'selected_fields', 'web_id_type')
 
 Get an element's categories.
 
@@ -207,6 +214,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the element.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -235,7 +243,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **find_element_attributes**
-> find_element_attributes('web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'element_category', 'element_description_filter', 'element_name_filter', 'element_template', 'element_type', 'max_count', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index')
+> find_element_attributes('web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'element_category', 'element_description_filter', 'element_name_filter', 'element_template', 'element_type', 'max_count', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type')
 
 Retrieves a list of element attributes matching the specified filters from the specified element.
 
@@ -259,6 +267,7 @@ Name | Type | Description | Notes
  **sort_field** | **str**| The field or property of the object used to sort the returned collection. The default is 'Name'.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -268,7 +277,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_elements**
-> get_elements('web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name')
+> get_elements('web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name', 'web_id_type')
 
 Retrieve elements based on the specified conditions. By default, this method selects immediate children of the specified element.
 
@@ -288,6 +297,7 @@ Name | Type | Description | Notes
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
  **template_name** | **str**| Specify that returned elements must have this template or a template derived from this template. The default is no template filter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -297,7 +307,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_element**
-> create_element('web_id', 'element')
+> create_element('web_id', 'element', 'web_id_type')
 
 Create a child element.
 
@@ -307,6 +317,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the parent element on which to create the element.. | [required]
  **element** | **PIElement**| The new element definition.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -316,9 +327,9 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_event_frames**
-> get_event_frames('web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name')
+> get_event_frames('web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name', 'web_id_type')
 
-Retrieve event frames that reference this element based on the specified conditions. By default, returns all event frames that reference this element with a start time in the past 8 hours.
+Retrieve event frames that reference this element based on the specified conditions. By default, returns all event frames that reference this element that have been active in the past 8 hours.
 
 ### Parameters
 
@@ -339,6 +350,7 @@ Name | Type | Description | Notes
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
  **start_time** | **str**| The starting time for the search. startTime must be less than or equal to the endTime. The searchMode parameter will control whether the comparison will be performed against the event frame's startTime or endTime. The default is '*-8h'.. | [optional]
  **template_name** | **str**| Specify that returned event frames must have this template or a template derived from this template. The default is no template filter. Specify this parameter by name.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -348,7 +360,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_referenced_elements**
-> get_referenced_elements('web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name')
+> get_referenced_elements('web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name', 'web_id_type')
 
 Retrieve referenced elements based on the specified conditions. By default, this method selects all referenced elements of the current resource.
 
@@ -367,6 +379,7 @@ Name | Type | Description | Notes
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
  **template_name** | **str**| Specify that returned elements must have this template or a template derived from this template. The default is no template filter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -415,7 +428,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security**
-> get_security('web_id', 'user_identity', 'force_refresh', 'selected_fields')
+> get_security('web_id', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type')
 
 Get the security information of the specified security item associated with the element for a specified user.
 
@@ -427,6 +440,7 @@ Name | Type | Description | Notes
  **user_identity** | **list[str]**| The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user's security rights will be returned.. | [required]
  **force_refresh** | **bool**| Indicates if the security cache should be refreshed before getting security information. The default is 'false'.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -436,7 +450,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_entries**
-> get_security_entries('web_id', 'name_filter', 'selected_fields')
+> get_security_entries('web_id', 'name_filter', 'selected_fields', 'web_id_type')
 
 Retrieve the security entries associated with the element based on the specified criteria. By default, all security entries for this element are returned.
 
@@ -447,6 +461,7 @@ Name | Type | Description | Notes
  **web_id** | **str**| The ID of the element.. | [required]
  **name_filter** | **str**| The name query string used for filtering security entries. The default is no filter.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -456,7 +471,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_security_entry**
-> create_security_entry('web_id', 'security_entry', 'apply_to_children')
+> create_security_entry('web_id', 'security_entry', 'apply_to_children', 'web_id_type')
 
 Create a security entry owned by the element.
 
@@ -467,6 +482,7 @@ Name | Type | Description | Notes
  **web_id** | **str**| The ID of the element where the security entry will be created.. | [required]
  **security_entry** | **PISecurityEntry**| The new security entry definition. The full list of allow and deny rights must be supplied.. | [required]
  **apply_to_children** | **bool**| If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -476,7 +492,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_entry_by_name**
-> get_security_entry_by_name('name', 'web_id', 'selected_fields')
+> get_security_entry_by_name('name', 'web_id', 'selected_fields', 'web_id_type')
 
 Retrieve the security entry associated with the element with the specified name.
 
@@ -487,6 +503,7 @@ Name | Type | Description | Notes
  **name** | **str**| The name of the security entry. For every backslash character (\) in the security entry name, replace with asterisk (*). As an example, use domain*username instead of domain\username.. | [required]
  **web_id** | **str**| The ID of the element.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -537,7 +554,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_multiple**
-> get_multiple('as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id')
+> get_multiple('as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type')
 
 Retrieve multiple elements by web id or path.
 
@@ -550,6 +567,7 @@ Name | Type | Description | Notes
  **path** | **list[str]**| The path of an element. Multiple elements may be specified with multiple instances of the parameter.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **web_id** | **list[str]**| The ID of an element. Multiple elements may be specified with multiple instances of the parameter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -558,8 +576,31 @@ Name | Type | Description | Notes
 
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
+# **get_elements_query**
+> get_elements_query('database_web_id', 'max_count', 'query', 'selected_fields', 'start_index', 'web_id_type')
+
+Retrieve elements based on the specified conditions. By default, returns all the elements.
+
+### Parameters
+
+Name | Type | Description | Notes
+------------- | ------------- | ------------- | -------------
+ **database_web_id** | **str**| The ID of the asset database to use as the root of the query.. | [optional]
+ **max_count** | **int**| The maximum number of objects to be returned per call (page size). The default is 1000.. | [optional]
+ **query** | **str**| The query string is a list of filters used to perform an AFSearch for the elements in the asset database. An example would be: "query=Name:=MyElement* Template:=ElementTemplate*".. | [optional]
+ **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
+
+
+### Return type
+
+[**PIItemsElement**](../models/PIItemsElement.md)
+
+[[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
+
 # **create_search_by_attribute**
-> create_search_by_attribute('search')
+> create_search_by_attribute('query', 'no_results', 'web_id_type')
 
 Create a link for a "Search Elements By Attribute Value" operation, whose queries are specified in the request content. The SearchRoot is specified by the Web Id of the root Element. If the SearchRoot is not specified, then the search starts at the Asset Database. ElementTemplate must be provided as the Web ID of the ElementTemplate, which are used to create the Elements. All the attributes in the queries must be defined as AttributeTemplates on the ElementTemplate. An array of attribute value queries are ANDed together to find the desired Element objects. At least one value query must be specified. There are limitations on SearchOperators.
 
@@ -567,17 +608,19 @@ Create a link for a "Search Elements By Attribute Value" operation, whose querie
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **PISearchByAttributeElement**| . | [required]
+ **query** | **PISearchByAttribute**| The query of search by attribute.. | [required]
+ **no_results** | **bool**| If false, the response content will contain the first page of the search results. If true, the response content will be empty. The default is false.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
 
-None
+[**PIItemsElement**](../models/PIItemsElement.md)
 
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **execute_search_by_attribute**
-> execute_search_by_attribute('search_id', 'category_name', 'description_filter', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index')
+> execute_search_by_attribute('search_id', 'category_name', 'description_filter', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type')
 
 Execute a "Search Elements By Attribute Value" operation.
 
@@ -595,10 +638,11 @@ Name | Type | Description | Notes
  **sort_field** | **str**| The field or property of the object used to sort the returned collection. The default is 'Name'.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
 
-None
+[**PIItemsElement**](../models/PIItemsElement.md)
 
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)

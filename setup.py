@@ -19,7 +19,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "osisoft.pidevclub.piwebapi"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -32,7 +32,7 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "pan
 setup(
     name=NAME,
     version=VERSION,
-    description="PI Web API 2017 Client library for Python",
+    description="PI Web API client library for Python (2017 R2)",
     author_email="techsupport@osisoft.com",
     url="",
     keywords=["PI Web API"],
@@ -40,6 +40,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    PI Web API 2017 Client library for Python
+    PI Web API client library for Python (2017 R2)
     """
 )

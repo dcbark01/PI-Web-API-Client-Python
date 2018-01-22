@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -210,76 +210,6 @@ class ConfigurationApi(object):
 				post_params =form_params,
 				files =local_var_files,
 				response_type =None,
-				callback =params.get('callback'),
-				_return_http_data_only =params.get('_return_http_data_only'),
-				_preload_content =params.get('_preload_content', True),
-				_request_timeout=params.get('_request_timeout'),
-				collection_formats =collection_formats)
-
-
-	def put(self, key, value, **kwargs):
-		kwargs['_return_http_data_only'] = True
-		if kwargs.get('callback'):
-			return self.put_with_http_info(key, value, **kwargs)
-		else:
-			(data) = self.put_with_http_info(key, value, **kwargs)
-			return data
-
-	def put_with_http_info(self, key, value, **kwargs):
-		all_params = ['key', 'value']
-		all_params.append('callback')
-		all_params.append('_return_http_data_only')
-		all_params.append('_preload_content')
-		all_params.append('_request_timeout')
-
-		params = locals()
-		for key, val in iteritems(params['kwargs']):
-			if key not in all_params:
-				raise TypeError(
-					"Got an unexpected keyword argument '%s'"
-					" to method put_with_http_info" % key
-				)
-			params[key] = val
-		del params['kwargs']
-
-		if ('key' not in params) or (params['key'] is None):
-			raise ValueError("Missing the required parameter `key` when calling `put_with_http_info`")
-		if ('value' not in params) or (params['value'] is None):
-			raise ValueError("Missing the required parameter `value` when calling `put_with_http_info`")
-
-		collection_formats = {}
-
-		query_params = {}
-
-		path_params = {}
-
-		header_params = {}
-
-		form_params = []
-		local_var_files = {}
-
-		body_params = None
-		if 'key' in params:
-			if (params['key'] is not None):
-				path_params['key'] = params['key']
-		if 'value' in params:
-			body_params = params['value']
-
-		header_params['Accept'] = self.api_client.\
-			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
-
-
-		header_params['Content-Type'] = self.api_client.\
-			select_header_content_type([])
-
-		return self.api_client.call_api('/system/configuration/{key}', 'PUT',
-				path_params,
-				query_params,
-				header_params,
-				body =body_params,
-				post_params =form_params,
-				files =local_var_files,
-				response_type ='object',
 				callback =params.get('callback'),
 				_return_http_data_only =params.get('_return_http_data_only'),
 				_preload_content =params.get('_preload_content', True),

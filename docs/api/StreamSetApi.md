@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **get_channel**
-> get_channel('web_id', 'category_name', 'include_initial_values', 'name_filter', 'search_full_hierarchy', 'show_excluded', 'show_hidden', 'template_name')
+> get_channel('web_id', 'category_name', 'heartbeat_rate', 'include_initial_values', 'name_filter', 'search_full_hierarchy', 'show_excluded', 'show_hidden', 'template_name', 'web_id_type')
 
 Opens a channel that will send messages about any value changes for the attributes of an Element, Event Frame, or Attribute.
 
@@ -39,12 +39,14 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of an Element, Event Frame or Attribute, which is the base element or parent of all the stream attributes.. | [required]
  **category_name** | **str**| Specify that included attributes must have this category. The default is no category filter.. | [optional]
+ **heartbeat_rate** | **int**| Specifies the maximum number of consecutive empty messages that can be elapsed with no new data updates from the PI System, after which the client receives an empty payload. It helps to check if the connection is still alive. Zero/negative values correspond to no heartbeat, and the default value is no heartbeat.. | [optional]
  **include_initial_values** | **bool**| Specified if the channel should send a message with the current values of all the streams after the connection is opened. The default is 'false'.. | [optional]
  **name_filter** | **str**| The name query string used for filtering attributes. The default is no filter.. | [optional]
  **search_full_hierarchy** | **bool**| Specifies if the search should include attributes nested further than the immediate attributes of the searchRoot. The default is 'false'.. | [optional]
  **show_excluded** | **bool**| Specified if the search should include attributes with the Excluded property set. The default is 'false'.. | [optional]
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -54,7 +56,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_end**
-> get_end('web_id', 'category_name', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'template_name')
+> get_end('web_id', 'category_name', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'template_name', 'web_id_type')
 
 Returns End of stream values of the attributes for an Element, Event Frame or Attribute
 
@@ -69,7 +71,10 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **show_excluded** | **bool**| Specified if the search should include attributes with the Excluded property set. The default is 'false'.. | [optional]
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -79,7 +84,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_interpolated**
-> get_interpolated('web_id', 'category_name', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'start_time', 'template_name', 'time_zone')
+> get_interpolated('web_id', 'category_name', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_time', 'sync_time', 'sync_time_boundary_type', 'template_name', 'time_zone', 'web_id_type')
 
 Returns interpolated values of attributes for an element, event frame or attribute over the specified time range at the specified sampling interval.
 
@@ -98,9 +103,14 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **show_excluded** | **bool**| Specified if the search should include attributes with the Excluded property set. The default is 'false'.. | [optional]
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d' for element attributes and points. For event frame attributes, the default is the event frame's start time, or '*-1d' if that is not set.. | [optional]
+ **sync_time** | **str**| An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.. | [optional]
+ **sync_time_boundary_type** | **str**| An optional string specifying the boundary type to use when applying a syncTime. The allowed values are 'Inside' and 'Outside'. The default is 'Inside'.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -110,7 +120,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_interpolated_at_times**
-> get_interpolated_at_times('web_id', 'time', 'category_name', 'filter_expression', 'include_filtered_values', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_order', 'template_name', 'time_zone')
+> get_interpolated_at_times('web_id', 'time', 'category_name', 'filter_expression', 'include_filtered_values', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_order', 'template_name', 'time_zone', 'web_id_type')
 
 Returns interpolated values of attributes for an element, event frame or attribute at the specified times.
 
@@ -131,6 +141,7 @@ Name | Type | Description | Notes
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -140,7 +151,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_plot**
-> get_plot('web_id', 'category_name', 'end_time', 'intervals', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'start_time', 'template_name', 'time_zone')
+> get_plot('web_id', 'category_name', 'end_time', 'intervals', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_time', 'template_name', 'time_zone', 'web_id_type')
 
 Returns values of attributes for an element, event frame or attribute over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
@@ -157,9 +168,12 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **show_excluded** | **bool**| Specified if the search should include attributes with the Excluded property set. The default is 'false'.. | [optional]
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d' for element attributes and points. For event frame attributes, the default is the event frame's start time, or '*-1d' if that is not set.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -169,7 +183,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_recorded**
-> get_recorded('web_id', 'boundary_type', 'category_name', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'start_time', 'template_name', 'time_zone')
+> get_recorded('web_id', 'boundary_type', 'category_name', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_time', 'template_name', 'time_zone', 'web_id_type')
 
 Returns recorded values of the attributes for an element, event frame, or attribute.
 
@@ -189,9 +203,12 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **show_excluded** | **bool**| Specified if the search should include attributes with the Excluded property set. The default is 'false'.. | [optional]
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d' for element attributes and points. For event frame attributes, the default is the event frame's start time, or '*-1d' if that is not set.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -222,7 +239,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_recorded_at_time**
-> get_recorded_at_time('web_id', 'time', 'category_name', 'name_filter', 'retrieval_mode', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'template_name', 'time_zone')
+> get_recorded_at_time('web_id', 'time', 'category_name', 'name_filter', 'retrieval_mode', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'template_name', 'time_zone', 'web_id_type')
 
 Returns recorded values of the attributes for an element, event frame, or attribute.
 
@@ -241,6 +258,7 @@ Name | Type | Description | Notes
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -250,7 +268,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_recorded_at_times**
-> get_recorded_at_times('web_id', 'time', 'category_name', 'name_filter', 'retrieval_mode', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_order', 'template_name', 'time_zone')
+> get_recorded_at_times('web_id', 'time', 'category_name', 'name_filter', 'retrieval_mode', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_order', 'template_name', 'time_zone', 'web_id_type')
 
 Returns recorded values of attributes for an element, event frame or attribute at the specified times.
 
@@ -270,6 +288,7 @@ Name | Type | Description | Notes
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -279,7 +298,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_summaries**
-> get_summaries('web_id', 'calculation_basis', 'category_name', 'end_time', 'filter_expression', 'name_filter', 'sample_interval', 'sample_type', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'start_time', 'summary_duration', 'summary_type', 'template_name', 'time_type', 'time_zone')
+> get_summaries('web_id', 'calculation_basis', 'category_name', 'end_time', 'filter_expression', 'name_filter', 'sample_interval', 'sample_type', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'start_time', 'summary_duration', 'summary_type', 'template_name', 'time_type', 'time_zone', 'web_id_type')
 
 Returns summary values of the attributes for an element, event frame or attribute.
 
@@ -305,6 +324,7 @@ Name | Type | Description | Notes
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time_type** | **str**| Specifies how to calculate the timestamp for each interval. The default is 'Auto'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -314,7 +334,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_values**
-> get_values('web_id', 'category_name', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'template_name', 'time', 'time_zone')
+> get_values('web_id', 'category_name', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'template_name', 'time', 'time_zone', 'web_id_type')
 
 Returns values of the attributes for an Element, Event Frame or Attribute at the specified time.
 
@@ -329,9 +349,12 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **show_excluded** | **bool**| Specified if the search should include attributes with the Excluded property set. The default is 'false'.. | [optional]
  **show_hidden** | **bool**| Specified if the search should include attributes with the Hidden property set. The default is 'false'.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **template_name** | **str**| Specify that included attributes must be members of this template. The default is no template filter.. | [optional]
  **time** | **str**| An AF time string, which is used as the time context to get stream values if it is provided. By default, it is not specified, and the default time context of the AF object will be used.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -362,7 +385,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_channel_ad_hoc**
-> get_channel_ad_hoc('web_id', 'include_initial_values')
+> get_channel_ad_hoc('web_id', 'heartbeat_rate', 'include_initial_values', 'web_id_type')
 
 Opens a channel that will send messages about any value changes for the specified streams.
 
@@ -370,8 +393,10 @@ Opens a channel that will send messages about any value changes for the specifie
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **heartbeat_rate** | **int**| Specifies the maximum number of consecutive empty messages that can be elapsed with no new data updates from the PI System, after which the client receives an empty payload. It helps to check if the connection is still alive. Zero/negative values correspond to no heartbeat, and the default value is no heartbeat.. | [optional]
  **include_initial_values** | **bool**| Specified if the channel should send a message with the current values of all the streams after the connection is opened. The default is 'false'.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -381,7 +406,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_end_ad_hoc**
-> get_end_ad_hoc('web_id', 'selected_fields')
+> get_end_ad_hoc('web_id', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type')
 
 Returns End Of Stream values for attributes of the specified streams
 
@@ -389,8 +414,11 @@ Returns End Of Stream values for attributes of the specified streams
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -400,7 +428,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_interpolated_ad_hoc**
-> get_interpolated_ad_hoc('web_id', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'start_time', 'time_zone')
+> get_interpolated_ad_hoc('web_id', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'sort_field', 'sort_order', 'start_time', 'sync_time', 'sync_time_boundary_type', 'time_zone', 'web_id_type')
 
 Returns interpolated values of the specified streams over the specified time range at the specified sampling interval.
 
@@ -414,8 +442,13 @@ Name | Type | Description | Notes
  **include_filtered_values** | **bool**| Specify 'true' to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a 'Filtered' enumeration value with bad status. Repeated consecutive failures are omitted.. | [optional]
  **interval** | **str**| The sampling interval, in AFTimeSpan format.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d'.. | [optional]
+ **sync_time** | **str**| An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.. | [optional]
+ **sync_time_boundary_type** | **str**| An optional string specifying the boundary type to use when applying a syncTime. The allowed values are 'Inside' and 'Outside'. The default is 'Inside'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -425,7 +458,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_interpolated_at_times_ad_hoc**
-> get_interpolated_at_times_ad_hoc('time', 'web_id', 'filter_expression', 'include_filtered_values', 'selected_fields', 'sort_order', 'time_zone')
+> get_interpolated_at_times_ad_hoc('time', 'web_id', 'filter_expression', 'include_filtered_values', 'selected_fields', 'sort_order', 'time_zone', 'web_id_type')
 
 Returns interpolated values of the specified streams at the specified times.
 
@@ -440,6 +473,7 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -449,7 +483,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_plot_ad_hoc**
-> get_plot_ad_hoc('web_id', 'end_time', 'intervals', 'selected_fields', 'start_time', 'time_zone')
+> get_plot_ad_hoc('web_id', 'end_time', 'intervals', 'selected_fields', 'sort_field', 'sort_order', 'start_time', 'time_zone', 'web_id_type')
 
 Returns values of attributes for the specified streams over the specified time range suitable for plotting over the number of intervals (typically represents pixels).
 
@@ -457,12 +491,15 @@ Returns values of attributes for the specified streams over the specified time r
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
  **end_time** | **str**| An optional end time. The default is '*'. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.. | [optional]
  **intervals** | **int**| The number of intervals to plot over. Typically, this would be the number of horizontal pixels in the trend. The default is '24'. For each interval, the data available is examined and significant values are returned. Each interval can produce up to 5 values if they are unique, the first value in the interval, the last value, the highest value, the lowest value and at most one exceptional point (bad status or digital state).. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -472,7 +509,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_recorded_ad_hoc**
-> get_recorded_ad_hoc('web_id', 'boundary_type', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'selected_fields', 'start_time', 'time_zone')
+> get_recorded_ad_hoc('web_id', 'boundary_type', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'selected_fields', 'sort_field', 'sort_order', 'start_time', 'time_zone', 'web_id_type')
 
 Returns recorded values of the specified streams.
 
@@ -480,15 +517,18 @@ Returns recorded values of the specified streams.
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
  **boundary_type** | **str**| An optional value that determines how the times and values of the returned end points are determined. The default is 'Inside'.. | [optional]
  **end_time** | **str**| An optional end time. The default is '*'. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.. | [optional]
  **filter_expression** | **str**| An optional string containing a filter expression. Expression variables are relative to the data point. Use '.' to reference the containing attribute. The default is no filtering.. | [optional]
  **include_filtered_values** | **bool**| Specify 'true' to indicate that values which fail the filter criteria are present in the returned data at the times where they occurred with a value set to a 'Filtered' enumeration value with bad status. Repeated consecutive failures are omitted.. | [optional]
  **max_count** | **int**| The maximum number of values to be returned. The default is 1000.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -518,7 +558,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_recorded_at_time_ad_hoc**
-> get_recorded_at_time_ad_hoc('time', 'web_id', 'retrieval_mode', 'selected_fields', 'time_zone')
+> get_recorded_at_time_ad_hoc('time', 'web_id', 'retrieval_mode', 'selected_fields', 'time_zone', 'web_id_type')
 
 Returns recorded values based on the passed time and retrieval mode.
 
@@ -527,10 +567,11 @@ Returns recorded values based on the passed time and retrieval mode.
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **time** | **str**| The timestamp at which the values are desired.. | [required]
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
  **retrieval_mode** | **str**| An optional value that determines the values to return when values don't exist at the exact time specified. The default is 'Auto'.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -540,7 +581,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_recorded_at_times_ad_hoc**
-> get_recorded_at_times_ad_hoc('time', 'web_id', 'retrieval_mode', 'selected_fields', 'sort_order', 'time_zone')
+> get_recorded_at_times_ad_hoc('time', 'web_id', 'retrieval_mode', 'selected_fields', 'sort_order', 'time_zone', 'web_id_type')
 
 Returns recorded values of the specified streams at the specified times.
 
@@ -554,6 +595,7 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -563,7 +605,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_summaries_ad_hoc**
-> get_summaries_ad_hoc('web_id', 'calculation_basis', 'end_time', 'filter_expression', 'sample_interval', 'sample_type', 'selected_fields', 'start_time', 'summary_duration', 'summary_type', 'time_type', 'time_zone')
+> get_summaries_ad_hoc('web_id', 'calculation_basis', 'end_time', 'filter_expression', 'sample_interval', 'sample_type', 'selected_fields', 'start_time', 'summary_duration', 'summary_type', 'time_type', 'time_zone', 'web_id_type')
 
 Returns summary values of the specified streams.
 
@@ -571,7 +613,7 @@ Returns summary values of the specified streams.
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
  **calculation_basis** | **str**| Specifies the method of evaluating the data over the time range. The default is 'TimeWeighted'.. | [optional]
  **end_time** | **str**| An optional end time. The default is '*'. Note that if endTime is earlier than startTime, the resulting values will be in time-descending order.. | [optional]
  **filter_expression** | **str**| A string containing a filter expression. Expression variables are relative to the attribute. Use '.' to reference the containing attribute. The default is no filtering.. | [optional]
@@ -583,6 +625,7 @@ Name | Type | Description | Notes
  **summary_type** | **list[str]**| Specifies the kinds of summaries to produce over the range. The default is 'Total'. Multiple summary types may be specified by using multiple instances of summaryType.. | [optional]
  **time_type** | **str**| Specifies how to calculate the timestamp for each interval. The default is 'Auto'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -592,7 +635,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_values_ad_hoc**
-> get_values_ad_hoc('web_id', 'selected_fields', 'time', 'time_zone')
+> get_values_ad_hoc('web_id', 'selected_fields', 'sort_field', 'sort_order', 'time', 'time_zone', 'web_id_type')
 
 Returns values of the specified streams.
 
@@ -600,10 +643,13 @@ Returns values of the specified streams.
 
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
- **web_id** | **list[str]**| The ID of a stream.  Multiple streams may be specified with multiple instances of the parameter.. | [required]
+ **web_id** | **list[str]**| The ID of a stream. Multiple streams may be specified with multiple instances of the parameter.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **sort_field** | **str**| The field or property of the object used to sort the returned collection. For better performance, The default is unsorted. 'Name' is the only supported field by which to sort.. | [optional]
+ **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'. | [optional]
  **time** | **str**| An AF time string, which is used as the time context to get stream values if it is provided. By default, it is not specified, and the default time context of the AF object will be used.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type

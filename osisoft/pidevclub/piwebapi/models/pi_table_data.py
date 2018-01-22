@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,21 +23,26 @@ class PITableData(object):
 	swagger_types = {
 		'columns': 'dict<str, str>',
 		'rows': 'list[dict(str, object)]',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'columns': 'Columns',
 		'rows': 'Rows',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, columns=None, rows=None):
+	def __init__(self, columns=None, rows=None, web_exception=None):
 
 		self._columns = None
 		self._rows = None
+		self._web_exception = None
 
 		if columns is not None:
 			self.columns = columns
 		if rows is not None:
 			self.rows = rows
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def columns(self):
@@ -54,6 +59,14 @@ class PITableData(object):
 	@rows.setter
 	def rows(self, rows):
 		self._rows = rows
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

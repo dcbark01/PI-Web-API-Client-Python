@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -29,7 +29,8 @@ class PITable(object):
 		'category_names': 'list[str]',
 		'time_zone': 'str',
 		'convert_to_local_time': 'bool',
-		'links': 'dict(str, str)',
+		'links': 'PITableLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -42,8 +43,9 @@ class PITable(object):
 		'time_zone': 'TimeZone',
 		'convert_to_local_time': 'ConvertToLocalTime',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, category_names=None, time_zone=None, convert_to_local_time=None, links=None):
+	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, category_names=None, time_zone=None, convert_to_local_time=None, links=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -54,6 +56,7 @@ class PITable(object):
 		self._time_zone = None
 		self._convert_to_local_time = None
 		self._links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -73,6 +76,8 @@ class PITable(object):
 			self.convert_to_local_time = convert_to_local_time
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -145,6 +150,14 @@ class PITable(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -32,6 +32,7 @@ class PISecurity(object):
 		'can_write_data': 'bool',
 		'has_admin': 'bool',
 		'rights': 'list[str]',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -46,8 +47,9 @@ class PISecurity(object):
 		'can_write_data': 'CanWriteData',
 		'has_admin': 'HasAdmin',
 		'rights': 'Rights',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, can_annotate=None, can_delete=None, can_execute=None, can_read=None, can_read_data=None, can_subscribe=None, can_subscribe_others=None, can_write=None, can_write_data=None, has_admin=None, rights=None):
+	def __init__(self, can_annotate=None, can_delete=None, can_execute=None, can_read=None, can_read_data=None, can_subscribe=None, can_subscribe_others=None, can_write=None, can_write_data=None, has_admin=None, rights=None, web_exception=None):
 
 		self._can_annotate = None
 		self._can_delete = None
@@ -60,6 +62,7 @@ class PISecurity(object):
 		self._can_write_data = None
 		self._has_admin = None
 		self._rights = None
+		self._web_exception = None
 
 		if can_annotate is not None:
 			self.can_annotate = can_annotate
@@ -83,6 +86,8 @@ class PISecurity(object):
 			self.has_admin = has_admin
 		if rights is not None:
 			self.rights = rights
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def can_annotate(self):
@@ -171,6 +176,14 @@ class PISecurity(object):
 	@rights.setter
 	def rights(self, rights):
 		self._rights = rights
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

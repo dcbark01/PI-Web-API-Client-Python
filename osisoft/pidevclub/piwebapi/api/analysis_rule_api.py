@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,16 +24,16 @@ class AnalysisRuleApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, **kwargs):
+	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, **kwargs):
-		all_params = ['path', 'selected_fields']
+	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -70,6 +70,9 @@ class AnalysisRuleApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -93,16 +96,16 @@ class AnalysisRuleApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, **kwargs):
+	def get(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -139,6 +142,9 @@ class AnalysisRuleApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -298,16 +304,16 @@ class AnalysisRuleApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_analysis_rules(self, web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs):
+	def get_analysis_rules(self, web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_analysis_rules_with_http_info(web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs)
+			return self.get_analysis_rules_with_http_info(web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 		else:
-			(data) = self.get_analysis_rules_with_http_info(web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs)
+			(data) = self.get_analysis_rules_with_http_info(web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 			return data
 
-	def get_analysis_rules_with_http_info(self, web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs):
-		all_params = ['web_id', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index']
+	def get_analysis_rules_with_http_info(self, web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
+		all_params = ['web_id', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -362,6 +368,9 @@ class AnalysisRuleApi(object):
 		if 'start_index' in params:
 			if (params['start_index'] is not None):
 				query_params['startIndex'] = params['start_index']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -385,16 +394,16 @@ class AnalysisRuleApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_analysis_rule(self, web_id, analysis_rule, **kwargs):
+	def create_analysis_rule(self, web_id, analysis_rule, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_analysis_rule_with_http_info(web_id, analysis_rule, **kwargs)
+			return self.create_analysis_rule_with_http_info(web_id, analysis_rule, web_id_type, **kwargs)
 		else:
-			(data) = self.create_analysis_rule_with_http_info(web_id, analysis_rule, **kwargs)
+			(data) = self.create_analysis_rule_with_http_info(web_id, analysis_rule, web_id_type, **kwargs)
 			return data
 
-	def create_analysis_rule_with_http_info(self, web_id, analysis_rule, **kwargs):
-		all_params = ['web_id', 'analysis_rule']
+	def create_analysis_rule_with_http_info(self, web_id, analysis_rule, web_id_type, **kwargs):
+		all_params = ['web_id', 'analysis_rule', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -432,6 +441,9 @@ class AnalysisRuleApi(object):
 				path_params['webId'] = params['web_id']
 		if 'analysis_rule' in params:
 			body_params = params['analysis_rule']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])

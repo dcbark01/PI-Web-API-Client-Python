@@ -1,13 +1,13 @@
-PI Web API Client libraries for Python
+PI Web API client library for Python (2017 R2)
 ===
 
 ## Overview
-This repository has the source code package of the PI Web API Client libraries for Python.
+This repository has the source code package of the PI Web API client libraries for Python. This version was developed on top of the PI Web API 2017 R2 swagger specification.
 
 ## Requirements.
 
-Python 2.7 and 3.4+
-
+ - PI Web API 2017 R2 installed within your domain using Kerberos or Basic Authentication. If you are using an older version, some methods might not work.
+ - Python 2.7 and 3.4+
 
 ## Installation
 ### pip install
@@ -44,6 +44,10 @@ This library was tested using PyCharm 2017.1.5 and Anaconda3 5.0.0
 
 All classes and methods are described on the [DOCUMENTATION](DOCUMENTATION.md). 
 
+## Notes
+
+ - Is is highly recommended to turn debug mode on in case you are using PI Web API 2017 R2+ in order to receive more detailed exception errors. This can be achieved by creating or editing the DebugMode attribute's value to TRUE from the System Configuration element.
+ - The X-Requested-With header is added to work with CSRF defences.
  
 ## Examples
 
@@ -64,16 +68,16 @@ Only Basic Authentication is available in this version. Therefore, the variable 
 
 
 ```python
-    df1 = client.data.get_recorded_values("pi:\\\\JUPITER001\\cdt158", None, None, "*-9d", None, None, None, None, "*-10d", None)df4 = client.data.get_multiple_recorded_values(["pi:\\JUPITER001\sinusoid", "pi:\\JUPITER001\sinusoidu", "pi:\\JUPITER001\cdt158"],None, "*", None, None, None, None, "*-1d", None)
-    df2 = client.data.get_interpolated_values("pi:\\JUPITER001\\sinusoidu",None, "*", None, None, "2h", None, "*-1d", None)
-    df3 = client.data.get_plot_values("pi:\\\\JUPITER001\\sinusoidu", None, "*", 10, None, "*-3d", None)
-    df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
-    df5 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.good;items.questionable;items.substituted", "*-1d", None)
-	dfs1 = client.data.get_multiple_recorded_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"],None, "*", None, None, None, None, "*-1d", None)
-    dfs2 = client.data.get_multiple_interpolated_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"], "*", None, None, "1d", None, "*-5d", None)
-    dfs3 = client.data.get_multiple_plot_values(["pi:\\\\JUPITER001\\sinusoid", "pi:\\\\JUPITER001\\sinusoidu", "pi:\\\\JUPITER001\\cdt158", "af:\\\\JUPITER001\\Vitens\\Vitens\\Friesland province\\01 Production sites\\Production Site Noordbergum\\Distribution\\Quality|pH"], "*", 10, None, "*-1d", None)
-    dfs4 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp", "*-1d", None)
-    dfs5 = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1h", "items.items.value;items.items.timestamp", "*-5d", None)
+	df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid",None, None, "*", None, None, None, None, "*-1d", None)
+    df2 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", None, "*", None, None, "1h", None, "*-1d", None, None, None)
+	df3 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", None, "*", 15, None, "*-1d", None)
+	df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
+	
+	paths  = ["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"];
+    dfs1 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, None, None, None, "*-1d", None, None)
+    dfs2 = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1d", None, None, None, "*-5d", None, None, None, None)
+    dfs3 = client.data.get_multiple_plot_values(paths, "*", 10, None, None, None, "*-1d", None, None)
+ 	dfs4 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp", None, None, "*-1d", None, None)
 ```
 
 The path from the methods above should start with "pi:" (if your stream is a PI Point) or "af:" (if your stream is an AF attribute).
@@ -84,7 +88,7 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
 ### Get the PI Data Archive WebId
 
 ```python
-    dataServer = client.dataServer.get_by_path("\\\\JUPITER001", None);
+	dataServer = client.dataServer.get_by_path("\\\\PISRV1", None, None);
 ```
 
 ### Create a new PI Point
@@ -96,15 +100,15 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     newPoint.point_class = "classic"
     newPoint.point_type = "float32"
     newPoint.future = False
-    res = client.dataServer.create_point_with_http_info(dataServer.web_id, newPoint);         
+    res = client.dataServer.create_point_with_http_info(dataServer.web_id, newPoint, None);         
 ```
 
 ### Get PI Points WebIds
 
 ```python
-    point1 = client.point.get_by_path("\\\\JUPITER001\\sinusoid", None)
-    point2 = client.point.get_by_path("\\\\JUPITER001\\cdt158", None)
-    point3 = client.point.get_by_path("\\\\JUPITER001\\sinusoidu", None)
+    point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None);
+    point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None);
+    point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None);
 ```
 
 ### Get recorded values in bulk using the StreamSet/GetRecordedAdHoc
@@ -114,7 +118,7 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     webIds.append(point1.web_id);
     webIds.append(point2.web_id);
     webIds.append(point3.web_id);
-    piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, "*-3d", None);
+	piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, None, None, "*-3d", None, None);
             
 ```
 
@@ -176,8 +180,8 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
 ### Get an element and an attribute by path
 
 ```python
-    element = client.element.get_by_path("\\\\JUPITER001\\Universities\\UC Davis", None)
-    attribute = client.attribute.get_by_path("\\\\JUPITER001\\Universities\\UC Davis\\Buildings|Campus Average EUI", "Name")
+	element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE", None, None)
+	attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots", "Name", None)
            
 ```
 
@@ -186,7 +190,7 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
 
 
 ## Licensing
-Copyright 2017 OSIsoft, LLC.
+Copyright 2018 OSIsoft, LLC.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

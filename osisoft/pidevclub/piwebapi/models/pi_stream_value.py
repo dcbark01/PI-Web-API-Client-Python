@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -25,7 +25,8 @@ class PIStreamValue(object):
 		'name': 'str',
 		'path': 'str',
 		'value': 'PITimedValue',
-		'links': 'dict(str, str)',
+		'links': 'PIStreamValueLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -34,14 +35,16 @@ class PIStreamValue(object):
 		'path': 'Path',
 		'value': 'Value',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, name=None, path=None, value=None, links=None):
+	def __init__(self, web_id=None, name=None, path=None, value=None, links=None, web_exception=None):
 
 		self._web_id = None
 		self._name = None
 		self._path = None
 		self._value = None
 		self._links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -53,6 +56,8 @@ class PIStreamValue(object):
 			self.value = value
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -93,6 +98,14 @@ class PIStreamValue(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -34,7 +34,8 @@ class PITimeRule(object):
 		'is_initializing': 'bool',
 		'merge_duplicated_items': 'bool',
 		'plug_in_name': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PITimeRuleLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -52,8 +53,9 @@ class PITimeRule(object):
 		'merge_duplicated_items': 'MergeDuplicatedItems',
 		'plug_in_name': 'PlugInName',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, config_string=None, config_string_stored=None, display_string=None, editor_type=None, is_configured=None, is_initializing=None, merge_duplicated_items=None, plug_in_name=None, links=None):
+	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, config_string=None, config_string_stored=None, display_string=None, editor_type=None, is_configured=None, is_initializing=None, merge_duplicated_items=None, plug_in_name=None, links=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -69,6 +71,7 @@ class PITimeRule(object):
 		self._merge_duplicated_items = None
 		self._plug_in_name = None
 		self._links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -98,6 +101,8 @@ class PITimeRule(object):
 			self.plug_in_name = plug_in_name
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -210,6 +215,14 @@ class PITimeRule(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

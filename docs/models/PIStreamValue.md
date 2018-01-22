@@ -7,6 +7,7 @@ Name | Type | Notes
 **name** | **str**
 **path** | **str**
 **value** | **[**PITimedValue**](../models/PITimedValue.md)**
-**links** | **dict(str, str)**
+**links** | **[**PIStreamValueLinks**](../models/PIStreamValueLinks.md)**
+**web_exception** | **[**PIWebException**](../models/PIWebException.md)**
 
 [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)

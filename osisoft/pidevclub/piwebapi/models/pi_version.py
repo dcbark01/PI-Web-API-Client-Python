@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,18 +24,21 @@ class PIVersion(object):
 		'full_version': 'str',
 		'major_minor_revision': 'str',
 		'build': 'str',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'full_version': 'FullVersion',
 		'major_minor_revision': 'MajorMinorRevision',
 		'build': 'Build',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, full_version=None, major_minor_revision=None, build=None):
+	def __init__(self, full_version=None, major_minor_revision=None, build=None, web_exception=None):
 
 		self._full_version = None
 		self._major_minor_revision = None
 		self._build = None
+		self._web_exception = None
 
 		if full_version is not None:
 			self.full_version = full_version
@@ -43,6 +46,8 @@ class PIVersion(object):
 			self.major_minor_revision = major_minor_revision
 		if build is not None:
 			self.build = build
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def full_version(self):
@@ -67,6 +72,14 @@ class PIVersion(object):
 	@build.setter
 	def build(self, build):
 		self._build = build
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

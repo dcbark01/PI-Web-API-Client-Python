@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,16 +24,16 @@ class StreamApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_channel(self, web_id, include_initial_values, **kwargs):
+	def get_channel(self, web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_channel_with_http_info(web_id, include_initial_values, **kwargs)
+			return self.get_channel_with_http_info(web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs)
 		else:
-			(data) = self.get_channel_with_http_info(web_id, include_initial_values, **kwargs)
+			(data) = self.get_channel_with_http_info(web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs)
 			return data
 
-	def get_channel_with_http_info(self, web_id, include_initial_values, **kwargs):
-		all_params = ['web_id', 'include_initial_values']
+	def get_channel_with_http_info(self, web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs):
+		all_params = ['web_id', 'heartbeat_rate', 'include_initial_values', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -67,9 +67,15 @@ class StreamApi(object):
 		if 'web_id' in params:
 			if (params['web_id'] is not None):
 				path_params['webId'] = params['web_id']
+		if 'heartbeat_rate' in params:
+			if (params['heartbeat_rate'] is not None):
+				query_params['heartbeatRate'] = params['heartbeat_rate']
 		if 'include_initial_values' in params:
 			if (params['include_initial_values'] is not None):
 				query_params['includeInitialValues'] = params['include_initial_values']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -165,16 +171,16 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated(self, web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone, **kwargs):
+	def get_interpolated(self, web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_interpolated_with_http_info(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone, **kwargs)
+			return self.get_interpolated_with_http_info(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs)
 		else:
-			(data) = self.get_interpolated_with_http_info(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone, **kwargs)
+			(data) = self.get_interpolated_with_http_info(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs)
 			return data
 
-	def get_interpolated_with_http_info(self, web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, time_zone, **kwargs):
-		all_params = ['web_id', 'desired_units', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'start_time', 'time_zone']
+	def get_interpolated_with_http_info(self, web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs):
+		all_params = ['web_id', 'desired_units', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'start_time', 'sync_time', 'sync_time_boundary_type', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -229,6 +235,12 @@ class StreamApi(object):
 		if 'start_time' in params:
 			if (params['start_time'] is not None):
 				query_params['startTime'] = params['start_time']
+		if 'sync_time' in params:
+			if (params['sync_time'] is not None):
+				query_params['syncTime'] = params['sync_time']
+		if 'sync_time_boundary_type' in params:
+			if (params['sync_time_boundary_type'] is not None):
+				query_params['syncTimeBoundaryType'] = params['sync_time_boundary_type']
 		if 'time_zone' in params:
 			if (params['time_zone'] is not None):
 				query_params['timeZone'] = params['time_zone']
@@ -942,16 +954,16 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_value(self, web_id, value, buffer_option, update_option, **kwargs):
+	def update_value(self, web_id, value, buffer_option, update_option, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.update_value_with_http_info(web_id, value, buffer_option, update_option, **kwargs)
+			return self.update_value_with_http_info(web_id, value, buffer_option, update_option, web_id_type, **kwargs)
 		else:
-			(data) = self.update_value_with_http_info(web_id, value, buffer_option, update_option, **kwargs)
+			(data) = self.update_value_with_http_info(web_id, value, buffer_option, update_option, web_id_type, **kwargs)
 			return data
 
-	def update_value_with_http_info(self, web_id, value, buffer_option, update_option, **kwargs):
-		all_params = ['web_id', 'value', 'buffer_option', 'update_option']
+	def update_value_with_http_info(self, web_id, value, buffer_option, update_option, web_id_type, **kwargs):
+		all_params = ['web_id', 'value', 'buffer_option', 'update_option', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -995,6 +1007,9 @@ class StreamApi(object):
 		if 'update_option' in params:
 			if (params['update_option'] is not None):
 				query_params['updateOption'] = params['update_option']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])

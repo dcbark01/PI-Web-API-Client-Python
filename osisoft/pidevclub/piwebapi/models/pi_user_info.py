@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -26,6 +26,7 @@ class PIUserInfo(object):
 		'is_authenticated': 'bool',
 		's_i_d': 'str',
 		'impersonation_level': 'str',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -34,14 +35,16 @@ class PIUserInfo(object):
 		'is_authenticated': 'IsAuthenticated',
 		's_i_d': 'SID',
 		'impersonation_level': 'ImpersonationLevel',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, identity_type=None, name=None, is_authenticated=None, s_i_d=None, impersonation_level=None):
+	def __init__(self, identity_type=None, name=None, is_authenticated=None, s_i_d=None, impersonation_level=None, web_exception=None):
 
 		self._identity_type = None
 		self._name = None
 		self._is_authenticated = None
 		self._s_i_d = None
 		self._impersonation_level = None
+		self._web_exception = None
 
 		if identity_type is not None:
 			self.identity_type = identity_type
@@ -53,6 +56,8 @@ class PIUserInfo(object):
 			self.s_i_d = s_i_d
 		if impersonation_level is not None:
 			self.impersonation_level = impersonation_level
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def identity_type(self):
@@ -93,6 +98,14 @@ class PIUserInfo(object):
 	@impersonation_level.setter
 	def impersonation_level(self, impersonation_level):
 		self._impersonation_level = impersonation_level
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,21 +23,26 @@ class PITimedValues(object):
 	swagger_types = {
 		'items': 'list[PITimedValue]',
 		'units_abbreviation': 'str',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'items': 'Items',
 		'units_abbreviation': 'UnitsAbbreviation',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, items=None, units_abbreviation=None):
+	def __init__(self, items=None, units_abbreviation=None, web_exception=None):
 
 		self._items = None
 		self._units_abbreviation = None
+		self._web_exception = None
 
 		if items is not None:
 			self.items = items
 		if units_abbreviation is not None:
 			self.units_abbreviation = units_abbreviation
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def items(self):
@@ -54,6 +59,14 @@ class PITimedValues(object):
 	@units_abbreviation.setter
 	def units_abbreviation(self, units_abbreviation):
 		self._units_abbreviation = units_abbreviation
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

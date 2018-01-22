@@ -26,7 +26,7 @@ from osisoft.pidevclub.piwebapi.rest import ApiException
 class TestMain(unittest.TestCase):
 
     def getPIWebApiClient(self):
-        return PIWebApiClient("https://webserver/piwebapi", False, "username", "password", True)
+        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", False, "webapiuser", "!try3.14webapi!", True)
 
 
     def test_getHome(self):
@@ -37,52 +37,53 @@ class TestMain(unittest.TestCase):
 
     def test_getDataServer(self):
         client = self.getPIWebApiClient()
-        dataServer = client.dataServer.get_by_path("\\\\JUPITER001", None);
+        dataServer = client.dataServer.get_by_path("\\\\PISRV1", None, None);
         pass
 
 
     def test_getMultiplePoints(self):
         client = self.getPIWebApiClient()
-        dataServers = client.dataServer.list(selected_fields=None)
-        point1 = client.point.get_by_path("\\\\JUPITER001\\sinusoid", None)
-        point2 = client.point.get_by_path("\\\\JUPITER001\\cdt158", None)
-        point3 = client.point.get_by_path("\\\\JUPITER001\\sinusoidu", None)
+        dataServers = client.dataServer.list(None, None)
+        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None)
+        point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None)
+        point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None)
 
         pass
 
 
     def test_getDataInBulkTest(self):
         client = self.getPIWebApiClient()
-        point1 = client.point.get_by_path("\\\\JUPITER001\\sinusoid", None);
-        point2 = client.point.get_by_path("\\\\JUPITER001\\cdt158", None);
-        point3 = client.point.get_by_path("\\\\JUPITER001\\sinusoidu", None);
+        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None);
+        point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None);
+        point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None);
 
         webIds = list()
         webIds.append(point1.web_id);
         webIds.append(point2.web_id);
         webIds.append(point3.web_id);
 
-        piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, "*-3d",
-                                                                   None);
+        piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, None, None, "*-3d",
+                                                                   None, None);
+
         pass
 
 
     def test_getElement(self):
         client = self.getPIWebApiClient()
-        myElement = client.element.get_by_path("\\\\JUPITER001\\Vitens\\Vitens", None)
+        element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE", None, None)
         pass
 
 
     def test_getAttribute(self):
         client = self.getPIWebApiClient()
-        attribute = client.attribute.get_by_path("\\\\JUPITER001\\Universities\\UC Davis\\Buildings|Campus Average EUI",
-                                                 "Name")
+        attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots",
+                                                 "Name", None)
         pass
 
     def test_getExceptionError(self):
         client = self.getPIWebApiClient()
         try:
-            point1 = client.point.get_by_path("\\\\JUPITER001\\sinusoid12334322", None)
+            point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid12334322", None, None)
         except ApiException as e:
             print(e);
             errorMsg = e.error['Errors'][0]
@@ -93,9 +94,9 @@ class TestMain(unittest.TestCase):
 
     def test_updateValuesInBulk(self):
         client = self.getPIWebApiClient()
-        point1 = client.point.get_by_path("\\\\JUPITER001\\sinusoid", None);
-        point2 = client.point.get_by_path("\\\\JUPITER001\\cdt158", None);
-        point3 = client.point.get_by_path("\\\\JUPITER001\\sinusoidu", None);
+        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None);
+        point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None);
+        point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None);
         streamValuesItems = PIItemsStreamValues()
         streamValue1 = PIStreamValues()
         streamValue2 = PIStreamValues()

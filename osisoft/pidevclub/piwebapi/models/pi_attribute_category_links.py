@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -19,54 +19,54 @@ from six import iteritems
 import re
 
 
-class PISearchByAttributeEventFrame(object):
+class PIAttributeCategoryLinks(object):
 	swagger_types = {
-		'search_root': 'object',
-		'element_template': 'object',
-		'value_queries': 'list[PIAttributeValueQuery]',
+		'database': 'str',
+		'security': 'str',
+		'security_entries': 'str',
 	}
 
 	attribute_map = {
-		'search_root': 'SearchRoot',
-		'element_template': 'ElementTemplate',
-		'value_queries': 'ValueQueries',
+		'database': 'Database',
+		'security': 'Security',
+		'security_entries': 'SecurityEntries',
 	}
-	def __init__(self, search_root=None, element_template=None, value_queries=None):
+	def __init__(self, database=None, security=None, security_entries=None):
 
-		self._search_root = None
-		self._element_template = None
-		self._value_queries = None
+		self._database = None
+		self._security = None
+		self._security_entries = None
 
-		if search_root is not None:
-			self.search_root = search_root
-		if element_template is not None:
-			self.element_template = element_template
-		if value_queries is not None:
-			self.value_queries = value_queries
-
-	@property
-	def search_root(self):
-		return self._search_root
-
-	@search_root.setter
-	def search_root(self, search_root):
-		self._search_root = search_root
+		if database is not None:
+			self.database = database
+		if security is not None:
+			self.security = security
+		if security_entries is not None:
+			self.security_entries = security_entries
 
 	@property
-	def element_template(self):
-		return self._element_template
+	def database(self):
+		return self._database
 
-	@element_template.setter
-	def element_template(self, element_template):
-		self._element_template = element_template
+	@database.setter
+	def database(self, database):
+		self._database = database
 
 	@property
-	def value_queries(self):
-		return self._value_queries
+	def security(self):
+		return self._security
 
-	@value_queries.setter
-	def value_queries(self, value_queries):
-		self._value_queries = value_queries
+	@security.setter
+	def security(self, security):
+		self._security = security
+
+	@property
+	def security_entries(self):
+		return self._security_entries
+
+	@security_entries.setter
+	def security_entries(self, security_entries):
+		self._security_entries = security_entries
 
 	def to_dict(self):
 		result = {}
@@ -99,7 +99,7 @@ class PISearchByAttributeEventFrame(object):
 		return not self == other
 
 	def __eq__(self, other):
-		if not isinstance(other, PISearchByAttributeEventFrame):
+		if not isinstance(other, PIAttributeCategoryLinks):
 			return False
 		return self.__dict__ == other.__dict__
 

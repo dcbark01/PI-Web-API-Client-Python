@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -27,7 +27,8 @@ class PITimedValue(object):
 		'questionable': 'bool',
 		'substituted': 'bool',
 		'value': 'object',
-		'exception': 'PIErrors',
+		'errors': 'list[PIPropertyError]',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -37,9 +38,10 @@ class PITimedValue(object):
 		'questionable': 'Questionable',
 		'substituted': 'Substituted',
 		'value': 'Value',
-		'exception': 'Exception',
+		'errors': 'Errors',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, timestamp=None, units_abbreviation=None, good=None, questionable=None, substituted=None, value=None, exception=None):
+	def __init__(self, timestamp=None, units_abbreviation=None, good=None, questionable=None, substituted=None, value=None, errors=None, web_exception=None):
 
 		self._timestamp = None
 		self._units_abbreviation = None
@@ -47,7 +49,8 @@ class PITimedValue(object):
 		self._questionable = None
 		self._substituted = None
 		self._value = None
-		self._exception = None
+		self._errors = None
+		self._web_exception = None
 
 		if timestamp is not None:
 			self.timestamp = timestamp
@@ -61,8 +64,10 @@ class PITimedValue(object):
 			self.substituted = substituted
 		if value is not None:
 			self.value = value
-		if exception is not None:
-			self.exception = exception
+		if errors is not None:
+			self.errors = errors
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def timestamp(self):
@@ -113,12 +118,20 @@ class PITimedValue(object):
 		self._value = value
 
 	@property
-	def exception(self):
-		return self._exception
+	def errors(self):
+		return self._errors
 
-	@exception.setter
-	def exception(self, exception):
-		self._exception = exception
+	@errors.setter
+	def errors(self, errors):
+		self._errors = errors
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **get_channel**
-> get_channel('web_id', 'include_initial_values')
+> get_channel('web_id', 'heartbeat_rate', 'include_initial_values', 'web_id_type')
 
 Opens a channel that will send messages about any value changes for the specified stream.
 
@@ -26,7 +26,9 @@ Opens a channel that will send messages about any value changes for the specifie
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the stream.. | [required]
+ **heartbeat_rate** | **int**| HeartbeatRate is an integer multiple of the Polling Interval. It specifies the rate at which a client will receive an empty message if there are no data updates. It can be used to check that the connection is still alive. Zero/negative values correspond to no heartbeat. By default, no empty messages will be sent to the user.. | [optional]
  **include_initial_values** | **bool**| Specified if the channel should send a message with the current value of the stream after the connection is opened. The default is 'false'.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -56,7 +58,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_interpolated**
-> get_interpolated('web_id', 'desired_units', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'start_time', 'time_zone')
+> get_interpolated('web_id', 'desired_units', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'start_time', 'sync_time', 'sync_time_boundary_type', 'time_zone')
 
 Retrieves interpolated values over the specified time range at the specified sampling interval.
 
@@ -72,6 +74,8 @@ Name | Type | Description | Notes
  **interval** | **str**| The sampling interval, in AFTimeSpan format.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **start_time** | **str**| An optional start time. The default is '*-1d' for element attributes and points. For event frame attributes, the default is the event frame's start time, or '*-1d' if that is not set.. | [optional]
+ **sync_time** | **str**| An optional start time anchor, in AFTime format. When specified, interpolated data retrieval will use the sync time as the origin for calculating the interval times.. | [optional]
+ **sync_time_boundary_type** | **str**| An optional string specifying the boundary type to use when applying a syncTime. The allowed values are 'Inside' and 'Outside'. The default is 'Inside'.. | [optional]
  **time_zone** | **str**| The time zone in which the time string will be interpreted. This parameter will be ignored if a time zone is specified in the time string. If no time zone is specified in either places, the PI Web API server time zone will be used.. | [optional]
 
 
@@ -277,7 +281,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **update_value**
-> update_value('web_id', 'value', 'buffer_option', 'update_option')
+> update_value('web_id', 'value', 'buffer_option', 'update_option', 'web_id_type')
 
 Updates a value for the specified stream.
 
@@ -289,6 +293,7 @@ Name | Type | Description | Notes
  **value** | **PITimedValue**| The value to add or update.. | [required]
  **buffer_option** | **str**| The desired AFBufferOption. The default is 'BufferIfPossible'.. | [optional]
  **update_option** | **str**| The desired AFUpdateOption. The default is 'Replace'. This parameter is ignored if the attribute is a configuration item.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type

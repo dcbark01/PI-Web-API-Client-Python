@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,16 +24,16 @@ class AssetDatabaseApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, **kwargs):
+	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, **kwargs):
-		all_params = ['path', 'selected_fields']
+	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -70,6 +70,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -93,16 +96,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, **kwargs):
+	def get(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -139,6 +142,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -298,16 +304,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def find_analyses(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, **kwargs):
+	def find_analyses(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.find_analyses_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, **kwargs)
+			return self.find_analyses_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 		else:
-			(data) = self.find_analyses_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, **kwargs)
+			(data) = self.find_analyses_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 			return data
 
-	def find_analyses_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, **kwargs):
-		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'start_index']
+	def find_analyses_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
+		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -365,6 +371,9 @@ class AssetDatabaseApi(object):
 		if 'start_index' in params:
 			if (params['start_index'] is not None):
 				query_params['startIndex'] = params['start_index']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -388,16 +397,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_analysis_categories(self, web_id, selected_fields, **kwargs):
+	def get_analysis_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_analysis_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_analysis_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_analysis_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_analysis_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_analysis_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_analysis_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -434,6 +443,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -457,16 +469,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_analysis_category(self, web_id, analysis_category, **kwargs):
+	def create_analysis_category(self, web_id, analysis_category, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_analysis_category_with_http_info(web_id, analysis_category, **kwargs)
+			return self.create_analysis_category_with_http_info(web_id, analysis_category, web_id_type, **kwargs)
 		else:
-			(data) = self.create_analysis_category_with_http_info(web_id, analysis_category, **kwargs)
+			(data) = self.create_analysis_category_with_http_info(web_id, analysis_category, web_id_type, **kwargs)
 			return data
 
-	def create_analysis_category_with_http_info(self, web_id, analysis_category, **kwargs):
-		all_params = ['web_id', 'analysis_category']
+	def create_analysis_category_with_http_info(self, web_id, analysis_category, web_id_type, **kwargs):
+		all_params = ['web_id', 'analysis_category', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -504,6 +516,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'analysis_category' in params:
 			body_params = params['analysis_category']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -527,16 +542,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_analysis_templates(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs):
+	def get_analysis_templates(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_analysis_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs)
+			return self.get_analysis_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 		else:
-			(data) = self.get_analysis_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs)
+			(data) = self.get_analysis_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 			return data
 
-	def get_analysis_templates_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs):
-		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order']
+	def get_analysis_templates_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -591,6 +606,9 @@ class AssetDatabaseApi(object):
 		if 'sort_order' in params:
 			if (params['sort_order'] is not None):
 				query_params['sortOrder'] = params['sort_order']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -614,16 +632,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_analysis_template(self, web_id, template, **kwargs):
+	def create_analysis_template(self, web_id, template, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_analysis_template_with_http_info(web_id, template, **kwargs)
+			return self.create_analysis_template_with_http_info(web_id, template, web_id_type, **kwargs)
 		else:
-			(data) = self.create_analysis_template_with_http_info(web_id, template, **kwargs)
+			(data) = self.create_analysis_template_with_http_info(web_id, template, web_id_type, **kwargs)
 			return data
 
-	def create_analysis_template_with_http_info(self, web_id, template, **kwargs):
-		all_params = ['web_id', 'template']
+	def create_analysis_template_with_http_info(self, web_id, template, web_id_type, **kwargs):
+		all_params = ['web_id', 'template', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -661,6 +679,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'template' in params:
 			body_params = params['template']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -684,16 +705,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attribute_categories(self, web_id, selected_fields, **kwargs):
+	def get_attribute_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_attribute_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_attribute_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_attribute_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_attribute_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_attribute_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_attribute_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -730,6 +751,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -753,16 +777,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute_category(self, web_id, attribute_category, **kwargs):
+	def create_attribute_category(self, web_id, attribute_category, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_attribute_category_with_http_info(web_id, attribute_category, **kwargs)
+			return self.create_attribute_category_with_http_info(web_id, attribute_category, web_id_type, **kwargs)
 		else:
-			(data) = self.create_attribute_category_with_http_info(web_id, attribute_category, **kwargs)
+			(data) = self.create_attribute_category_with_http_info(web_id, attribute_category, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_category_with_http_info(self, web_id, attribute_category, **kwargs):
-		all_params = ['web_id', 'attribute_category']
+	def create_attribute_category_with_http_info(self, web_id, attribute_category, web_id_type, **kwargs):
+		all_params = ['web_id', 'attribute_category', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -800,6 +824,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'attribute_category' in params:
 			body_params = params['attribute_category']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -823,16 +850,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def find_element_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs):
+	def find_element_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.find_element_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs)
+			return self.find_element_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 		else:
-			(data) = self.find_element_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs)
+			(data) = self.find_element_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 			return data
 
-	def find_element_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, **kwargs):
-		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'element_category', 'element_description_filter', 'element_name_filter', 'element_template', 'element_type', 'max_count', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index']
+	def find_element_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, element_category, element_description_filter, element_name_filter, element_template, element_type, max_count, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
+		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'element_category', 'element_description_filter', 'element_name_filter', 'element_template', 'element_type', 'max_count', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -911,6 +938,9 @@ class AssetDatabaseApi(object):
 		if 'start_index' in params:
 			if (params['start_index'] is not None):
 				query_params['startIndex'] = params['start_index']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -934,16 +964,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_element_categories(self, web_id, selected_fields, **kwargs):
+	def get_element_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_element_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_element_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_element_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_element_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_element_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_element_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -980,6 +1010,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1003,16 +1036,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_element_category(self, web_id, element_category, **kwargs):
+	def create_element_category(self, web_id, element_category, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_element_category_with_http_info(web_id, element_category, **kwargs)
+			return self.create_element_category_with_http_info(web_id, element_category, web_id_type, **kwargs)
 		else:
-			(data) = self.create_element_category_with_http_info(web_id, element_category, **kwargs)
+			(data) = self.create_element_category_with_http_info(web_id, element_category, web_id_type, **kwargs)
 			return data
 
-	def create_element_category_with_http_info(self, web_id, element_category, **kwargs):
-		all_params = ['web_id', 'element_category']
+	def create_element_category_with_http_info(self, web_id, element_category, web_id_type, **kwargs):
+		all_params = ['web_id', 'element_category', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1050,6 +1083,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'element_category' in params:
 			body_params = params['element_category']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1073,16 +1109,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_elements(self, web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs):
+	def get_elements(self, web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs)
+			return self.get_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs)
 		else:
-			(data) = self.get_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs)
+			(data) = self.get_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_elements_with_http_info(self, web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs):
-		all_params = ['web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name']
+	def get_elements_with_http_info(self, web_id, category_name, description_filter, element_type, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs):
+		all_params = ['web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1149,6 +1185,9 @@ class AssetDatabaseApi(object):
 		if 'template_name' in params:
 			if (params['template_name'] is not None):
 				query_params['templateName'] = params['template_name']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1172,16 +1211,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_element(self, web_id, element, **kwargs):
+	def create_element(self, web_id, element, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_element_with_http_info(web_id, element, **kwargs)
+			return self.create_element_with_http_info(web_id, element, web_id_type, **kwargs)
 		else:
-			(data) = self.create_element_with_http_info(web_id, element, **kwargs)
+			(data) = self.create_element_with_http_info(web_id, element, web_id_type, **kwargs)
 			return data
 
-	def create_element_with_http_info(self, web_id, element, **kwargs):
-		all_params = ['web_id', 'element']
+	def create_element_with_http_info(self, web_id, element, web_id_type, **kwargs):
+		all_params = ['web_id', 'element', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1219,6 +1258,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'element' in params:
 			body_params = params['element']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1242,16 +1284,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_element_templates(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs):
+	def get_element_templates(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_element_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs)
+			return self.get_element_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 		else:
-			(data) = self.get_element_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs)
+			(data) = self.get_element_templates_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 			return data
 
-	def get_element_templates_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, **kwargs):
-		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order']
+	def get_element_templates_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1306,6 +1348,9 @@ class AssetDatabaseApi(object):
 		if 'sort_order' in params:
 			if (params['sort_order'] is not None):
 				query_params['sortOrder'] = params['sort_order']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1329,16 +1374,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_element_template(self, web_id, template, **kwargs):
+	def create_element_template(self, web_id, template, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_element_template_with_http_info(web_id, template, **kwargs)
+			return self.create_element_template_with_http_info(web_id, template, web_id_type, **kwargs)
 		else:
-			(data) = self.create_element_template_with_http_info(web_id, template, **kwargs)
+			(data) = self.create_element_template_with_http_info(web_id, template, web_id_type, **kwargs)
 			return data
 
-	def create_element_template_with_http_info(self, web_id, template, **kwargs):
-		all_params = ['web_id', 'template']
+	def create_element_template_with_http_info(self, web_id, template, web_id_type, **kwargs):
+		all_params = ['web_id', 'template', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1376,6 +1421,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'template' in params:
 			body_params = params['template']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1399,16 +1447,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_enumeration_sets(self, web_id, selected_fields, **kwargs):
+	def get_enumeration_sets(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_enumeration_sets_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_enumeration_sets_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_enumeration_sets_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_enumeration_sets_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_enumeration_sets_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_enumeration_sets_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1445,6 +1493,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1468,16 +1519,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_enumeration_set(self, web_id, enumeration_set, **kwargs):
+	def create_enumeration_set(self, web_id, enumeration_set, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_enumeration_set_with_http_info(web_id, enumeration_set, **kwargs)
+			return self.create_enumeration_set_with_http_info(web_id, enumeration_set, web_id_type, **kwargs)
 		else:
-			(data) = self.create_enumeration_set_with_http_info(web_id, enumeration_set, **kwargs)
+			(data) = self.create_enumeration_set_with_http_info(web_id, enumeration_set, web_id_type, **kwargs)
 			return data
 
-	def create_enumeration_set_with_http_info(self, web_id, enumeration_set, **kwargs):
-		all_params = ['web_id', 'enumeration_set']
+	def create_enumeration_set_with_http_info(self, web_id, enumeration_set, web_id_type, **kwargs):
+		all_params = ['web_id', 'enumeration_set', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1515,6 +1566,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'enumeration_set' in params:
 			body_params = params['enumeration_set']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1538,16 +1592,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def find_event_frame_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs):
+	def find_event_frame_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs)
+			return self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 		else:
-			(data) = self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs)
+			(data) = self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 			return data
 
-	def find_event_frame_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs):
-		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'end_time', 'event_frame_category', 'event_frame_description_filter', 'event_frame_name_filter', 'event_frame_template', 'max_count', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'start_time']
+	def find_event_frame_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'end_time', 'event_frame_category', 'event_frame_description_filter', 'event_frame_name_filter', 'event_frame_template', 'max_count', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'start_time', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1635,6 +1689,9 @@ class AssetDatabaseApi(object):
 		if 'start_time' in params:
 			if (params['start_time'] is not None):
 				query_params['startTime'] = params['start_time']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1658,16 +1715,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_event_frames(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs):
+	def get_event_frames(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs)
+			return self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs)
 		else:
-			(data) = self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs)
+			(data) = self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_event_frames_with_http_info(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs):
-		all_params = ['web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'referenced_element_template_name', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name']
+	def get_event_frames_with_http_info(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs):
+		all_params = ['web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'referenced_element_template_name', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1753,6 +1810,9 @@ class AssetDatabaseApi(object):
 		if 'template_name' in params:
 			if (params['template_name'] is not None):
 				query_params['templateName'] = params['template_name']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1776,16 +1836,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_event_frame(self, web_id, event_frame, **kwargs):
+	def create_event_frame(self, web_id, event_frame, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_event_frame_with_http_info(web_id, event_frame, **kwargs)
+			return self.create_event_frame_with_http_info(web_id, event_frame, web_id_type, **kwargs)
 		else:
-			(data) = self.create_event_frame_with_http_info(web_id, event_frame, **kwargs)
+			(data) = self.create_event_frame_with_http_info(web_id, event_frame, web_id_type, **kwargs)
 			return data
 
-	def create_event_frame_with_http_info(self, web_id, event_frame, **kwargs):
-		all_params = ['web_id', 'event_frame']
+	def create_event_frame_with_http_info(self, web_id, event_frame, web_id_type, **kwargs):
+		all_params = ['web_id', 'event_frame', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1823,6 +1883,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'event_frame' in params:
 			body_params = params['event_frame']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1992,16 +2055,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_referenced_elements(self, web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs):
+	def get_referenced_elements(self, web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_referenced_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs)
+			return self.get_referenced_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs)
 		else:
-			(data) = self.get_referenced_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs)
+			(data) = self.get_referenced_elements_with_http_info(web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_referenced_elements_with_http_info(self, web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, **kwargs):
-		all_params = ['web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name']
+	def get_referenced_elements_with_http_info(self, web_id, category_name, description_filter, element_type, max_count, name_filter, selected_fields, sort_field, sort_order, start_index, template_name, web_id_type, **kwargs):
+		all_params = ['web_id', 'category_name', 'description_filter', 'element_type', 'max_count', 'name_filter', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2065,6 +2128,9 @@ class AssetDatabaseApi(object):
 		if 'template_name' in params:
 			if (params['template_name'] is not None):
 				query_params['templateName'] = params['template_name']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2235,16 +2301,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security(self, web_id, security_item, user_identity, force_refresh, selected_fields, **kwargs):
+	def get_security(self, web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_with_http_info(web_id, security_item, user_identity, force_refresh, selected_fields, **kwargs)
+			return self.get_security_with_http_info(web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_with_http_info(web_id, security_item, user_identity, force_refresh, selected_fields, **kwargs)
+			(data) = self.get_security_with_http_info(web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_with_http_info(self, web_id, security_item, user_identity, force_refresh, selected_fields, **kwargs):
-		all_params = ['web_id', 'security_item', 'user_identity', 'force_refresh', 'selected_fields']
+	def get_security_with_http_info(self, web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'security_item', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2296,6 +2362,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2319,16 +2388,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entries(self, web_id, name_filter, security_item, selected_fields, **kwargs):
+	def get_security_entries(self, web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_entries_with_http_info(web_id, name_filter, security_item, selected_fields, **kwargs)
+			return self.get_security_entries_with_http_info(web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_entries_with_http_info(web_id, name_filter, security_item, selected_fields, **kwargs)
+			(data) = self.get_security_entries_with_http_info(web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entries_with_http_info(self, web_id, name_filter, security_item, selected_fields, **kwargs):
-		all_params = ['web_id', 'name_filter', 'security_item', 'selected_fields']
+	def get_security_entries_with_http_info(self, web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'name_filter', 'security_item', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2371,6 +2440,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2394,16 +2466,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_entry(self, web_id, security_entry, apply_to_children, security_item, **kwargs):
+	def create_security_entry(self, web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, security_item, **kwargs)
+			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs)
 		else:
-			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, security_item, **kwargs)
+			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs)
 			return data
 
-	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, security_item, **kwargs):
-		all_params = ['web_id', 'security_entry', 'apply_to_children', 'security_item']
+	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs):
+		all_params = ['web_id', 'security_entry', 'apply_to_children', 'security_item', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2447,6 +2519,9 @@ class AssetDatabaseApi(object):
 		if 'security_item' in params:
 			if (params['security_item'] is not None):
 				query_params['securityItem'] = params['security_item']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2470,16 +2545,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entry_by_name(self, name, web_id, security_item, selected_fields, **kwargs):
+	def get_security_entry_by_name(self, name, web_id, security_item, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_entry_by_name_with_http_info(name, web_id, security_item, selected_fields, **kwargs)
+			return self.get_security_entry_by_name_with_http_info(name, web_id, security_item, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, security_item, selected_fields, **kwargs)
+			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, security_item, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entry_by_name_with_http_info(self, name, web_id, security_item, selected_fields, **kwargs):
-		all_params = ['name', 'web_id', 'security_item', 'selected_fields']
+	def get_security_entry_by_name_with_http_info(self, name, web_id, security_item, selected_fields, web_id_type, **kwargs):
+		all_params = ['name', 'web_id', 'security_item', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2524,6 +2599,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2705,16 +2783,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_table_categories(self, web_id, selected_fields, **kwargs):
+	def get_table_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_table_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_table_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_table_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_table_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_table_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_table_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2751,6 +2829,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2774,16 +2855,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_table_category(self, web_id, table_category, **kwargs):
+	def create_table_category(self, web_id, table_category, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_table_category_with_http_info(web_id, table_category, **kwargs)
+			return self.create_table_category_with_http_info(web_id, table_category, web_id_type, **kwargs)
 		else:
-			(data) = self.create_table_category_with_http_info(web_id, table_category, **kwargs)
+			(data) = self.create_table_category_with_http_info(web_id, table_category, web_id_type, **kwargs)
 			return data
 
-	def create_table_category_with_http_info(self, web_id, table_category, **kwargs):
-		all_params = ['web_id', 'table_category']
+	def create_table_category_with_http_info(self, web_id, table_category, web_id_type, **kwargs):
+		all_params = ['web_id', 'table_category', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2821,6 +2902,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'table_category' in params:
 			body_params = params['table_category']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2844,16 +2928,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_tables(self, web_id, selected_fields, **kwargs):
+	def get_tables(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_tables_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_tables_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_tables_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_tables_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_tables_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_tables_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2890,6 +2974,9 @@ class AssetDatabaseApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2913,16 +3000,16 @@ class AssetDatabaseApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_table(self, web_id, table, **kwargs):
+	def create_table(self, web_id, table, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_table_with_http_info(web_id, table, **kwargs)
+			return self.create_table_with_http_info(web_id, table, web_id_type, **kwargs)
 		else:
-			(data) = self.create_table_with_http_info(web_id, table, **kwargs)
+			(data) = self.create_table_with_http_info(web_id, table, web_id_type, **kwargs)
 			return data
 
-	def create_table_with_http_info(self, web_id, table, **kwargs):
-		all_params = ['web_id', 'table']
+	def create_table_with_http_info(self, web_id, table, web_id_type, **kwargs):
+		all_params = ['web_id', 'table', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2960,6 +3047,9 @@ class AssetDatabaseApi(object):
 				path_params['webId'] = params['web_id']
 		if 'table' in params:
 			body_params = params['table']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])

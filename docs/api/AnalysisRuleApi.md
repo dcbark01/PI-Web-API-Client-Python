@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get_by_path**
-> get_by_path('path', 'selected_fields')
+> get_by_path('path', 'selected_fields', 'web_id_type')
 
 Retrieve an Analysis Rule by path.
 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| The path to the Analysis Rule.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -30,7 +31,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get**
-> get('web_id', 'selected_fields')
+> get('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve an Analysis Rule.
 
@@ -40,6 +41,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the Analysis Rule.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -86,7 +88,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_analysis_rules**
-> get_analysis_rules('web_id', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index')
+> get_analysis_rules('web_id', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type')
 
 Get the child Analysis Rules of the Analysis Rule.
 
@@ -102,6 +104,7 @@ Name | Type | Description | Notes
  **sort_field** | **str**| The field or property of the object used to sort the returned collection. The default is 'Name'.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
  **start_index** | **int**| The starting index (zero based) of the items to be returned. The default is 0.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -111,7 +114,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_analysis_rule**
-> create_analysis_rule('web_id', 'analysis_rule')
+> create_analysis_rule('web_id', 'analysis_rule', 'web_id_type')
 
 Create a new Analysis Rule as a child of an existing Analysis Rule.
 
@@ -121,6 +124,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the parent Analysis Rule, on which to create the child Analysis Rule.. | [required]
  **analysis_rule** | **PIAnalysisRule**| The definition of the new Analysis Rule.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type

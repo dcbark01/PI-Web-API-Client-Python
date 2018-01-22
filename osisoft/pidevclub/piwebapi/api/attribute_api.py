@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,16 +24,16 @@ class AttributeApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, **kwargs):
+	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, **kwargs):
-		all_params = ['path', 'selected_fields']
+	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -70,6 +70,9 @@ class AttributeApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -93,16 +96,16 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, **kwargs):
+	def get(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -139,6 +142,9 @@ class AttributeApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -298,16 +304,16 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attributes(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs):
+	def get_attributes(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs)
+			return self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
 		else:
-			(data) = self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs)
+			(data) = self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
 			return data
 
-	def get_attributes_with_http_info(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs):
-		all_params = ['web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type']
+	def get_attributes_with_http_info(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
+		all_params = ['web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -377,6 +383,9 @@ class AttributeApi(object):
 		if 'value_type' in params:
 			if (params['value_type'] is not None):
 				query_params['valueType'] = params['value_type']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -400,16 +409,16 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute(self, web_id, attribute, **kwargs):
+	def create_attribute(self, web_id, attribute, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_attribute_with_http_info(web_id, attribute, **kwargs)
+			return self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
 		else:
-			(data) = self.create_attribute_with_http_info(web_id, attribute, **kwargs)
+			(data) = self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_with_http_info(self, web_id, attribute, **kwargs):
-		all_params = ['web_id', 'attribute']
+	def create_attribute_with_http_info(self, web_id, attribute, web_id_type, **kwargs):
+		all_params = ['web_id', 'attribute', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -447,6 +456,9 @@ class AttributeApi(object):
 				path_params['webId'] = params['web_id']
 		if 'attribute' in params:
 			body_params = params['attribute']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -470,16 +482,16 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, **kwargs):
+	def get_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -516,6 +528,9 @@ class AttributeApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -539,16 +554,16 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_config(self, web_id, **kwargs):
+	def create_config(self, web_id, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_config_with_http_info(web_id, **kwargs)
+			return self.create_config_with_http_info(web_id, web_id_type, **kwargs)
 		else:
-			(data) = self.create_config_with_http_info(web_id, **kwargs)
+			(data) = self.create_config_with_http_info(web_id, web_id_type, **kwargs)
 			return data
 
-	def create_config_with_http_info(self, web_id, **kwargs):
-		all_params = ['web_id']
+	def create_config_with_http_info(self, web_id, web_id_type, **kwargs):
+		all_params = ['web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -582,6 +597,9 @@ class AttributeApi(object):
 		if 'web_id' in params:
 			if (params['web_id'] is not None):
 				path_params['webId'] = params['web_id']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -744,16 +762,16 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, **kwargs):
+	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, **kwargs)
+			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 		else:
-			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, **kwargs)
+			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 			return data
 
-	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, **kwargs):
-		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id']
+	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -799,6 +817,9 @@ class AttributeApi(object):
 			if (params['web_id'] is not None):
 				query_params['webId'] = params['web_id']
 				collection_formats['webId'] = 'multi'
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -815,6 +836,85 @@ class AttributeApi(object):
 				post_params =form_params,
 				files =local_var_files,
 				response_type ='PIItemsItemAttribute',
+				callback =params.get('callback'),
+				_return_http_data_only =params.get('_return_http_data_only'),
+				_preload_content =params.get('_preload_content', True),
+				_request_timeout=params.get('_request_timeout'),
+				collection_formats =collection_formats)
+
+
+	def get_attributes_query(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+		kwargs['_return_http_data_only'] = True
+		if kwargs.get('callback'):
+			return self.get_attributes_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
+		else:
+			(data) = self.get_attributes_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
+			return data
+
+	def get_attributes_query_with_http_info(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+		all_params = ['database_web_id', 'max_count', 'query', 'selected_fields', 'start_index', 'web_id_type']
+		all_params.append('callback')
+		all_params.append('_return_http_data_only')
+		all_params.append('_preload_content')
+		all_params.append('_request_timeout')
+
+		params = locals()
+		for key, val in iteritems(params['kwargs']):
+			if key not in all_params:
+				raise TypeError(
+					"Got an unexpected keyword argument '%s'"
+					" to method get_attributes_query_with_http_info" % key
+				)
+			params[key] = val
+		del params['kwargs']
+
+
+		collection_formats = {}
+
+		query_params = {}
+
+		path_params = {}
+
+		header_params = {}
+
+		form_params = []
+		local_var_files = {}
+
+		body_params = None
+		if 'database_web_id' in params:
+			if (params['database_web_id'] is not None):
+				query_params['databaseWebId'] = params['database_web_id']
+		if 'max_count' in params:
+			if (params['max_count'] is not None):
+				query_params['maxCount'] = params['max_count']
+		if 'query' in params:
+			if (params['query'] is not None):
+				query_params['query'] = params['query']
+		if 'selected_fields' in params:
+			if (params['selected_fields'] is not None):
+				query_params['selectedFields'] = params['selected_fields']
+		if 'start_index' in params:
+			if (params['start_index'] is not None):
+				query_params['startIndex'] = params['start_index']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
+
+		header_params['Accept'] = self.api_client.\
+			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
+
+
+		header_params['Content-Type'] = self.api_client.\
+			select_header_content_type([])
+
+		return self.api_client.call_api('/attributes/search', 'GET',
+				path_params,
+				query_params,
+				header_params,
+				body =body_params,
+				post_params =form_params,
+				files =local_var_files,
+				response_type ='PIItemsAttribute',
 				callback =params.get('callback'),
 				_return_http_data_only =params.get('_return_http_data_only'),
 				_preload_content =params.get('_preload_content', True),

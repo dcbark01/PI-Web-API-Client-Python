@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,18 +24,21 @@ class PISystemStatus(object):
 		'up_time_in_minutes': 'float',
 		'state': 'str',
 		'cache_instances': 'int',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'up_time_in_minutes': 'UpTimeInMinutes',
 		'state': 'State',
 		'cache_instances': 'CacheInstances',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, up_time_in_minutes=None, state=None, cache_instances=None):
+	def __init__(self, up_time_in_minutes=None, state=None, cache_instances=None, web_exception=None):
 
 		self._up_time_in_minutes = None
 		self._state = None
 		self._cache_instances = None
+		self._web_exception = None
 
 		if up_time_in_minutes is not None:
 			self.up_time_in_minutes = up_time_in_minutes
@@ -43,6 +46,8 @@ class PISystemStatus(object):
 			self.state = state
 		if cache_instances is not None:
 			self.cache_instances = cache_instances
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def up_time_in_minutes(self):
@@ -67,6 +72,14 @@ class PISystemStatus(object):
 	@cache_instances.setter
 	def cache_instances(self, cache_instances):
 		self._cache_instances = cache_instances
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

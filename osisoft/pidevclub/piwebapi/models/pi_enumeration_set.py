@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -26,8 +26,9 @@ class PIEnumerationSet(object):
 		'name': 'str',
 		'description': 'str',
 		'path': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PIEnumerationSetLinks',
 		'serialize_description': 'bool',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -38,8 +39,9 @@ class PIEnumerationSet(object):
 		'path': 'Path',
 		'links': 'Links',
 		'serialize_description': 'SerializeDescription',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, links=None, serialize_description=None):
+	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, links=None, serialize_description=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -48,6 +50,7 @@ class PIEnumerationSet(object):
 		self._path = None
 		self._links = None
 		self._serialize_description = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -63,6 +66,8 @@ class PIEnumerationSet(object):
 			self.links = links
 		if serialize_description is not None:
 			self.serialize_description = serialize_description
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -119,6 +124,14 @@ class PIEnumerationSet(object):
 	@serialize_description.setter
 	def serialize_description(self, serialize_description):
 		self._serialize_description = serialize_description
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -35,7 +35,8 @@ class PIAnalysisTemplate(object):
 		'output_time': 'str',
 		'target_name': 'str',
 		'time_rule_plug_in_name': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PIAnalysisTemplateLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -54,8 +55,9 @@ class PIAnalysisTemplate(object):
 		'target_name': 'TargetName',
 		'time_rule_plug_in_name': 'TimeRulePlugInName',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, analysis_rule_plug_in_name=None, category_names=None, create_enabled=None, group_id=None, has_notification_template=None, has_target=None, output_time=None, target_name=None, time_rule_plug_in_name=None, links=None):
+	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, analysis_rule_plug_in_name=None, category_names=None, create_enabled=None, group_id=None, has_notification_template=None, has_target=None, output_time=None, target_name=None, time_rule_plug_in_name=None, links=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -72,6 +74,7 @@ class PIAnalysisTemplate(object):
 		self._target_name = None
 		self._time_rule_plug_in_name = None
 		self._links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -103,6 +106,8 @@ class PIAnalysisTemplate(object):
 			self.time_rule_plug_in_name = time_rule_plug_in_name
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -223,6 +228,14 @@ class PIAnalysisTemplate(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

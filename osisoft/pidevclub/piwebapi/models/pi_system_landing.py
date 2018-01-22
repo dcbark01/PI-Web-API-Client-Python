@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,19 +23,22 @@ class PISystemLanding(object):
 	swagger_types = {
 		'product_title': 'str',
 		'product_version': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PISystemLandingLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'product_title': 'ProductTitle',
 		'product_version': 'ProductVersion',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, product_title=None, product_version=None, links=None):
+	def __init__(self, product_title=None, product_version=None, links=None, web_exception=None):
 
 		self._product_title = None
 		self._product_version = None
 		self._links = None
+		self._web_exception = None
 
 		if product_title is not None:
 			self.product_title = product_title
@@ -43,6 +46,8 @@ class PISystemLanding(object):
 			self.product_version = product_version
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def product_title(self):
@@ -67,6 +72,14 @@ class PISystemLanding(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

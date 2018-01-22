@@ -24,6 +24,7 @@ Name | Type | Notes
 **are_values_captured** | **bool**
 **ref_element_web_ids** | **list[str]**
 **security** | **[**PISecurity**](../models/PISecurity.md)**
-**links** | **dict(str, str)**
+**links** | **[**PIEventFrameLinks**](../models/PIEventFrameLinks.md)**
+**web_exception** | **[**PIWebException**](../models/PIWebException.md)**
 
 [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -27,12 +27,14 @@ class PIEnumerationValue(object):
 		'description': 'str',
 		'value': 'int',
 		'path': 'str',
-		'links': 'dict(str, str)',
+		'parent': 'str',
+		'links': 'PIEnumerationValueLinks',
 		'serialize_web_id': 'bool',
 		'serialize_id': 'bool',
 		'serialize_description': 'bool',
 		'serialize_path': 'bool',
 		'serialize_links': 'bool',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -42,14 +44,16 @@ class PIEnumerationValue(object):
 		'description': 'Description',
 		'value': 'Value',
 		'path': 'Path',
+		'parent': 'Parent',
 		'links': 'Links',
 		'serialize_web_id': 'SerializeWebId',
 		'serialize_id': 'SerializeId',
 		'serialize_description': 'SerializeDescription',
 		'serialize_path': 'SerializePath',
 		'serialize_links': 'SerializeLinks',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, description=None, value=None, path=None, links=None, serialize_web_id=None, serialize_id=None, serialize_description=None, serialize_path=None, serialize_links=None):
+	def __init__(self, web_id=None, id=None, name=None, description=None, value=None, path=None, parent=None, links=None, serialize_web_id=None, serialize_id=None, serialize_description=None, serialize_path=None, serialize_links=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -57,12 +61,14 @@ class PIEnumerationValue(object):
 		self._description = None
 		self._value = None
 		self._path = None
+		self._parent = None
 		self._links = None
 		self._serialize_web_id = None
 		self._serialize_id = None
 		self._serialize_description = None
 		self._serialize_path = None
 		self._serialize_links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -76,6 +82,8 @@ class PIEnumerationValue(object):
 			self.value = value
 		if path is not None:
 			self.path = path
+		if parent is not None:
+			self.parent = parent
 		if links is not None:
 			self.links = links
 		if serialize_web_id is not None:
@@ -88,6 +96,8 @@ class PIEnumerationValue(object):
 			self.serialize_path = serialize_path
 		if serialize_links is not None:
 			self.serialize_links = serialize_links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -138,6 +148,14 @@ class PIEnumerationValue(object):
 		self._path = path
 
 	@property
+	def parent(self):
+		return self._parent
+
+	@parent.setter
+	def parent(self, parent):
+		self._parent = parent
+
+	@property
 	def links(self):
 		return self._links
 
@@ -184,6 +202,14 @@ class PIEnumerationValue(object):
 	@serialize_links.setter
 	def serialize_links(self, serialize_links):
 		self._serialize_links = serialize_links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

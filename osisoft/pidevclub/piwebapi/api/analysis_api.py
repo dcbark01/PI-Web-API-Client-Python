@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,16 +24,16 @@ class AnalysisApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, **kwargs):
+	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, **kwargs):
-		all_params = ['path', 'selected_fields']
+	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -70,6 +70,9 @@ class AnalysisApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -93,16 +96,16 @@ class AnalysisApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, **kwargs):
+	def get(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -139,6 +142,9 @@ class AnalysisApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -298,16 +304,16 @@ class AnalysisApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, **kwargs):
+	def get_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -344,6 +350,9 @@ class AnalysisApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -367,16 +376,16 @@ class AnalysisApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security(self, web_id, user_identity, force_refresh, selected_fields, **kwargs):
+	def get_security(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, **kwargs)
+			return self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, **kwargs)
+			(data) = self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_with_http_info(self, web_id, user_identity, force_refresh, selected_fields, **kwargs):
-		all_params = ['web_id', 'user_identity', 'force_refresh', 'selected_fields']
+	def get_security_with_http_info(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -422,6 +431,9 @@ class AnalysisApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -445,16 +457,16 @@ class AnalysisApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entries(self, web_id, name_filter, selected_fields, **kwargs):
+	def get_security_entries(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, **kwargs)
+			return self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, **kwargs)
+			(data) = self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entries_with_http_info(self, web_id, name_filter, selected_fields, **kwargs):
-		all_params = ['web_id', 'name_filter', 'selected_fields']
+	def get_security_entries_with_http_info(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'name_filter', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -494,6 +506,9 @@ class AnalysisApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -517,16 +532,16 @@ class AnalysisApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_entry(self, web_id, security_entry, apply_to_children, **kwargs):
+	def create_security_entry(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, **kwargs)
+			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
 		else:
-			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, **kwargs)
+			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
 			return data
 
-	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, **kwargs):
-		all_params = ['web_id', 'security_entry', 'apply_to_children']
+	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
+		all_params = ['web_id', 'security_entry', 'apply_to_children', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -567,6 +582,9 @@ class AnalysisApi(object):
 		if 'apply_to_children' in params:
 			if (params['apply_to_children'] is not None):
 				query_params['applyToChildren'] = params['apply_to_children']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -590,16 +608,16 @@ class AnalysisApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entry_by_name(self, name, web_id, selected_fields, **kwargs):
+	def get_security_entry_by_name(self, name, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, **kwargs)
+			return self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, **kwargs)
+			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields, **kwargs):
-		all_params = ['name', 'web_id', 'selected_fields']
+	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['name', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -641,6 +659,9 @@ class AnalysisApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -809,6 +830,85 @@ class AnalysisApi(object):
 				post_params =form_params,
 				files =local_var_files,
 				response_type =None,
+				callback =params.get('callback'),
+				_return_http_data_only =params.get('_return_http_data_only'),
+				_preload_content =params.get('_preload_content', True),
+				_request_timeout=params.get('_request_timeout'),
+				collection_formats =collection_formats)
+
+
+	def get_analyses_query(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+		kwargs['_return_http_data_only'] = True
+		if kwargs.get('callback'):
+			return self.get_analyses_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
+		else:
+			(data) = self.get_analyses_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
+			return data
+
+	def get_analyses_query_with_http_info(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+		all_params = ['database_web_id', 'max_count', 'query', 'selected_fields', 'start_index', 'web_id_type']
+		all_params.append('callback')
+		all_params.append('_return_http_data_only')
+		all_params.append('_preload_content')
+		all_params.append('_request_timeout')
+
+		params = locals()
+		for key, val in iteritems(params['kwargs']):
+			if key not in all_params:
+				raise TypeError(
+					"Got an unexpected keyword argument '%s'"
+					" to method get_analyses_query_with_http_info" % key
+				)
+			params[key] = val
+		del params['kwargs']
+
+
+		collection_formats = {}
+
+		query_params = {}
+
+		path_params = {}
+
+		header_params = {}
+
+		form_params = []
+		local_var_files = {}
+
+		body_params = None
+		if 'database_web_id' in params:
+			if (params['database_web_id'] is not None):
+				query_params['databaseWebId'] = params['database_web_id']
+		if 'max_count' in params:
+			if (params['max_count'] is not None):
+				query_params['maxCount'] = params['max_count']
+		if 'query' in params:
+			if (params['query'] is not None):
+				query_params['query'] = params['query']
+		if 'selected_fields' in params:
+			if (params['selected_fields'] is not None):
+				query_params['selectedFields'] = params['selected_fields']
+		if 'start_index' in params:
+			if (params['start_index'] is not None):
+				query_params['startIndex'] = params['start_index']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
+
+		header_params['Accept'] = self.api_client.\
+			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
+
+
+		header_params['Content-Type'] = self.api_client.\
+			select_header_content_type([])
+
+		return self.api_client.call_api('/analyses/search', 'GET',
+				path_params,
+				query_params,
+				header_params,
+				body =body_params,
+				post_params =form_params,
+				files =local_var_files,
+				response_type ='PIItemsAnalysis',
 				callback =params.get('callback'),
 				_return_http_data_only =params.get('_return_http_data_only'),
 				_preload_content =params.get('_preload_content', True),

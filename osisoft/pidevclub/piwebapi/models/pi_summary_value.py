@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -23,21 +23,26 @@ class PISummaryValue(object):
 	swagger_types = {
 		'type': 'str',
 		'value': 'PITimedValue',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
 		'type': 'Type',
 		'value': 'Value',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, type=None, value=None):
+	def __init__(self, type=None, value=None, web_exception=None):
 
 		self._type = None
 		self._value = None
+		self._web_exception = None
 
 		if type is not None:
 			self.type = type
 		if value is not None:
 			self.value = value
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def type(self):
@@ -54,6 +59,14 @@ class PISummaryValue(object):
 	@value.setter
 	def value(self, value):
 		self._value = value
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

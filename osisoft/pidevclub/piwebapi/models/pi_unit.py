@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -32,7 +32,8 @@ class PIUnit(object):
 		'reference_factor': 'float',
 		'reference_offset': 'float',
 		'reference_unit_abbreviation': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PIUnitLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -48,8 +49,9 @@ class PIUnit(object):
 		'reference_offset': 'ReferenceOffset',
 		'reference_unit_abbreviation': 'ReferenceUnitAbbreviation',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, abbreviation=None, description=None, path=None, factor=None, offset=None, reference_factor=None, reference_offset=None, reference_unit_abbreviation=None, links=None):
+	def __init__(self, web_id=None, id=None, name=None, abbreviation=None, description=None, path=None, factor=None, offset=None, reference_factor=None, reference_offset=None, reference_unit_abbreviation=None, links=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -63,6 +65,7 @@ class PIUnit(object):
 		self._reference_offset = None
 		self._reference_unit_abbreviation = None
 		self._links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -88,6 +91,8 @@ class PIUnit(object):
 			self.reference_unit_abbreviation = reference_unit_abbreviation
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -184,6 +189,14 @@ class PIUnit(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

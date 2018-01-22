@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> list('selected_fields')
+> list('selected_fields', 'web_id_type')
 
 Retrieve a list of all Asset Servers known to this service.
 
@@ -35,6 +35,7 @@ Retrieve a list of all Asset Servers known to this service.
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -44,7 +45,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_by_name**
-> get_by_name('name', 'selected_fields')
+> get_by_name('name', 'selected_fields', 'web_id_type')
 
 Retrieve an Asset Server by name.
 
@@ -54,6 +55,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The name of the server.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -63,7 +65,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_by_path**
-> get_by_path('path', 'selected_fields')
+> get_by_path('path', 'selected_fields', 'web_id_type')
 
 Retrieve an Asset Server by path.
 
@@ -73,6 +75,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| The path to the server.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -82,7 +85,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get**
-> get('web_id', 'selected_fields')
+> get('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve an Asset Server.
 
@@ -92,6 +95,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the server.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -101,7 +105,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_analysis_rule_plug_ins**
-> get_analysis_rule_plug_ins('web_id', 'selected_fields')
+> get_analysis_rule_plug_ins('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve a list of all Analysis Rule Plug-in's.
 
@@ -111,6 +115,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the asset server, where the Analysis Rule Plug-in's are installed.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -120,7 +125,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_databases**
-> get_databases('web_id', 'selected_fields')
+> get_databases('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve a list of all Asset Databases on the specified Asset Server.
 
@@ -130,6 +135,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the server.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -139,7 +145,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_asset_database**
-> create_asset_database('web_id', 'database')
+> create_asset_database('web_id', 'database', 'web_id_type')
 
 Create an asset database.
 
@@ -149,6 +155,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the asset server on which to create the database.. | [required]
  **database** | **PIAssetDatabase**| The new database definition.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -158,7 +165,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security**
-> get_security('web_id', 'security_item', 'user_identity', 'force_refresh', 'selected_fields')
+> get_security('web_id', 'security_item', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type')
 
 Get the security information of the specified security item associated with the asset server for a specified user.
 
@@ -171,6 +178,7 @@ Name | Type | Description | Notes
  **user_identity** | **list[str]**| The user identity for the security information to be checked. Multiple security identities may be specified with multiple instances of the parameter. If the parameter is not specified, only the current user's security rights will be returned.. | [required]
  **force_refresh** | **bool**| Indicates if the security cache should be refreshed before getting security information. The default is 'false'.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -180,7 +188,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_entries**
-> get_security_entries('web_id', 'name_filter', 'security_item', 'selected_fields')
+> get_security_entries('web_id', 'name_filter', 'security_item', 'selected_fields', 'web_id_type')
 
 Retrieve the security entries of the specified security item associated with the asset server based on the specified criteria. By default, all security entries for this asset server are returned.
 
@@ -192,6 +200,7 @@ Name | Type | Description | Notes
  **name_filter** | **str**| The name query string used for filtering security entries. The default is no filter.. | [optional]
  **security_item** | **str**| The security item of the desired security entries information to be returned. If the parameter is not specified, security entries of the 'Default' security item will be returned.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -201,7 +210,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_security_entry**
-> create_security_entry('web_id', 'security_entry', 'apply_to_children', 'security_item')
+> create_security_entry('web_id', 'security_entry', 'apply_to_children', 'security_item', 'web_id_type')
 
 Create a security entry owned by the asset server.
 
@@ -213,6 +222,7 @@ Name | Type | Description | Notes
  **security_entry** | **PISecurityEntry**| The new security entry definition. The full list of allow and deny rights must be supplied.. | [required]
  **apply_to_children** | **bool**| If false, the new access permissions are only applied to the associated object. If true, the access permissions of children with any parent-child reference types will change when the permissions on the primary parent change.. | [optional]
  **security_item** | **str**| The security item of the desired security entries to be created. If the parameter is not specified, security entries of the 'Default' security item will be created.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -222,7 +232,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_entry_by_name**
-> get_security_entry_by_name('name', 'web_id', 'security_item', 'selected_fields')
+> get_security_entry_by_name('name', 'web_id', 'security_item', 'selected_fields', 'web_id_type')
 
 Retrieve the security entry of the specified security item associated with the asset server with the specified name.
 
@@ -234,6 +244,7 @@ Name | Type | Description | Notes
  **web_id** | **str**| The ID of the asset server.. | [required]
  **security_item** | **str**| The security item of the desired security entries information to be returned. If the parameter is not specified, security entries of the 'Default' security item will be returned.. | [optional]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -286,7 +297,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_identities**
-> get_security_identities('web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order')
+> get_security_identities('web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type')
 
 Retrieve security identities based on the specified criteria. By default, all security identities in the specified Asset Server are returned.
 
@@ -301,6 +312,7 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **sort_field** | **str**| The field or property of the object used to sort the returned collection. The default is 'Name'.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -310,7 +322,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_security_identity**
-> create_security_identity('web_id', 'security_identity')
+> create_security_identity('web_id', 'security_identity', 'web_id_type')
 
 Create a security identity.
 
@@ -320,6 +332,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the asset server on which to create the security identity.. | [required]
  **security_identity** | **PISecurityIdentity**| The new security identity definition.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -329,7 +342,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_identities_for_user**
-> get_security_identities_for_user('web_id', 'user_identity', 'selected_fields')
+> get_security_identities_for_user('web_id', 'user_identity', 'selected_fields', 'web_id_type')
 
 Retrieve security identities for a specific user.
 
@@ -340,6 +353,7 @@ Name | Type | Description | Notes
  **web_id** | **str**| The ID of the server.. | [required]
  **user_identity** | **str**| The user identity to search for.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -349,7 +363,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_security_mappings**
-> get_security_mappings('web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order')
+> get_security_mappings('web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type')
 
 Retrieve security mappings based on the specified criteria. By default, all security mappings in the specified Asset Server are returned.
 
@@ -364,6 +378,7 @@ Name | Type | Description | Notes
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
  **sort_field** | **str**| The field or property of the object used to sort the returned collection. The default is 'Name'.. | [optional]
  **sort_order** | **str**| The order that the returned collection is sorted. The default is 'Ascending'.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -373,7 +388,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_security_mapping**
-> create_security_mapping('web_id', 'security_mapping')
+> create_security_mapping('web_id', 'security_mapping', 'web_id_type')
 
 Create a security mapping.
 
@@ -383,6 +398,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the asset server on which to create the security mapping.. | [required]
  **security_mapping** | **PISecurityMapping**| The new security mapping definition.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -392,7 +408,7 @@ None
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_time_rule_plug_ins**
-> get_time_rule_plug_ins('web_id', 'selected_fields')
+> get_time_rule_plug_ins('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve a list of all Time Rule Plug-in's.
 
@@ -402,6 +418,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the asset server, where the Time Rule Plug-in's are installed.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -411,7 +428,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **get_unit_classes**
-> get_unit_classes('web_id', 'selected_fields')
+> get_unit_classes('web_id', 'selected_fields', 'web_id_type')
 
 Retrieve a list of all unit classes on the specified Asset Server.
 
@@ -421,6 +438,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the server.. | [required]
  **selected_fields** | **str**| List of fields to be returned in the response, separated by semicolons (;). If this parameter is not specified, all available fields will be returned.. | [optional]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type
@@ -430,7 +448,7 @@ Name | Type | Description | Notes
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)
 
 # **create_unit_class**
-> create_unit_class('web_id', 'unit_class')
+> create_unit_class('web_id', 'unit_class', 'web_id_type')
 
 Create a unit class in the specified Asset Server.
 
@@ -440,6 +458,7 @@ Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
  **web_id** | **str**| The ID of the server.. | [required]
  **unit_class** | **PIUnitClass**| The new unit class definition.. | [required]
+ **web_id_type** | **str**| Optional parameter. Used to specify the type of WebID. Useful for URL brevity and other special cases. Default is the value of the configuration item "WebIDType".. | [optional]
 
 
 ### Return type

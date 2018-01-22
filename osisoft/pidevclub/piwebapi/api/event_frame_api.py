@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -24,16 +24,16 @@ class EventFrameApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, **kwargs):
+	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_by_path_with_http_info(path, selected_fields, **kwargs)
+			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, **kwargs):
-		all_params = ['path', 'selected_fields']
+	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -70,6 +70,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -93,16 +96,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, **kwargs):
+	def get(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -139,6 +142,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -364,16 +370,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_annotations(self, web_id, selected_fields, **kwargs):
+	def get_annotations(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_annotations_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_annotations_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_annotations_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_annotations_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_annotations_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_annotations_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -410,6 +416,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -433,16 +442,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_annotation(self, web_id, annotation, **kwargs):
+	def create_annotation(self, web_id, annotation, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_annotation_with_http_info(web_id, annotation, **kwargs)
+			return self.create_annotation_with_http_info(web_id, annotation, web_id_type, **kwargs)
 		else:
-			(data) = self.create_annotation_with_http_info(web_id, annotation, **kwargs)
+			(data) = self.create_annotation_with_http_info(web_id, annotation, web_id_type, **kwargs)
 			return data
 
-	def create_annotation_with_http_info(self, web_id, annotation, **kwargs):
-		all_params = ['web_id', 'annotation']
+	def create_annotation_with_http_info(self, web_id, annotation, web_id_type, **kwargs):
+		all_params = ['web_id', 'annotation', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -480,6 +489,9 @@ class EventFrameApi(object):
 				path_params['webId'] = params['web_id']
 		if 'annotation' in params:
 			body_params = params['annotation']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -503,16 +515,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_annotation_by_id(self, id, web_id, selected_fields, **kwargs):
+	def get_annotation_by_id(self, id, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_annotation_by_id_with_http_info(id, web_id, selected_fields, **kwargs)
+			return self.get_annotation_by_id_with_http_info(id, web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_annotation_by_id_with_http_info(id, web_id, selected_fields, **kwargs)
+			(data) = self.get_annotation_by_id_with_http_info(id, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_annotation_by_id_with_http_info(self, id, web_id, selected_fields, **kwargs):
-		all_params = ['id', 'web_id', 'selected_fields']
+	def get_annotation_by_id_with_http_info(self, id, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['id', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -554,6 +566,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -723,16 +738,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attributes(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs):
+	def get_attributes(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs)
+			return self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
 		else:
-			(data) = self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs)
+			(data) = self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
 			return data
 
-	def get_attributes_with_http_info(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, **kwargs):
-		all_params = ['web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type']
+	def get_attributes_with_http_info(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
+		all_params = ['web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -802,6 +817,9 @@ class EventFrameApi(object):
 		if 'value_type' in params:
 			if (params['value_type'] is not None):
 				query_params['valueType'] = params['value_type']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -825,16 +843,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute(self, web_id, attribute, **kwargs):
+	def create_attribute(self, web_id, attribute, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_attribute_with_http_info(web_id, attribute, **kwargs)
+			return self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
 		else:
-			(data) = self.create_attribute_with_http_info(web_id, attribute, **kwargs)
+			(data) = self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_with_http_info(self, web_id, attribute, **kwargs):
-		all_params = ['web_id', 'attribute']
+	def create_attribute_with_http_info(self, web_id, attribute, web_id_type, **kwargs):
+		all_params = ['web_id', 'attribute', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -872,6 +890,9 @@ class EventFrameApi(object):
 				path_params['webId'] = params['web_id']
 		if 'attribute' in params:
 			body_params = params['attribute']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -961,16 +982,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, **kwargs):
+	def get_categories(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_categories_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_categories_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1007,6 +1028,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1099,16 +1123,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def find_event_frame_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs):
+	def find_event_frame_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs)
+			return self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 		else:
-			(data) = self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs)
+			(data) = self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 			return data
 
-	def find_event_frame_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, **kwargs):
-		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'end_time', 'event_frame_category', 'event_frame_description_filter', 'event_frame_name_filter', 'event_frame_template', 'max_count', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'start_time']
+	def find_event_frame_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'end_time', 'event_frame_category', 'event_frame_description_filter', 'event_frame_name_filter', 'event_frame_template', 'max_count', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'start_time', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1196,6 +1220,9 @@ class EventFrameApi(object):
 		if 'start_time' in params:
 			if (params['start_time'] is not None):
 				query_params['startTime'] = params['start_time']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1219,16 +1246,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_event_frames(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs):
+	def get_event_frames(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs)
+			return self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs)
 		else:
-			(data) = self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs)
+			(data) = self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_event_frames_with_http_info(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, **kwargs):
-		all_params = ['web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'referenced_element_template_name', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name']
+	def get_event_frames_with_http_info(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs):
+		all_params = ['web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'referenced_element_template_name', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1314,6 +1341,9 @@ class EventFrameApi(object):
 		if 'template_name' in params:
 			if (params['template_name'] is not None):
 				query_params['templateName'] = params['template_name']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1337,16 +1367,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_event_frame(self, web_id, event_frame, **kwargs):
+	def create_event_frame(self, web_id, event_frame, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_event_frame_with_http_info(web_id, event_frame, **kwargs)
+			return self.create_event_frame_with_http_info(web_id, event_frame, web_id_type, **kwargs)
 		else:
-			(data) = self.create_event_frame_with_http_info(web_id, event_frame, **kwargs)
+			(data) = self.create_event_frame_with_http_info(web_id, event_frame, web_id_type, **kwargs)
 			return data
 
-	def create_event_frame_with_http_info(self, web_id, event_frame, **kwargs):
-		all_params = ['web_id', 'event_frame']
+	def create_event_frame_with_http_info(self, web_id, event_frame, web_id_type, **kwargs):
+		all_params = ['web_id', 'event_frame', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1384,6 +1414,9 @@ class EventFrameApi(object):
 				path_params['webId'] = params['web_id']
 		if 'event_frame' in params:
 			body_params = params['event_frame']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1407,16 +1440,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_referenced_elements(self, web_id, selected_fields, **kwargs):
+	def get_referenced_elements(self, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_referenced_elements_with_http_info(web_id, selected_fields, **kwargs)
+			return self.get_referenced_elements_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_referenced_elements_with_http_info(web_id, selected_fields, **kwargs)
+			(data) = self.get_referenced_elements_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_referenced_elements_with_http_info(self, web_id, selected_fields, **kwargs):
-		all_params = ['web_id', 'selected_fields']
+	def get_referenced_elements_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1453,6 +1486,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1476,16 +1512,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security(self, web_id, user_identity, force_refresh, selected_fields, **kwargs):
+	def get_security(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, **kwargs)
+			return self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, **kwargs)
+			(data) = self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_with_http_info(self, web_id, user_identity, force_refresh, selected_fields, **kwargs):
-		all_params = ['web_id', 'user_identity', 'force_refresh', 'selected_fields']
+	def get_security_with_http_info(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1531,6 +1567,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1554,16 +1593,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entries(self, web_id, name_filter, selected_fields, **kwargs):
+	def get_security_entries(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, **kwargs)
+			return self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, **kwargs)
+			(data) = self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entries_with_http_info(self, web_id, name_filter, selected_fields, **kwargs):
-		all_params = ['web_id', 'name_filter', 'selected_fields']
+	def get_security_entries_with_http_info(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
+		all_params = ['web_id', 'name_filter', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1603,6 +1642,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1626,16 +1668,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_entry(self, web_id, security_entry, apply_to_children, **kwargs):
+	def create_security_entry(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, **kwargs)
+			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
 		else:
-			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, **kwargs)
+			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
 			return data
 
-	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, **kwargs):
-		all_params = ['web_id', 'security_entry', 'apply_to_children']
+	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
+		all_params = ['web_id', 'security_entry', 'apply_to_children', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1676,6 +1718,9 @@ class EventFrameApi(object):
 		if 'apply_to_children' in params:
 			if (params['apply_to_children'] is not None):
 				query_params['applyToChildren'] = params['apply_to_children']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1699,16 +1744,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entry_by_name(self, name, web_id, selected_fields, **kwargs):
+	def get_security_entry_by_name(self, name, web_id, selected_fields, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, **kwargs)
+			return self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 		else:
-			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, **kwargs)
+			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields, **kwargs):
-		all_params = ['name', 'web_id', 'selected_fields']
+	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields, web_id_type, **kwargs):
+		all_params = ['name', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1750,6 +1795,9 @@ class EventFrameApi(object):
 		if 'selected_fields' in params:
 			if (params['selected_fields'] is not None):
 				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -1925,16 +1973,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, **kwargs):
+	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, **kwargs)
+			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 		else:
-			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, **kwargs)
+			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 			return data
 
-	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, **kwargs):
-		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id']
+	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -1980,6 +2028,9 @@ class EventFrameApi(object):
 			if (params['web_id'] is not None):
 				query_params['webId'] = params['web_id']
 				collection_formats['webId'] = 'multi'
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2003,16 +2054,95 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_search_by_attribute(self, search, **kwargs):
+	def get_event_frames_query(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.create_search_by_attribute_with_http_info(search, **kwargs)
+			return self.get_event_frames_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
 		else:
-			(data) = self.create_search_by_attribute_with_http_info(search, **kwargs)
+			(data) = self.get_event_frames_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
 			return data
 
-	def create_search_by_attribute_with_http_info(self, search, **kwargs):
-		all_params = ['search']
+	def get_event_frames_query_with_http_info(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+		all_params = ['database_web_id', 'max_count', 'query', 'selected_fields', 'start_index', 'web_id_type']
+		all_params.append('callback')
+		all_params.append('_return_http_data_only')
+		all_params.append('_preload_content')
+		all_params.append('_request_timeout')
+
+		params = locals()
+		for key, val in iteritems(params['kwargs']):
+			if key not in all_params:
+				raise TypeError(
+					"Got an unexpected keyword argument '%s'"
+					" to method get_event_frames_query_with_http_info" % key
+				)
+			params[key] = val
+		del params['kwargs']
+
+
+		collection_formats = {}
+
+		query_params = {}
+
+		path_params = {}
+
+		header_params = {}
+
+		form_params = []
+		local_var_files = {}
+
+		body_params = None
+		if 'database_web_id' in params:
+			if (params['database_web_id'] is not None):
+				query_params['databaseWebId'] = params['database_web_id']
+		if 'max_count' in params:
+			if (params['max_count'] is not None):
+				query_params['maxCount'] = params['max_count']
+		if 'query' in params:
+			if (params['query'] is not None):
+				query_params['query'] = params['query']
+		if 'selected_fields' in params:
+			if (params['selected_fields'] is not None):
+				query_params['selectedFields'] = params['selected_fields']
+		if 'start_index' in params:
+			if (params['start_index'] is not None):
+				query_params['startIndex'] = params['start_index']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
+
+		header_params['Accept'] = self.api_client.\
+			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
+
+
+		header_params['Content-Type'] = self.api_client.\
+			select_header_content_type([])
+
+		return self.api_client.call_api('/eventframes/search', 'GET',
+				path_params,
+				query_params,
+				header_params,
+				body =body_params,
+				post_params =form_params,
+				files =local_var_files,
+				response_type ='PIItemsEventFrame',
+				callback =params.get('callback'),
+				_return_http_data_only =params.get('_return_http_data_only'),
+				_preload_content =params.get('_preload_content', True),
+				_request_timeout=params.get('_request_timeout'),
+				collection_formats =collection_formats)
+
+
+	def create_search_by_attribute(self, query, no_results, selected_fields, web_id_type, **kwargs):
+		kwargs['_return_http_data_only'] = True
+		if kwargs.get('callback'):
+			return self.create_search_by_attribute_with_http_info(query, no_results, selected_fields, web_id_type, **kwargs)
+		else:
+			(data) = self.create_search_by_attribute_with_http_info(query, no_results, selected_fields, web_id_type, **kwargs)
+			return data
+
+	def create_search_by_attribute_with_http_info(self, query, no_results, selected_fields, web_id_type, **kwargs):
+		all_params = ['query', 'no_results', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2028,8 +2158,8 @@ class EventFrameApi(object):
 			params[key] = val
 		del params['kwargs']
 
-		if ('search' not in params) or (params['search'] is None):
-			raise ValueError("Missing the required parameter `search` when calling `create_search_by_attribute_with_http_info`")
+		if ('query' not in params) or (params['query'] is None):
+			raise ValueError("Missing the required parameter `query` when calling `create_search_by_attribute_with_http_info`")
 
 		collection_formats = {}
 
@@ -2043,8 +2173,17 @@ class EventFrameApi(object):
 		local_var_files = {}
 
 		body_params = None
-		if 'search' in params:
-			body_params = params['search']
+		if 'query' in params:
+			body_params = params['query']
+		if 'no_results' in params:
+			if (params['no_results'] is not None):
+				query_params['noResults'] = params['no_results']
+		if 'selected_fields' in params:
+			if (params['selected_fields'] is not None):
+				query_params['selectedFields'] = params['selected_fields']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2060,7 +2199,7 @@ class EventFrameApi(object):
 				body =body_params,
 				post_params =form_params,
 				files =local_var_files,
-				response_type =None,
+				response_type ='PIItemsEventFrame',
 				callback =params.get('callback'),
 				_return_http_data_only =params.get('_return_http_data_only'),
 				_preload_content =params.get('_preload_content', True),
@@ -2068,16 +2207,16 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def execute_search_by_attribute(self, search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, **kwargs):
+	def execute_search_by_attribute(self, search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
-			return self.execute_search_by_attribute_with_http_info(search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, **kwargs)
+			return self.execute_search_by_attribute_with_http_info(search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 		else:
-			(data) = self.execute_search_by_attribute_with_http_info(search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, **kwargs)
+			(data) = self.execute_search_by_attribute_with_http_info(search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 			return data
 
-	def execute_search_by_attribute_with_http_info(self, search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, **kwargs):
-		all_params = ['search_id', 'can_be_acknowledged', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time']
+	def execute_search_by_attribute_with_http_info(self, search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+		all_params = ['search_id', 'can_be_acknowledged', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
 		all_params.append('_preload_content')
@@ -2154,6 +2293,9 @@ class EventFrameApi(object):
 		if 'start_time' in params:
 			if (params['start_time'] is not None):
 				query_params['startTime'] = params['start_time']
+		if 'web_id_type' in params:
+			if (params['web_id_type'] is not None):
+				query_params['webIdType'] = params['web_id_type']
 
 		header_params['Accept'] = self.api_client.\
 			select_header_accept(['application/json', 'text/json', 'text/html', 'application/x-ms-application'])
@@ -2169,7 +2311,7 @@ class EventFrameApi(object):
 				body =body_params,
 				post_params =form_params,
 				files =local_var_files,
-				response_type =None,
+				response_type ='PIItemsEventFrame',
 				callback =params.get('callback'),
 				_return_http_data_only =params.get('_return_http_data_only'),
 				_preload_content =params.get('_preload_content', True),

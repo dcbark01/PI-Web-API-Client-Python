@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -19,28 +19,33 @@ from six import iteritems
 import re
 
 
-class PISearchByAttributeElement(object):
+class PISearchByAttribute(object):
 	swagger_types = {
-		'search_root': 'object',
-		'element_template': 'object',
-		'value_queries': 'list[PIAttributeValueQuery]',
+		'search_root': 'str',
+		'element_template': 'str',
+		'web_exception': 'PIWebException',
+		'value_queries': 'list[PIValueQuery]',
 	}
 
 	attribute_map = {
 		'search_root': 'SearchRoot',
 		'element_template': 'ElementTemplate',
+		'web_exception': 'WebException',
 		'value_queries': 'ValueQueries',
 	}
-	def __init__(self, search_root=None, element_template=None, value_queries=None):
+	def __init__(self, search_root=None, element_template=None, web_exception=None, value_queries=None):
 
 		self._search_root = None
 		self._element_template = None
+		self._web_exception = None
 		self._value_queries = None
 
 		if search_root is not None:
 			self.search_root = search_root
 		if element_template is not None:
 			self.element_template = element_template
+		if web_exception is not None:
+			self.web_exception = web_exception
 		if value_queries is not None:
 			self.value_queries = value_queries
 
@@ -59,6 +64,14 @@ class PISearchByAttributeElement(object):
 	@element_template.setter
 	def element_template(self, element_template):
 		self._element_template = element_template
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	@property
 	def value_queries(self):
@@ -99,7 +112,7 @@ class PISearchByAttributeElement(object):
 		return not self == other
 
 	def __eq__(self, other):
-		if not isinstance(other, PISearchByAttributeElement):
+		if not isinstance(other, PISearchByAttribute):
 			return False
 		return self.__dict__ == other.__dict__
 

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -25,7 +25,8 @@ class PISecurityEntry(object):
 		'security_identity_name': 'str',
 		'allow_rights': 'list[str]',
 		'deny_rights': 'list[str]',
-		'links': 'dict(str, str)',
+		'links': 'PISecurityEntryLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -34,14 +35,16 @@ class PISecurityEntry(object):
 		'allow_rights': 'AllowRights',
 		'deny_rights': 'DenyRights',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, name=None, security_identity_name=None, allow_rights=None, deny_rights=None, links=None):
+	def __init__(self, name=None, security_identity_name=None, allow_rights=None, deny_rights=None, links=None, web_exception=None):
 
 		self._name = None
 		self._security_identity_name = None
 		self._allow_rights = None
 		self._deny_rights = None
 		self._links = None
+		self._web_exception = None
 
 		if name is not None:
 			self.name = name
@@ -53,6 +56,8 @@ class PISecurityEntry(object):
 			self.deny_rights = deny_rights
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def name(self):
@@ -93,6 +98,14 @@ class PISecurityEntry(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

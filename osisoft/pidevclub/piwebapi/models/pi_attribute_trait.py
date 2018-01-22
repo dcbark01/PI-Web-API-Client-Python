@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -30,7 +30,8 @@ class PIAttributeTrait(object):
 		'is_u_o_m_inherited': 'bool',
 		'require_numeric': 'bool',
 		'require_string': 'bool',
-		'links': 'dict(str, str)',
+		'links': 'PIAttributeTraitLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -44,8 +45,9 @@ class PIAttributeTrait(object):
 		'require_numeric': 'RequireNumeric',
 		'require_string': 'RequireString',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, name=None, abbreviation=None, allow_child_attributes=None, allow_duplicates=None, is_allowed_on_root_attribute=None, is_type_inherited=None, is_u_o_m_inherited=None, require_numeric=None, require_string=None, links=None):
+	def __init__(self, name=None, abbreviation=None, allow_child_attributes=None, allow_duplicates=None, is_allowed_on_root_attribute=None, is_type_inherited=None, is_u_o_m_inherited=None, require_numeric=None, require_string=None, links=None, web_exception=None):
 
 		self._name = None
 		self._abbreviation = None
@@ -57,6 +59,7 @@ class PIAttributeTrait(object):
 		self._require_numeric = None
 		self._require_string = None
 		self._links = None
+		self._web_exception = None
 
 		if name is not None:
 			self.name = name
@@ -78,6 +81,8 @@ class PIAttributeTrait(object):
 			self.require_string = require_string
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def name(self):
@@ -158,6 +163,14 @@ class PIAttributeTrait(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

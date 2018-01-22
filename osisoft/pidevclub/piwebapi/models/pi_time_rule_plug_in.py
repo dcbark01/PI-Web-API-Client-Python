@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-	Copyright 2017 OSIsoft, LLC
+	Copyright 2018 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
@@ -36,7 +36,8 @@ class PITimeRulePlugIn(object):
 		'loaded_assembly_time': 'str',
 		'loaded_version': 'str',
 		'version': 'str',
-		'links': 'dict(str, str)',
+		'links': 'PITimeRulePlugInLinks',
+		'web_exception': 'PIWebException',
 	}
 
 	attribute_map = {
@@ -56,8 +57,9 @@ class PITimeRulePlugIn(object):
 		'loaded_version': 'LoadedVersion',
 		'version': 'Version',
 		'links': 'Links',
+		'web_exception': 'WebException',
 	}
-	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, assembly_file_name=None, assembly_i_d=None, assembly_load_properties=None, assembly_time=None, compatibility_version=None, is_browsable=None, is_non_editable_config=None, loaded_assembly_time=None, loaded_version=None, version=None, links=None):
+	def __init__(self, web_id=None, id=None, name=None, description=None, path=None, assembly_file_name=None, assembly_i_d=None, assembly_load_properties=None, assembly_time=None, compatibility_version=None, is_browsable=None, is_non_editable_config=None, loaded_assembly_time=None, loaded_version=None, version=None, links=None, web_exception=None):
 
 		self._web_id = None
 		self._id = None
@@ -75,6 +77,7 @@ class PITimeRulePlugIn(object):
 		self._loaded_version = None
 		self._version = None
 		self._links = None
+		self._web_exception = None
 
 		if web_id is not None:
 			self.web_id = web_id
@@ -108,6 +111,8 @@ class PITimeRulePlugIn(object):
 			self.version = version
 		if links is not None:
 			self.links = links
+		if web_exception is not None:
+			self.web_exception = web_exception
 
 	@property
 	def web_id(self):
@@ -236,6 +241,14 @@ class PITimeRulePlugIn(object):
 	@links.setter
 	def links(self, links):
 		self._links = links
+
+	@property
+	def web_exception(self):
+		return self._web_exception
+
+	@web_exception.setter
+	def web_exception(self, web_exception):
+		self._web_exception = web_exception
 
 	def to_dict(self):
 		result = {}

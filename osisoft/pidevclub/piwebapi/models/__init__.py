@@ -1,24 +1,62 @@
+# coding: utf-8
+
+"""
+	Copyright 2018 OSIsoft, LLC
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	  <http://www.apache.org/licenses/LICENSE-2.0>
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+"""
 from osisoft.pidevclub.piwebapi.models.pi_analysis import PIAnalysis
 from osisoft.pidevclub.piwebapi.models.pi_analysis_category import PIAnalysisCategory
+from osisoft.pidevclub.piwebapi.models.pi_analysis_category_links import PIAnalysisCategoryLinks
+from osisoft.pidevclub.piwebapi.models.pi_analysis_links import PIAnalysisLinks
 from osisoft.pidevclub.piwebapi.models.pi_analysis_rule import PIAnalysisRule
+from osisoft.pidevclub.piwebapi.models.pi_analysis_rule_links import PIAnalysisRuleLinks
 from osisoft.pidevclub.piwebapi.models.pi_analysis_rule_plug_in import PIAnalysisRulePlugIn
+from osisoft.pidevclub.piwebapi.models.pi_analysis_rule_plug_in_links import PIAnalysisRulePlugInLinks
 from osisoft.pidevclub.piwebapi.models.pi_analysis_template import PIAnalysisTemplate
+from osisoft.pidevclub.piwebapi.models.pi_analysis_template_links import PIAnalysisTemplateLinks
 from osisoft.pidevclub.piwebapi.models.pi_annotation import PIAnnotation
+from osisoft.pidevclub.piwebapi.models.pi_annotation_links import PIAnnotationLinks
 from osisoft.pidevclub.piwebapi.models.pi_asset_database import PIAssetDatabase
+from osisoft.pidevclub.piwebapi.models.pi_asset_database_links import PIAssetDatabaseLinks
 from osisoft.pidevclub.piwebapi.models.pi_asset_server import PIAssetServer
+from osisoft.pidevclub.piwebapi.models.pi_asset_server_links import PIAssetServerLinks
 from osisoft.pidevclub.piwebapi.models.pi_attribute import PIAttribute
 from osisoft.pidevclub.piwebapi.models.pi_attribute_category import PIAttributeCategory
+from osisoft.pidevclub.piwebapi.models.pi_attribute_category_links import PIAttributeCategoryLinks
+from osisoft.pidevclub.piwebapi.models.pi_attribute_links import PIAttributeLinks
 from osisoft.pidevclub.piwebapi.models.pi_attribute_template import PIAttributeTemplate
+from osisoft.pidevclub.piwebapi.models.pi_attribute_template_links import PIAttributeTemplateLinks
 from osisoft.pidevclub.piwebapi.models.pi_attribute_trait import PIAttributeTrait
+from osisoft.pidevclub.piwebapi.models.pi_attribute_trait_links import PIAttributeTraitLinks
 from osisoft.pidevclub.piwebapi.models.pi_cache_instance import PICacheInstance
+from osisoft.pidevclub.piwebapi.models.pi_channel_instance import PIChannelInstance
 from osisoft.pidevclub.piwebapi.models.pi_data_server import PIDataServer
+from osisoft.pidevclub.piwebapi.models.pi_data_server_license import PIDataServerLicense
+from osisoft.pidevclub.piwebapi.models.pi_data_server_license_links import PIDataServerLicenseLinks
+from osisoft.pidevclub.piwebapi.models.pi_data_server_links import PIDataServerLinks
 from osisoft.pidevclub.piwebapi.models.pi_element import PIElement
 from osisoft.pidevclub.piwebapi.models.pi_element_category import PIElementCategory
+from osisoft.pidevclub.piwebapi.models.pi_element_category_links import PIElementCategoryLinks
+from osisoft.pidevclub.piwebapi.models.pi_element_links import PIElementLinks
 from osisoft.pidevclub.piwebapi.models.pi_element_template import PIElementTemplate
+from osisoft.pidevclub.piwebapi.models.pi_element_template_links import PIElementTemplateLinks
 from osisoft.pidevclub.piwebapi.models.pi_enumeration_set import PIEnumerationSet
+from osisoft.pidevclub.piwebapi.models.pi_enumeration_set_links import PIEnumerationSetLinks
 from osisoft.pidevclub.piwebapi.models.pi_enumeration_value import PIEnumerationValue
+from osisoft.pidevclub.piwebapi.models.pi_enumeration_value_links import PIEnumerationValueLinks
 from osisoft.pidevclub.piwebapi.models.pi_errors import PIErrors
 from osisoft.pidevclub.piwebapi.models.pi_event_frame import PIEventFrame
+from osisoft.pidevclub.piwebapi.models.pi_event_frame_links import PIEventFrameLinks
 from osisoft.pidevclub.piwebapi.models.pi_item_attribute import PIItemAttribute
 from osisoft.pidevclub.piwebapi.models.pi_item_element import PIItemElement
 from osisoft.pidevclub.piwebapi.models.pi_item_event_frame import PIItemEventFrame
@@ -36,6 +74,7 @@ from osisoft.pidevclub.piwebapi.models.pi_items_attribute_category import PIItem
 from osisoft.pidevclub.piwebapi.models.pi_items_attribute_template import PIItemsAttributeTemplate
 from osisoft.pidevclub.piwebapi.models.pi_items_attribute_trait import PIItemsAttributeTrait
 from osisoft.pidevclub.piwebapi.models.pi_items_cache_instance import PIItemsCacheInstance
+from osisoft.pidevclub.piwebapi.models.pi_items_channel_instance import PIItemsChannelInstance
 from osisoft.pidevclub.piwebapi.models.pi_items_data_server import PIItemsDataServer
 from osisoft.pidevclub.piwebapi.models.pi_items_element import PIItemsElement
 from osisoft.pidevclub.piwebapi.models.pi_items_element_category import PIItemsElementCategory
@@ -64,35 +103,54 @@ from osisoft.pidevclub.piwebapi.models.pi_items_table_category import PIItemsTab
 from osisoft.pidevclub.piwebapi.models.pi_items_time_rule_plug_in import PIItemsTimeRulePlugIn
 from osisoft.pidevclub.piwebapi.models.pi_items_unit_class import PIItemsUnitClass
 from osisoft.pidevclub.piwebapi.models.pi_landing import PILanding
+from osisoft.pidevclub.piwebapi.models.pi_landing_links import PILandingLinks
+from osisoft.pidevclub.piwebapi.models.pi_pagination_links import PIPaginationLinks
 from osisoft.pidevclub.piwebapi.models.pi_point import PIPoint
 from osisoft.pidevclub.piwebapi.models.pi_point_attribute import PIPointAttribute
+from osisoft.pidevclub.piwebapi.models.pi_point_attribute_links import PIPointAttributeLinks
+from osisoft.pidevclub.piwebapi.models.pi_point_links import PIPointLinks
+from osisoft.pidevclub.piwebapi.models.pi_property_error import PIPropertyError
 from osisoft.pidevclub.piwebapi.models.pi_request import PIRequest
 from osisoft.pidevclub.piwebapi.models.pi_request_template import PIRequestTemplate
 from osisoft.pidevclub.piwebapi.models.pi_response import PIResponse
+from osisoft.pidevclub.piwebapi.models.pi_search_by_attribute import PISearchByAttribute
 from osisoft.pidevclub.piwebapi.models.pi_security import PISecurity
 from osisoft.pidevclub.piwebapi.models.pi_security_entry import PISecurityEntry
+from osisoft.pidevclub.piwebapi.models.pi_security_entry_links import PISecurityEntryLinks
 from osisoft.pidevclub.piwebapi.models.pi_security_identity import PISecurityIdentity
+from osisoft.pidevclub.piwebapi.models.pi_security_identity_links import PISecurityIdentityLinks
 from osisoft.pidevclub.piwebapi.models.pi_security_mapping import PISecurityMapping
+from osisoft.pidevclub.piwebapi.models.pi_security_mapping_links import PISecurityMappingLinks
 from osisoft.pidevclub.piwebapi.models.pi_security_rights import PISecurityRights
+from osisoft.pidevclub.piwebapi.models.pi_security_rights_links import PISecurityRightsLinks
 from osisoft.pidevclub.piwebapi.models.pi_stream_summaries import PIStreamSummaries
+from osisoft.pidevclub.piwebapi.models.pi_stream_summaries_links import PIStreamSummariesLinks
 from osisoft.pidevclub.piwebapi.models.pi_stream_value import PIStreamValue
+from osisoft.pidevclub.piwebapi.models.pi_stream_value_links import PIStreamValueLinks
 from osisoft.pidevclub.piwebapi.models.pi_stream_values import PIStreamValues
+from osisoft.pidevclub.piwebapi.models.pi_stream_values_links import PIStreamValuesLinks
 from osisoft.pidevclub.piwebapi.models.pi_substatus import PISubstatus
 from osisoft.pidevclub.piwebapi.models.pi_summary_value import PISummaryValue
 from osisoft.pidevclub.piwebapi.models.pi_system_landing import PISystemLanding
+from osisoft.pidevclub.piwebapi.models.pi_system_landing_links import PISystemLandingLinks
 from osisoft.pidevclub.piwebapi.models.pi_system_status import PISystemStatus
 from osisoft.pidevclub.piwebapi.models.pi_table import PITable
 from osisoft.pidevclub.piwebapi.models.pi_table_category import PITableCategory
+from osisoft.pidevclub.piwebapi.models.pi_table_category_links import PITableCategoryLinks
 from osisoft.pidevclub.piwebapi.models.pi_table_data import PITableData
+from osisoft.pidevclub.piwebapi.models.pi_table_links import PITableLinks
 from osisoft.pidevclub.piwebapi.models.pi_timed_value import PITimedValue
 from osisoft.pidevclub.piwebapi.models.pi_timed_values import PITimedValues
 from osisoft.pidevclub.piwebapi.models.pi_time_rule import PITimeRule
+from osisoft.pidevclub.piwebapi.models.pi_time_rule_links import PITimeRuleLinks
 from osisoft.pidevclub.piwebapi.models.pi_time_rule_plug_in import PITimeRulePlugIn
+from osisoft.pidevclub.piwebapi.models.pi_time_rule_plug_in_links import PITimeRulePlugInLinks
 from osisoft.pidevclub.piwebapi.models.pi_unit import PIUnit
 from osisoft.pidevclub.piwebapi.models.pi_unit_class import PIUnitClass
+from osisoft.pidevclub.piwebapi.models.pi_unit_class_links import PIUnitClassLinks
+from osisoft.pidevclub.piwebapi.models.pi_unit_links import PIUnitLinks
 from osisoft.pidevclub.piwebapi.models.pi_user_info import PIUserInfo
 from osisoft.pidevclub.piwebapi.models.pi_value import PIValue
+from osisoft.pidevclub.piwebapi.models.pi_value_query import PIValueQuery
 from osisoft.pidevclub.piwebapi.models.pi_version import PIVersion
-from osisoft.pidevclub.piwebapi.models.pi_search_by_attribute_event_frame import PISearchByAttributeEventFrame
-from osisoft.pidevclub.piwebapi.models.pi_search_by_attribute_element import PISearchByAttributeElement
-from osisoft.pidevclub.piwebapi.models.pi_attribute_value_query import PIAttributeValueQuery
+from osisoft.pidevclub.piwebapi.models.pi_web_exception import PIWebException
