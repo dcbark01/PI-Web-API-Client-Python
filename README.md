@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 PI Web API client library for Python (2017 R2)
 ===
 
@@ -8,6 +9,18 @@ This repository has the source code package of the PI Web API client libraries f
 
  - PI Web API 2017 R2 installed within your domain using Kerberos or Basic Authentication. If you are using an older version, some methods might not work.
  - Python 2.7 and 3.4+
+=======
+PI Web API client library for Python
+===
+
+## Overview
+This repository has the source code package of the PI Web API client library for Python.
+
+## Requirements.
+
+Python 2.7 or 3.4+
+
+>>>>>>> 841ed756597e1b284533f260aea76293a5441f51
 
 ## Installation
 ### pip install
@@ -38,7 +51,7 @@ Then import the package:
 import osisoft.pidevclub.piwebapi
 ```
 
-This library was tested using PyCharm 2017.1.5 and Anaconda3 5.0.0
+This library was tested using PyCharm 2017.1.5.
 
 ## Documentation
 
