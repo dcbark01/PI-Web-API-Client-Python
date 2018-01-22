@@ -88,7 +88,7 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
 ### Get the PI Data Archive WebId
 
 ```python
-	dataServer = client.dataServer.get_by_path("\\\\PISRV1", None, None);
+    dataServer = client.dataServer.get_by_path("\\\\PISRV1", None, None);
 ```
 
 ### Create a new PI Point
