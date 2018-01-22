@@ -68,16 +68,16 @@ Only Basic Authentication is available in this version. Therefore, the variable 
 
 
 ```python
-	df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid",None, None, "*", None, None, None, None, "*-1d", None)
+    df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid",None, None, "*", None, None, None, None, "*-1d", None)
     df2 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", None, "*", None, None, "1h", None, "*-1d", None, None, None)
-	df3 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", None, "*", 15, None, "*-1d", None)
-	df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
+    df3 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", None, "*", 15, None, "*-1d", None)
+    df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
 	
-	paths  = ["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"];
+    paths  = ["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"];
     dfs1 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, None, None, None, "*-1d", None, None)
     dfs2 = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1d", None, None, None, "*-5d", None, None, None, None)
     dfs3 = client.data.get_multiple_plot_values(paths, "*", 10, None, None, None, "*-1d", None, None)
- 	dfs4 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp", None, None, "*-1d", None, None)
+    dfs4 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp", None, None, "*-1d", None, None)
 ```
 
 The path from the methods above should start with "pi:" (if your stream is a PI Point) or "af:" (if your stream is an AF attribute).
@@ -118,7 +118,7 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     webIds.append(point1.web_id);
     webIds.append(point2.web_id);
     webIds.append(point3.web_id);
-	piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, None, None, "*-3d", None, None);
+    piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, None, None, "*-3d", None, None);
             
 ```
 
@@ -180,9 +180,8 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
 ### Get an element and an attribute by path
 
 ```python
-	element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE", None, None)
-	attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots", "Name", None)
-           
+    element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE", None, None)
+    attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots", "Name", None)      
 ```
 
 
