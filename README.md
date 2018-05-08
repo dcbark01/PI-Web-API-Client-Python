@@ -14,10 +14,12 @@ This repository has the source code package of the PI Web API client libraries f
 
 If the python package is hosted on Github, you can install directly from Github
 
+
 ```sh
-pip install git+https://github.com/osimloeff/PI-Web-API-Client-Python.git
+pip install osisoft.pidevclub.piwebapi
 ```
-You may need to run `pip` with root permission: `sudo pip install git+https://github.com/osimloeff/PI-Web-API-Client-Python.git`. If you are using Windows, remember to open the command prompt running as administrator. You must have Git installed on your machine.
+
+You may need to run `pip` with root permission: `sudo pip install osisoft.pidevclub.piwebapi`. If you are using Windows, remember to open the command prompt running as administrator. You must have Git installed on your machine.
 
 Then import the package:
 ```python
@@ -59,13 +61,13 @@ Please check the [test_main.py](/test/test_main.py) from this repository. Below 
 #### Basic Authentication
 ```python
     from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
-    client = PIWebApiClient("https://test.osisoft.com/piwebapi", False, "username", "password")  
+    client = PIWebApiClient("https://test.osisoft.com/piwebapi", useKerberos=False, username="username", password="password", verifySsl=true)  
 ``` 
 
 #### Kerberos Authentication
 ```python
     from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
-    client = PIWebApiClient("https://test.osisoft.com/piwebapi", True)  
+    client = PIWebApiClient("https://test.osisoft.com/piwebapi", useKerberos=True, verifySsl=False)  
 ``` 
 
 

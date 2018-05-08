@@ -15,7 +15,6 @@
 	limitations under the License.
 """
 
-import sys
 from setuptools import setup, find_packages
 
 NAME = "osisoft.pidevclub.piwebapi"
@@ -33,12 +32,17 @@ setup(
     name=NAME,
     version=VERSION,
     description="PI Web API client library for Python (2017 R2)",
-    author_email="techsupport@osisoft.com",
-    url="",
+    url="https://github.com/osimloeff/PI-Web-API-Client-Python",
     keywords=["PI Web API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
+    license='MIT',
+    author='Marcos Vainer Loeff',
+    author_email='mloeff@osisoft.com',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable'
+    ],
     long_description="""\
     PI Web API client library for Python (2017 R2)
     """

@@ -29,7 +29,7 @@ from osisoft.pidevclub.piwebapi.rest import ApiException
 class TestMain(unittest.TestCase):
 
     def getPIWebApiClient(self):
-        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", False, "webapiuser", "!try3.14webapi!")
+        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", useKerberos=False, username="webapiuser", password="!try3.14webapi!", verifySsl=True)
 
 
     def test_getHome(self):
