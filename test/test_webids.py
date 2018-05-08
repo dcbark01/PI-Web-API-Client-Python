@@ -48,28 +48,24 @@ class TestMain(unittest.TestCase):
 
     def test_more_tests(self):
         client = self.getPIWebApiClient()
-        piDataServerWebId = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1", type(PIDataServer()), None)
-        point1webId = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\SINUSOID", type(PIPoint()))
-        point2webId = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\CDT158", type(PIPoint()))
-        point3webId = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\SINUSOIDU", type(PIPoint()))
-        piAttributeWebId = client.webIdHelper.generate_web_id_by_path(
+        pi_data_server_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1", type(PIDataServer()), None)
+        point1_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\SINUSOID", type(PIPoint()))
+        point2_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\CDT158", type(PIPoint()))
+        point3_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\SINUSOIDU", type(PIPoint()))
+        pi_attribute_web_id = client.webIdHelper.generate_web_id_by_path(
             "\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building|Electricity Totalizer",
             type(PIAttribute()), type(PIElement()))
 
-        piElementWebId = client.webIdHelper.generate_web_id_by_path(
+        pi_element_web_id = client.webIdHelper.generate_web_id_by_path(
             "\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building", type(PIElement()), None)
 
+        pi_data_server = client.dataServer.get(pi_data_server_web_id)
+        pi_attribute = client.attribute.get(pi_attribute_web_id)
+        pi_element = client.element.get(pi_element_web_id)
 
-
-        piDataServer = client.dataServer.get(piDataServerWebId)
-        piAttribute = client.attribute.get(piAttributeWebId)
-        piElement = client.element.get(piElementWebId)
-
-
-
-        piAttributeWebIdInfo = client.webIdHelper.get_web_id_info(piAttributeWebId)
-        piElementWebIdInfo = client.webIdHelper.get_web_id_info(piElementWebId)
-        piDataServerWebIdInfo = client.webIdHelper.get_web_id_info(piDataServerWebId)
+        pi_attribute_web_id_info = client.webIdHelper.get_web_id_info(pi_attribute_web_id)
+        pi_element_web_id_info = client.webIdHelper.get_web_id_info(pi_element_web_id)
+        pi_dataServer_web_id_info = client.webIdHelper.get_web_id_info(pi_data_server_web_id)
 
 if __name__ == '__main__':
     unittest.main()

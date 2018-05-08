@@ -195,7 +195,30 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
                                                  selected_fields="Name")     
 ```
 
+### Generating Web ID 2.0 and getting information
 
+
+```python
+    client = self.getPIWebApiClient()
+    pi_data_server_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1", type(PIDataServer()), None)
+    point1_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\SINUSOID", type(PIPoint()))
+    point2_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\CDT158", type(PIPoint()))
+    point3_web_id = client.webIdHelper.generate_web_id_by_path("\\\\PISRV1\\SINUSOIDU", type(PIPoint()))
+    pi_attribute_web_id = client.webIdHelper.generate_web_id_by_path(
+		"\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building|Electricity Totalizer",
+		type(PIAttribute()), type(PIElement()))
+
+    pi_element_web_id= client.webIdHelper.generate_web_id_by_path(
+		"\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building", type(PIElement()), None)
+
+
+    pi_data_server = client.dataServer.get(pi_dataServer_web_id)
+    pi_attribute = client.attribute.get(pi_attribute_web_id)
+    pi_element = client.element.get(pi_element_web_id)
+
+    pi_attribute_web_id_info = client.webIdHelper.get_web_id_info(pi_attribute_web_id)
+    pi_element_web_id_info= client.webIdHelper.get_web_id_info(pi_element_web_id)
+    pi_dataServer_web_id_info = client.webIdHelper.get_web_id_info(pi_data_server_web_id)
 
 
 
