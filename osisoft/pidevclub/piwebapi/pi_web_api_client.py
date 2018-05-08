@@ -53,7 +53,7 @@ from osisoft.pidevclub.piwebapi.api.time_rule_plug_in_api import TimeRulePlugInA
 from osisoft.pidevclub.piwebapi.api.time_rule_api import TimeRuleApi
 from osisoft.pidevclub.piwebapi.api.unit_class_api import UnitClassApi
 from osisoft.pidevclub.piwebapi.api.unit_api import UnitApi
-
+from osisoft.pidevclub.piwebapi.web_id.web_id_helper import WebIdHelper
 
 
 
@@ -65,7 +65,7 @@ class PIWebApiClient(object):
     __password = None
     __verifySsl = True
     __config = None
-    def __init__(self, baseUrl, useKerberos, username = None, password = None, verifySsl = None):
+    def __init__(self, baseUrl, useKerberos = True, username = None, password = None, verifySsl = True):
         self.__baseUrl = baseUrl
         self.__useKerberos = useKerberos
         self.__username = username
@@ -112,6 +112,7 @@ class PIWebApiClient(object):
         self.__unitClassApi = UnitClassApi(self.__api_client)
         self.__unitApi = UnitApi(self.__api_client)
         self.__dataApi = DataApi(self.__streamApi, self.__streamSetApi,  self.__attributeApi,  self.__pointApi )
+        self.__web_id_helper = WebIdHelper()
 
 
     @property
@@ -263,3 +264,7 @@ class PIWebApiClient(object):
     @property
     def unit(self):
         return self.__unitApi
+
+    @property
+    def webIdHelper(self):
+        return self.__web_id_helper

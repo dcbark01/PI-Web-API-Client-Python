@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class EventFrameApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class EventFrameApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -96,7 +93,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -104,7 +101,7 @@ class EventFrameApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -370,7 +367,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_annotations(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_annotations(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_annotations_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -378,7 +375,7 @@ class EventFrameApi(object):
 			(data) = self.get_annotations_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_annotations_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_annotations_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -442,7 +439,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_annotation(self, web_id, annotation, web_id_type, **kwargs):
+	def create_annotation(self, web_id, annotation, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_annotation_with_http_info(web_id, annotation, web_id_type, **kwargs)
@@ -450,7 +447,7 @@ class EventFrameApi(object):
 			(data) = self.create_annotation_with_http_info(web_id, annotation, web_id_type, **kwargs)
 			return data
 
-	def create_annotation_with_http_info(self, web_id, annotation, web_id_type, **kwargs):
+	def create_annotation_with_http_info(self, web_id, annotation, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'annotation', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -515,7 +512,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_annotation_by_id(self, id, web_id, selected_fields, web_id_type, **kwargs):
+	def get_annotation_by_id(self, id, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_annotation_by_id_with_http_info(id, web_id, selected_fields, web_id_type, **kwargs)
@@ -523,7 +520,7 @@ class EventFrameApi(object):
 			(data) = self.get_annotation_by_id_with_http_info(id, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_annotation_by_id_with_http_info(self, id, web_id, selected_fields, web_id_type, **kwargs):
+	def get_annotation_by_id_with_http_info(self, id, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['id', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -738,7 +735,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attributes(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
+	def get_attributes(self, web_id, category_name=None, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_index=None, template_name=None, value_type=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
@@ -746,7 +743,7 @@ class EventFrameApi(object):
 			(data) = self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
 			return data
 
-	def get_attributes_with_http_info(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
+	def get_attributes_with_http_info(self, web_id, category_name=None, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_index=None, template_name=None, value_type=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -843,7 +840,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute(self, web_id, attribute, web_id_type, **kwargs):
+	def create_attribute(self, web_id, attribute, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
@@ -851,7 +848,7 @@ class EventFrameApi(object):
 			(data) = self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_with_http_info(self, web_id, attribute, web_id_type, **kwargs):
+	def create_attribute_with_http_info(self, web_id, attribute, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'attribute', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -982,7 +979,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_categories(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -990,7 +987,7 @@ class EventFrameApi(object):
 			(data) = self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_categories_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1054,7 +1051,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_config(self, web_id, include_child_elements, **kwargs):
+	def create_config(self, web_id, include_child_elements=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_config_with_http_info(web_id, include_child_elements, **kwargs)
@@ -1062,7 +1059,7 @@ class EventFrameApi(object):
 			(data) = self.create_config_with_http_info(web_id, include_child_elements, **kwargs)
 			return data
 
-	def create_config_with_http_info(self, web_id, include_child_elements, **kwargs):
+	def create_config_with_http_info(self, web_id, include_child_elements=None, **kwargs):
 		all_params = ['web_id', 'include_child_elements']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1123,7 +1120,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def find_event_frame_attributes(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+	def find_event_frame_attributes(self, web_id, attribute_category=None, attribute_description_filter=None, attribute_name_filter=None, attribute_type=None, end_time=None, event_frame_category=None, event_frame_description_filter=None, event_frame_name_filter=None, event_frame_template=None, max_count=None, referenced_element_name_filter=None, search_full_hierarchy=None, search_mode=None, selected_fields=None, sort_field=None, sort_order=None, start_index=None, start_time=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
@@ -1131,7 +1128,7 @@ class EventFrameApi(object):
 			(data) = self.find_event_frame_attributes_with_http_info(web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 			return data
 
-	def find_event_frame_attributes_with_http_info(self, web_id, attribute_category, attribute_description_filter, attribute_name_filter, attribute_type, end_time, event_frame_category, event_frame_description_filter, event_frame_name_filter, event_frame_template, max_count, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+	def find_event_frame_attributes_with_http_info(self, web_id, attribute_category=None, attribute_description_filter=None, attribute_name_filter=None, attribute_type=None, end_time=None, event_frame_category=None, event_frame_description_filter=None, event_frame_name_filter=None, event_frame_template=None, max_count=None, referenced_element_name_filter=None, search_full_hierarchy=None, search_mode=None, selected_fields=None, sort_field=None, sort_order=None, start_index=None, start_time=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'attribute_category', 'attribute_description_filter', 'attribute_name_filter', 'attribute_type', 'end_time', 'event_frame_category', 'event_frame_description_filter', 'event_frame_name_filter', 'event_frame_template', 'max_count', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'start_time', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1246,7 +1243,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_event_frames(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs):
+	def get_event_frames(self, web_id, can_be_acknowledged=None, category_name=None, end_time=None, is_acknowledged=None, max_count=None, name_filter=None, referenced_element_name_filter=None, referenced_element_template_name=None, search_full_hierarchy=None, search_mode=None, selected_fields=None, severity=None, sort_field=None, sort_order=None, start_index=None, start_time=None, template_name=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs)
@@ -1254,7 +1251,7 @@ class EventFrameApi(object):
 			(data) = self.get_event_frames_with_http_info(web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_event_frames_with_http_info(self, web_id, can_be_acknowledged, category_name, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, referenced_element_template_name, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, template_name, web_id_type, **kwargs):
+	def get_event_frames_with_http_info(self, web_id, can_be_acknowledged=None, category_name=None, end_time=None, is_acknowledged=None, max_count=None, name_filter=None, referenced_element_name_filter=None, referenced_element_template_name=None, search_full_hierarchy=None, search_mode=None, selected_fields=None, severity=None, sort_field=None, sort_order=None, start_index=None, start_time=None, template_name=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'can_be_acknowledged', 'category_name', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'referenced_element_template_name', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1367,7 +1364,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_event_frame(self, web_id, event_frame, web_id_type, **kwargs):
+	def create_event_frame(self, web_id, event_frame, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_event_frame_with_http_info(web_id, event_frame, web_id_type, **kwargs)
@@ -1375,7 +1372,7 @@ class EventFrameApi(object):
 			(data) = self.create_event_frame_with_http_info(web_id, event_frame, web_id_type, **kwargs)
 			return data
 
-	def create_event_frame_with_http_info(self, web_id, event_frame, web_id_type, **kwargs):
+	def create_event_frame_with_http_info(self, web_id, event_frame, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'event_frame', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1440,7 +1437,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_referenced_elements(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_referenced_elements(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_referenced_elements_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -1448,7 +1445,7 @@ class EventFrameApi(object):
 			(data) = self.get_referenced_elements_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_referenced_elements_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_referenced_elements_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1512,7 +1509,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+	def get_security(self, web_id, user_identity, force_refresh=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
@@ -1520,7 +1517,7 @@ class EventFrameApi(object):
 			(data) = self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_with_http_info(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+	def get_security_with_http_info(self, web_id, user_identity, force_refresh=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1593,7 +1590,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entries(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
+	def get_security_entries(self, web_id, name_filter=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
@@ -1601,7 +1598,7 @@ class EventFrameApi(object):
 			(data) = self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entries_with_http_info(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
+	def get_security_entries_with_http_info(self, web_id, name_filter=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'name_filter', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1668,7 +1665,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_entry(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
+	def create_security_entry(self, web_id, security_entry, apply_to_children=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
@@ -1676,7 +1673,7 @@ class EventFrameApi(object):
 			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
 			return data
 
-	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
+	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'security_entry', 'apply_to_children', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1744,7 +1741,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entry_by_name(self, name, web_id, selected_fields, web_id_type, **kwargs):
+	def get_security_entry_by_name(self, name, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
@@ -1752,7 +1749,7 @@ class EventFrameApi(object):
 			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields, web_id_type, **kwargs):
+	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['name', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1821,7 +1818,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_security_entry(self, name, web_id, security_entry, apply_to_children, **kwargs):
+	def update_security_entry(self, name, web_id, security_entry, apply_to_children=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_security_entry_with_http_info(name, web_id, security_entry, apply_to_children, **kwargs)
@@ -1829,7 +1826,7 @@ class EventFrameApi(object):
 			(data) = self.update_security_entry_with_http_info(name, web_id, security_entry, apply_to_children, **kwargs)
 			return data
 
-	def update_security_entry_with_http_info(self, name, web_id, security_entry, apply_to_children, **kwargs):
+	def update_security_entry_with_http_info(self, name, web_id, security_entry, apply_to_children=None, **kwargs):
 		all_params = ['name', 'web_id', 'security_entry', 'apply_to_children']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1899,7 +1896,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def delete_security_entry(self, name, web_id, apply_to_children, **kwargs):
+	def delete_security_entry(self, name, web_id, apply_to_children=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.delete_security_entry_with_http_info(name, web_id, apply_to_children, **kwargs)
@@ -1907,7 +1904,7 @@ class EventFrameApi(object):
 			(data) = self.delete_security_entry_with_http_info(name, web_id, apply_to_children, **kwargs)
 			return data
 
-	def delete_security_entry_with_http_info(self, name, web_id, apply_to_children, **kwargs):
+	def delete_security_entry_with_http_info(self, name, web_id, apply_to_children=None, **kwargs):
 		all_params = ['name', 'web_id', 'apply_to_children']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1973,7 +1970,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+	def get_multiple(self, as_parallel=None, include_mode=None, path=None, selected_fields=None, web_id=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
@@ -1981,7 +1978,7 @@ class EventFrameApi(object):
 			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 			return data
 
-	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+	def get_multiple_with_http_info(self, as_parallel=None, include_mode=None, path=None, selected_fields=None, web_id=None, web_id_type=None, **kwargs):
 		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -2054,7 +2051,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_event_frames_query(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+	def get_event_frames_query(self, database_web_id=None, max_count=None, query=None, selected_fields=None, start_index=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_event_frames_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
@@ -2062,7 +2059,7 @@ class EventFrameApi(object):
 			(data) = self.get_event_frames_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
 			return data
 
-	def get_event_frames_query_with_http_info(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+	def get_event_frames_query_with_http_info(self, database_web_id=None, max_count=None, query=None, selected_fields=None, start_index=None, web_id_type=None, **kwargs):
 		all_params = ['database_web_id', 'max_count', 'query', 'selected_fields', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -2133,7 +2130,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_search_by_attribute(self, query, no_results, selected_fields, web_id_type, **kwargs):
+	def create_search_by_attribute(self, query, no_results=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_search_by_attribute_with_http_info(query, no_results, selected_fields, web_id_type, **kwargs)
@@ -2141,7 +2138,7 @@ class EventFrameApi(object):
 			(data) = self.create_search_by_attribute_with_http_info(query, no_results, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def create_search_by_attribute_with_http_info(self, query, no_results, selected_fields, web_id_type, **kwargs):
+	def create_search_by_attribute_with_http_info(self, query, no_results=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['query', 'no_results', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -2207,7 +2204,7 @@ class EventFrameApi(object):
 				collection_formats =collection_formats)
 
 
-	def execute_search_by_attribute(self, search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+	def execute_search_by_attribute(self, search_id, can_be_acknowledged=None, end_time=None, is_acknowledged=None, max_count=None, name_filter=None, referenced_element_name_filter=None, search_full_hierarchy=None, search_mode=None, selected_fields=None, severity=None, sort_field=None, sort_order=None, start_index=None, start_time=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.execute_search_by_attribute_with_http_info(search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
@@ -2215,7 +2212,7 @@ class EventFrameApi(object):
 			(data) = self.execute_search_by_attribute_with_http_info(search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs)
 			return data
 
-	def execute_search_by_attribute_with_http_info(self, search_id, can_be_acknowledged, end_time, is_acknowledged, max_count, name_filter, referenced_element_name_filter, search_full_hierarchy, search_mode, selected_fields, severity, sort_field, sort_order, start_index, start_time, web_id_type, **kwargs):
+	def execute_search_by_attribute_with_http_info(self, search_id, can_be_acknowledged=None, end_time=None, is_acknowledged=None, max_count=None, name_filter=None, referenced_element_name_filter=None, search_full_hierarchy=None, search_mode=None, selected_fields=None, severity=None, sort_field=None, sort_order=None, start_index=None, start_time=None, web_id_type=None, **kwargs):
 		all_params = ['search_id', 'can_be_acknowledged', 'end_time', 'is_acknowledged', 'max_count', 'name_filter', 'referenced_element_name_filter', 'search_full_hierarchy', 'search_mode', 'selected_fields', 'severity', 'sort_field', 'sort_order', 'start_index', 'start_time', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

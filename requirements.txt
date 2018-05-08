@@ -1,7 +1,6 @@
 pandas >= 0.20.3
-certifi >= 14.05.14
 six == 1.8.0
-python_dateutil >= 2.5.3
 setuptools >= 21.0.0
-urllib3 >= 1.15.1
+requests >= 2.18.4
+requests-kerberos >= 0.12.0
 

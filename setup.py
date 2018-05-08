@@ -19,7 +19,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "osisoft.pidevclub.piwebapi"
-VERSION = "1.1.0"
+VERSION = "1.1.3"
 # To install the library, run the following
 #
 # python setup.py install
@@ -27,7 +27,7 @@ VERSION = "1.1.0"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "pandas>=0.20.3"]
+REQUIRES = ["six >= 1.10", "requests", "requests-kerberos", "pandas>=0.20.3", "setuptools >= 21.0.0"]
 
 setup(
     name=NAME,

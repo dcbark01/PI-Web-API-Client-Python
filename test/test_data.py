@@ -45,22 +45,22 @@ class TestData(unittest.TestCase):
     def test_data_recorded(self):
         client = self.getPIWebApiClient()
 
-        df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid",None, None, "*", None, None, None, None, "*-1d", None)
-        df1b = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
-        df1b = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.good;items.questionable;items.substituted", "*-1d", None)
-        df2 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoidu", None, None, "*", None, None, None, None,"*-10d", None)
-        df3 = client.data.get_recorded_values("pi:\\\\PISRV1\\cdt158", None, None, "*-9d", None, None, None, None, "*-10d", None)
-        df4 = client.data.get_recorded_values("af:\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building\\Electricity|AnnualUsage", None, None, "*-9d", None, None, None, None, "*-10d", None)
+        df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", start_time="*-1d", end_time="*")
+        df1b = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", start_time="*-1d", end_time="*", selected_fields="items.value;items.timestamp")
+        df1b = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", start_time="*-1d", end_time="*", selected_fields="items.good;items.questionable;items.substituted")
+        df2 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoidu", start_time="*-10d", end_time="*")
+        df3 = client.data.get_recorded_values("pi:\\\\PISRV1\\cdt158", start_time="*-10d", end_time="*-9d")
+        df4 = client.data.get_recorded_values("af:\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building\\Electricity|AnnualUsage", start_time="*-10d", end_time="*-9d")
 
-        df5 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", None, "*", None, None, "1h", None, "*-1d", None, None, None)
-        df5b = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", None, "*", None, None, "1h", "items.value;items.timestamp", "*-1d", None, None, None)
-        df6 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoidu",None, "*", None, None, "2h", None, "*-1d", None, None, None)
+        df5 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", start_time="*-1d", end_time="*", interval="1h")
+        df5b = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", start_time="*-1d", end_time="*", interval="1h", selected_fields="items.value;items.timestamp")
+        df6 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoidu", start_time="*-1d", end_time="*", interval="2h")
         df7 = client.data.get_interpolated_values("pi:\\PISRV1\\cdt158",None, "*", None, None, "3h", None, "*-1d", None, None, None)
         df8 = client.data.get_interpolated_values("af:\\\\PISRV1\\Universities\\UC Davis\\Buildings\\Academic Surge Building\\Electricity|AnnualUsage", None, "*", None, None, "3h", None, "*-20d", None, None, None)
 
 
 
-        df9 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", None, "*", 15, None, "*-1d", None)
+        df9 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", end_time="*", intervals=15, start_time= "*-1d")
         df9b = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", None, "*", 15, "items.value;items.timestamp", "*-1d", None)
         df10 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoidu", None, "*", 10, None, "*-3d", None)
         df11 = client.data.get_plot_values("pi:\\\\PISRV1\\cdt158", None, "*", 20, None, "*-2d", None)
@@ -69,7 +69,7 @@ class TestData(unittest.TestCase):
 
     def test_getExceptionError(self):
         client = self.getPIWebApiClient()
-        paths=["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"];
+        paths=["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"]
 
 
         try:
@@ -119,10 +119,22 @@ class TestData(unittest.TestCase):
 
     def test_data_multiple_recorded(self):
         client = self.getPIWebApiClient()
-        paths  = ["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"];
+        paths = ["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"]
+
+        dfs1 = client.data.get_multiple_recorded_values(paths, start_time="*-1d", end_time= "*")
+        dfs2 = client.data.get_multiple_interpolated_values(paths, start_time="*-1d", end_time="*", interval="1h")
+        dfs3 = client.data.get_multiple_plot_values(paths,  start_time="*-1d", end_time="*", intervals="14")
+
+        dfs1b = client.data.get_multiple_recorded_values(paths, start_time="*-1d", end_time="*",
+                                                     selected_fields="items.items.value;items.items.timestamp")
+        dfs2b = client.data.get_multiple_interpolated_values(paths, start_time="*-1d", end_time="*", interval="1h",
+                                                     selected_fields="items.items.value;items.items.timestamp")
+        dfs3b = client.data.get_multiple_plot_values(paths,  start_time="*-1d", end_time="*", intervals="14",
+                                                     selected_fields="items.items.value;items.items.timestamp")
+
         dfs1 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, None, None, None, "*-1d", None, None)
         dfs2 = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1d", None, None, None, "*-5d", None, None, None, None)
-        dfs3 = client.data.get_multiple_plot_values(paths, "*", 10, None, None, None, "*-1d", None, None)
+        dfs3 = client.data.get_multiple_plot_values(paths, "*", 14, None, None, None, "*-1d", None, None)
 
         dfs1b = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp",None, None, "*-1d", None, None)
         dfs2b = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1h", "items.items.value;items.items.timestamp", None, None,"*-5d", None, None, None, None)

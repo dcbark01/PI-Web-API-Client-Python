@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class AssetServerApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def list(self, selected_fields, web_id_type, **kwargs):
+	def list(self, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.list_with_http_info(selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class AssetServerApi(object):
 			(data) = self.list_with_http_info(selected_fields, web_id_type, **kwargs)
 			return data
 
-	def list_with_http_info(self, selected_fields, web_id_type, **kwargs):
+	def list_with_http_info(self, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -91,7 +88,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_by_name(self, name, selected_fields, web_id_type, **kwargs):
+	def get_by_name(self, name, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_name_with_http_info(name, selected_fields, web_id_type, **kwargs)
@@ -99,7 +96,7 @@ class AssetServerApi(object):
 			(data) = self.get_by_name_with_http_info(name, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_name_with_http_info(self, name, selected_fields, web_id_type, **kwargs):
+	def get_by_name_with_http_info(self, name, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['name', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -163,7 +160,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -171,7 +168,7 @@ class AssetServerApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -235,7 +232,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -243,7 +240,7 @@ class AssetServerApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -307,7 +304,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_analysis_rule_plug_ins(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_analysis_rule_plug_ins(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_analysis_rule_plug_ins_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -315,7 +312,7 @@ class AssetServerApi(object):
 			(data) = self.get_analysis_rule_plug_ins_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_analysis_rule_plug_ins_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_analysis_rule_plug_ins_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -379,7 +376,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_databases(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_databases(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_databases_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -387,7 +384,7 @@ class AssetServerApi(object):
 			(data) = self.get_databases_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_databases_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_databases_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -451,7 +448,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_asset_database(self, web_id, database, web_id_type, **kwargs):
+	def create_asset_database(self, web_id, database, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_asset_database_with_http_info(web_id, database, web_id_type, **kwargs)
@@ -459,7 +456,7 @@ class AssetServerApi(object):
 			(data) = self.create_asset_database_with_http_info(web_id, database, web_id_type, **kwargs)
 			return data
 
-	def create_asset_database_with_http_info(self, web_id, database, web_id_type, **kwargs):
+	def create_asset_database_with_http_info(self, web_id, database, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'database', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -524,7 +521,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security(self, web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+	def get_security(self, web_id, security_item, user_identity, force_refresh=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_with_http_info(web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
@@ -532,7 +529,7 @@ class AssetServerApi(object):
 			(data) = self.get_security_with_http_info(web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_with_http_info(self, web_id, security_item, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+	def get_security_with_http_info(self, web_id, security_item, user_identity, force_refresh=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'security_item', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -611,7 +608,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entries(self, web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs):
+	def get_security_entries(self, web_id, name_filter=None, security_item=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_entries_with_http_info(web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs)
@@ -619,7 +616,7 @@ class AssetServerApi(object):
 			(data) = self.get_security_entries_with_http_info(web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entries_with_http_info(self, web_id, name_filter, security_item, selected_fields, web_id_type, **kwargs):
+	def get_security_entries_with_http_info(self, web_id, name_filter=None, security_item=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'name_filter', 'security_item', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -689,7 +686,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_entry(self, web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs):
+	def create_security_entry(self, web_id, security_entry, apply_to_children=None, security_item=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs)
@@ -697,7 +694,7 @@ class AssetServerApi(object):
 			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs)
 			return data
 
-	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, security_item, web_id_type, **kwargs):
+	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children=None, security_item=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'security_entry', 'apply_to_children', 'security_item', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -768,7 +765,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entry_by_name(self, name, web_id, security_item, selected_fields, web_id_type, **kwargs):
+	def get_security_entry_by_name(self, name, web_id, security_item=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_entry_by_name_with_http_info(name, web_id, security_item, selected_fields, web_id_type, **kwargs)
@@ -776,7 +773,7 @@ class AssetServerApi(object):
 			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, security_item, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entry_by_name_with_http_info(self, name, web_id, security_item, selected_fields, web_id_type, **kwargs):
+	def get_security_entry_by_name_with_http_info(self, name, web_id, security_item=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['name', 'web_id', 'security_item', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -848,7 +845,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_security_entry(self, name, web_id, security_entry, apply_to_children, security_item, **kwargs):
+	def update_security_entry(self, name, web_id, security_entry, apply_to_children=None, security_item=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_security_entry_with_http_info(name, web_id, security_entry, apply_to_children, security_item, **kwargs)
@@ -856,7 +853,7 @@ class AssetServerApi(object):
 			(data) = self.update_security_entry_with_http_info(name, web_id, security_entry, apply_to_children, security_item, **kwargs)
 			return data
 
-	def update_security_entry_with_http_info(self, name, web_id, security_entry, apply_to_children, security_item, **kwargs):
+	def update_security_entry_with_http_info(self, name, web_id, security_entry, apply_to_children=None, security_item=None, **kwargs):
 		all_params = ['name', 'web_id', 'security_entry', 'apply_to_children', 'security_item']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -929,7 +926,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def delete_security_entry(self, name, web_id, apply_to_children, security_item, **kwargs):
+	def delete_security_entry(self, name, web_id, apply_to_children=None, security_item=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.delete_security_entry_with_http_info(name, web_id, apply_to_children, security_item, **kwargs)
@@ -937,7 +934,7 @@ class AssetServerApi(object):
 			(data) = self.delete_security_entry_with_http_info(name, web_id, apply_to_children, security_item, **kwargs)
 			return data
 
-	def delete_security_entry_with_http_info(self, name, web_id, apply_to_children, security_item, **kwargs):
+	def delete_security_entry_with_http_info(self, name, web_id, apply_to_children=None, security_item=None, **kwargs):
 		all_params = ['name', 'web_id', 'apply_to_children', 'security_item']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1006,7 +1003,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_identities(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+	def get_security_identities(self, web_id, field=None, max_count=None, query=None, selected_fields=None, sort_field=None, sort_order=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_identities_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
@@ -1014,7 +1011,7 @@ class AssetServerApi(object):
 			(data) = self.get_security_identities_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 			return data
 
-	def get_security_identities_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+	def get_security_identities_with_http_info(self, web_id, field=None, max_count=None, query=None, selected_fields=None, sort_field=None, sort_order=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1093,7 +1090,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_identity(self, web_id, security_identity, web_id_type, **kwargs):
+	def create_security_identity(self, web_id, security_identity, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_security_identity_with_http_info(web_id, security_identity, web_id_type, **kwargs)
@@ -1101,7 +1098,7 @@ class AssetServerApi(object):
 			(data) = self.create_security_identity_with_http_info(web_id, security_identity, web_id_type, **kwargs)
 			return data
 
-	def create_security_identity_with_http_info(self, web_id, security_identity, web_id_type, **kwargs):
+	def create_security_identity_with_http_info(self, web_id, security_identity, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'security_identity', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1166,7 +1163,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_identities_for_user(self, web_id, user_identity, selected_fields, web_id_type, **kwargs):
+	def get_security_identities_for_user(self, web_id, user_identity, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_identities_for_user_with_http_info(web_id, user_identity, selected_fields, web_id_type, **kwargs)
@@ -1174,7 +1171,7 @@ class AssetServerApi(object):
 			(data) = self.get_security_identities_for_user_with_http_info(web_id, user_identity, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_identities_for_user_with_http_info(self, web_id, user_identity, selected_fields, web_id_type, **kwargs):
+	def get_security_identities_for_user_with_http_info(self, web_id, user_identity, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'user_identity', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1243,7 +1240,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_mappings(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+	def get_security_mappings(self, web_id, field=None, max_count=None, query=None, selected_fields=None, sort_field=None, sort_order=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_mappings_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
@@ -1251,7 +1248,7 @@ class AssetServerApi(object):
 			(data) = self.get_security_mappings_with_http_info(web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 			return data
 
-	def get_security_mappings_with_http_info(self, web_id, field, max_count, query, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+	def get_security_mappings_with_http_info(self, web_id, field=None, max_count=None, query=None, selected_fields=None, sort_field=None, sort_order=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'field', 'max_count', 'query', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1330,7 +1327,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_mapping(self, web_id, security_mapping, web_id_type, **kwargs):
+	def create_security_mapping(self, web_id, security_mapping, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_security_mapping_with_http_info(web_id, security_mapping, web_id_type, **kwargs)
@@ -1338,7 +1335,7 @@ class AssetServerApi(object):
 			(data) = self.create_security_mapping_with_http_info(web_id, security_mapping, web_id_type, **kwargs)
 			return data
 
-	def create_security_mapping_with_http_info(self, web_id, security_mapping, web_id_type, **kwargs):
+	def create_security_mapping_with_http_info(self, web_id, security_mapping, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'security_mapping', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1403,7 +1400,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_time_rule_plug_ins(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_time_rule_plug_ins(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_time_rule_plug_ins_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -1411,7 +1408,7 @@ class AssetServerApi(object):
 			(data) = self.get_time_rule_plug_ins_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_time_rule_plug_ins_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_time_rule_plug_ins_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1475,7 +1472,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_unit_classes(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_unit_classes(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_unit_classes_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -1483,7 +1480,7 @@ class AssetServerApi(object):
 			(data) = self.get_unit_classes_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_unit_classes_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_unit_classes_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1547,7 +1544,7 @@ class AssetServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_unit_class(self, web_id, unit_class, web_id_type, **kwargs):
+	def create_unit_class(self, web_id, unit_class, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_unit_class_with_http_info(web_id, unit_class, web_id_type, **kwargs)
@@ -1555,7 +1552,7 @@ class AssetServerApi(object):
 			(data) = self.create_unit_class_with_http_info(web_id, unit_class, web_id_type, **kwargs)
 			return data
 
-	def create_unit_class_with_http_info(self, web_id, unit_class, web_id_type, **kwargs):
+	def create_unit_class_with_http_info(self, web_id, unit_class, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'unit_class', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

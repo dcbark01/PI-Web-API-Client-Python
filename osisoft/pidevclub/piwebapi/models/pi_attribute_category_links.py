@@ -16,7 +16,6 @@
 """
 from pprint import pformat
 from six import iteritems
-import re
 
 
 class PIAttributeCategoryLinks(object):

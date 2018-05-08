@@ -1,5 +1,6 @@
 # coding: utf-8
-
+from requests.auth import HTTPBasicAuth
+from requests_kerberos import HTTPKerberosAuth, OPTIONAL
 """
 	Copyright 2017 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +15,12 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 """
-from __future__ import absolute_import
 
-import os
 import re
 import json
-import mimetypes
-import tempfile
 import threading
 
 from datetime import date, datetime
-
-# python 2 and python 3 compatibility library
-import urllib3
 
 from six import PY3, integer_types, iteritems, text_type
 from six.moves.urllib.parse import quote
@@ -64,17 +58,13 @@ class ApiClient(object):
         'object': object,
     }
 
-    def __init__(self, host, verifySsl, header_name=None, header_value=None, cookie=None):
+    def __init__(self, host, verifySsl):
         """
         Constructor of the class.
         """
         self.rest_client = rest.RESTClientObject(verifySsl)
         self.default_headers = {}
         self.host = host
-        if header_name is not None:
-            self.default_headers[header_name] = header_value
-        self.cookie = cookie
-        # Set default User-Agent.
         self.user_agent = 'PI-Web-API/1.0.0/python'
 
     @property
@@ -94,12 +84,13 @@ class ApiClient(object):
 
 
     def set_kerberos_auth(self):
-        pass
+        self.rest_client.auth = HTTPKerberosAuth(force_preemptive=True, mutual_authentication=OPTIONAL, delegate=True)
+
 
 
     def set_basic_auth(self, username, password):
-        authToken =  urllib3.util.make_headers(basic_auth=username + ':' + password).get('authorization')
-        self.set_default_header("authorization", authToken)
+        self.rest_client.auth = HTTPBasicAuth(username, password)
+
 
     def set_default_header(self, header_name, header_value):
         self.default_headers[header_name] = header_value
@@ -112,14 +103,9 @@ class ApiClient(object):
                    _request_timeout=None):
 
         # header parameters
-        header_params = header_params or {}
-        header_params.update(self.default_headers)
-        if self.cookie:
-            header_params['Cookie'] = self.cookie
-        if header_params:
-            header_params = self.sanitize_for_serialization(header_params)
-            header_params = dict(self.parameters_to_tuples(header_params,
-                                                           collection_formats))
+        header_params = {}
+        header_params['X-Requested-With'] = 'PIWebApiWrapper'
+        header_params['Content-Type'] = 'application/json'
 
         # path parameters
         if path_params:
@@ -134,15 +120,7 @@ class ApiClient(object):
         # query parameters
         if query_params:
             query_params = self.sanitize_for_serialization(query_params)
-            query_params = self.parameters_to_tuples(query_params,
-                                                     collection_formats)
-
-        # post parameters
-        if post_params or files:
-            post_params = self.prepare_post_parameters(post_params, files)
-            post_params = self.sanitize_for_serialization(post_params)
-            post_params = self.parameters_to_tuples(post_params,
-                                                    collection_formats)
+            query_params = self.parameters_to_tuples(query_params, collection_formats)
 
 
         # body
@@ -156,11 +134,7 @@ class ApiClient(object):
         response_data = self.request(method, url,
                                      query_params=query_params,
                                      headers=header_params,
-                                     post_params=post_params, body=body,
-                                     _preload_content=_preload_content,
-                                     _request_timeout=_request_timeout)
-
-        self.last_response = response_data
+                                     body=body)
 
         return_data = response_data
         if _preload_content:
@@ -174,11 +148,11 @@ class ApiClient(object):
             if _return_http_data_only:
                 callback(return_data)
             else:
-                callback((return_data, response_data.status, response_data.getheaders()))
+                callback((return_data, response_data.status, response_data.headers))
         elif _return_http_data_only:
             return (return_data)
         else:
-            return (return_data, response_data.status, response_data.getheaders())
+            return (return_data, response_data.status_code, response_data.headers)
 
     def sanitize_for_serialization(self, obj):
         """
@@ -240,6 +214,7 @@ class ApiClient(object):
 
         # fetch data from response object
         try:
+            response.data = response.content.decode('utf-8')
             data = json.loads(response.data)
         except ValueError:
             data = response.data
@@ -344,67 +319,14 @@ class ApiClient(object):
         thread.start()
         return thread
 
-    def request(self, method, url, query_params=None, headers=None,
-                post_params=None, body=None, _preload_content=True, _request_timeout=None):
-        """
-        Makes the HTTP request using RESTClient.
-        """
-        if method == "GET":
-            return self.rest_client.GET(url,
-                                        query_params=query_params,
-                                        _preload_content=_preload_content,
-                                        _request_timeout=_request_timeout,
-                                        headers=headers)
-        elif method == "HEAD":
-            return self.rest_client.HEAD(url,
-                                         query_params=query_params,
-                                         _preload_content=_preload_content,
-                                         _request_timeout=_request_timeout,
-                                         headers=headers)
-        elif method == "OPTIONS":
-            return self.rest_client.OPTIONS(url,
-                                            query_params=query_params,
-                                            headers=headers,
-                                            post_params=post_params,
-                                            _preload_content=_preload_content,
-                                            _request_timeout=_request_timeout,
-                                            body=body)
-        elif method == "POST":
-            return self.rest_client.POST(url,
-                                         query_params=query_params,
-                                         headers=headers,
-                                         post_params=post_params,
-                                         _preload_content=_preload_content,
-                                         _request_timeout=_request_timeout,
-                                         body=body)
-        elif method == "PUT":
-            return self.rest_client.PUT(url,
-                                        query_params=query_params,
-                                        headers=headers,
-                                        post_params=post_params,
-                                        _preload_content=_preload_content,
-                                        _request_timeout=_request_timeout,
-                                        body=body)
-        elif method == "PATCH":
-            return self.rest_client.PATCH(url,
-                                          query_params=query_params,
-                                          headers=headers,
-                                          post_params=post_params,
-                                          _preload_content=_preload_content,
-                                          _request_timeout=_request_timeout,
-                                          body=body)
-        elif method == "DELETE":
-            return self.rest_client.DELETE(url,
-                                           query_params=query_params,
-                                           headers=headers,
-                                           _preload_content=_preload_content,
-                                           _request_timeout=_request_timeout,
-                                           body=body)
-        else:
-            raise ValueError(
-                "http method must be `GET`, `HEAD`, `OPTIONS`,"
-                " `POST`, `PATCH`, `PUT` or `DELETE`."
-            )
+    def request(self, method, url, query_params=None, headers=None, body=None):
+
+        return self.rest_client.send_request(url, method,
+                                    body=body,
+                                    query_params=query_params,
+                                    headers=headers)
+
+
 
     def parameters_to_tuples(self, params, collection_formats):
         """
@@ -449,19 +371,6 @@ class ApiClient(object):
 
         if post_params:
             params = post_params
-
-        if files:
-            for k, v in iteritems(files):
-                if not v:
-                    continue
-                file_names = v if type(v) is list else [v]
-                for n in file_names:
-                    with open(n, 'rb') as f:
-                        filename = os.path.basename(f.name)
-                        filedata = f.read()
-                        mimetype = mimetypes.\
-                            guess_type(filename)[0] or 'application/octet-stream'
-                        params.append(tuple([k, tuple([filename, filedata, mimetype])]))
 
         return params
 

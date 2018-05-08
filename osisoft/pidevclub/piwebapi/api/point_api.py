@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class PointApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class PointApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -96,7 +93,7 @@ class PointApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -104,7 +101,7 @@ class PointApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -304,7 +301,7 @@ class PointApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attributes(self, web_id, name, name_filter, selected_fields, web_id_type, **kwargs):
+	def get_attributes(self, web_id, name=None, name_filter=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attributes_with_http_info(web_id, name, name_filter, selected_fields, web_id_type, **kwargs)
@@ -312,7 +309,7 @@ class PointApi(object):
 			(data) = self.get_attributes_with_http_info(web_id, name, name_filter, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_attributes_with_http_info(self, web_id, name, name_filter, selected_fields, web_id_type, **kwargs):
+	def get_attributes_with_http_info(self, web_id, name=None, name_filter=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'name', 'name_filter', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -383,7 +380,7 @@ class PointApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attribute_by_name(self, name, web_id, selected_fields, web_id_type, **kwargs):
+	def get_attribute_by_name(self, name, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attribute_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
@@ -391,7 +388,7 @@ class PointApi(object):
 			(data) = self.get_attribute_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_attribute_by_name_with_http_info(self, name, web_id, selected_fields, web_id_type, **kwargs):
+	def get_attribute_by_name_with_http_info(self, name, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['name', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -460,7 +457,7 @@ class PointApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+	def get_multiple(self, as_parallel=None, include_mode=None, path=None, selected_fields=None, web_id=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
@@ -468,7 +465,7 @@ class PointApi(object):
 			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 			return data
 
-	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+	def get_multiple_with_http_info(self, as_parallel=None, include_mode=None, path=None, selected_fields=None, web_id=None, web_id_type=None, **kwargs):
 		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

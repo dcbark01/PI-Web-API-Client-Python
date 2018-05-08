@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class DataServerApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def list(self, selected_fields, web_id_type, **kwargs):
+	def list(self, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.list_with_http_info(selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class DataServerApi(object):
 			(data) = self.list_with_http_info(selected_fields, web_id_type, **kwargs)
 			return data
 
-	def list_with_http_info(self, selected_fields, web_id_type, **kwargs):
+	def list_with_http_info(self, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -91,7 +88,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_by_name(self, name, selected_fields, web_id_type, **kwargs):
+	def get_by_name(self, name, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_name_with_http_info(name, selected_fields, web_id_type, **kwargs)
@@ -99,7 +96,7 @@ class DataServerApi(object):
 			(data) = self.get_by_name_with_http_info(name, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_name_with_http_info(self, name, selected_fields, web_id_type, **kwargs):
+	def get_by_name_with_http_info(self, name, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['name', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -163,7 +160,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -171,7 +168,7 @@ class DataServerApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -235,7 +232,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -243,7 +240,7 @@ class DataServerApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -307,7 +304,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_enumeration_sets(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_enumeration_sets(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_enumeration_sets_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -315,7 +312,7 @@ class DataServerApi(object):
 			(data) = self.get_enumeration_sets_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_enumeration_sets_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_enumeration_sets_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -379,7 +376,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_enumeration_set(self, web_id, enumeration_set, web_id_type, **kwargs):
+	def create_enumeration_set(self, web_id, enumeration_set, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_enumeration_set_with_http_info(web_id, enumeration_set, web_id_type, **kwargs)
@@ -387,7 +384,7 @@ class DataServerApi(object):
 			(data) = self.create_enumeration_set_with_http_info(web_id, enumeration_set, web_id_type, **kwargs)
 			return data
 
-	def create_enumeration_set_with_http_info(self, web_id, enumeration_set, web_id_type, **kwargs):
+	def create_enumeration_set_with_http_info(self, web_id, enumeration_set, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'enumeration_set', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -452,7 +449,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_license(self, web_id, module, selected_fields, web_id_type, **kwargs):
+	def get_license(self, web_id, module, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_license_with_http_info(web_id, module, selected_fields, web_id_type, **kwargs)
@@ -460,7 +457,7 @@ class DataServerApi(object):
 			(data) = self.get_license_with_http_info(web_id, module, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_license_with_http_info(self, web_id, module, selected_fields, web_id_type, **kwargs):
+	def get_license_with_http_info(self, web_id, module, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'module', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -529,7 +526,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_points(self, web_id, max_count, name_filter, selected_fields, start_index, web_id_type, **kwargs):
+	def get_points(self, web_id, max_count=None, name_filter=None, selected_fields=None, start_index=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_points_with_http_info(web_id, max_count, name_filter, selected_fields, start_index, web_id_type, **kwargs)
@@ -537,7 +534,7 @@ class DataServerApi(object):
 			(data) = self.get_points_with_http_info(web_id, max_count, name_filter, selected_fields, start_index, web_id_type, **kwargs)
 			return data
 
-	def get_points_with_http_info(self, web_id, max_count, name_filter, selected_fields, start_index, web_id_type, **kwargs):
+	def get_points_with_http_info(self, web_id, max_count=None, name_filter=None, selected_fields=None, start_index=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'max_count', 'name_filter', 'selected_fields', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -610,7 +607,7 @@ class DataServerApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_point(self, web_id, point_d_t_o, web_id_type, **kwargs):
+	def create_point(self, web_id, point_d_t_o, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_point_with_http_info(web_id, point_d_t_o, web_id_type, **kwargs)
@@ -618,7 +615,7 @@ class DataServerApi(object):
 			(data) = self.create_point_with_http_info(web_id, point_d_t_o, web_id_type, **kwargs)
 			return data
 
-	def create_point_with_http_info(self, web_id, point_d_t_o, web_id_type, **kwargs):
+	def create_point_with_http_info(self, web_id, point_d_t_o, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'point_d_t_o', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

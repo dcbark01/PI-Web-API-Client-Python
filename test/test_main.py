@@ -17,6 +17,9 @@
 
 
 import  unittest
+from threading import Thread
+from time import sleep, time
+
 from osisoft.pidevclub.piwebapi.models import PIAnalysis, PIItemsStreamValues, PIStreamValues, PITimedValue
 from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
 from osisoft.pidevclub.piwebapi.rest import ApiException
@@ -26,7 +29,7 @@ from osisoft.pidevclub.piwebapi.rest import ApiException
 class TestMain(unittest.TestCase):
 
     def getPIWebApiClient(self):
-        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", False, "webapiuser", "!try3.14webapi!", True)
+        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", False, "webapiuser", "!try3.14webapi!")
 
 
     def test_getHome(self):
@@ -38,13 +41,14 @@ class TestMain(unittest.TestCase):
     def test_getDataServer(self):
         client = self.getPIWebApiClient()
         dataServer = client.dataServer.get_by_path("\\\\PISRV1", None, None);
+        dataServer2 = client.dataServer.get_by_path_with_http_info("\\\\PISRV1");
         pass
 
 
     def test_getMultiplePoints(self):
         client = self.getPIWebApiClient()
         dataServers = client.dataServer.list(None, None)
-        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None)
+        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid")
         point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None)
         point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None)
 
@@ -62,41 +66,40 @@ class TestMain(unittest.TestCase):
         webIds.append(point2.web_id);
         webIds.append(point3.web_id);
 
-        piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, None, None, "*-3d",
-                                                                   None, None);
+        piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, start_time="*-3d", end_time="*",
+                                                                   include_filtered_values=True, max_count=1000)
 
         pass
 
 
     def test_getElement(self):
         client = self.getPIWebApiClient()
-        element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE", None, None)
+        element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE")
         pass
 
 
     def test_getAttribute(self):
         client = self.getPIWebApiClient()
         attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots",
-                                                 "Name", None)
+                                                 selected_fields="Name")
         pass
 
     def test_getExceptionError(self):
         client = self.getPIWebApiClient()
         try:
-            point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid12334322", None, None)
+            point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid12334322")
         except ApiException as e:
             print(e);
             errorMsg = e.error['Errors'][0]
-            if "Not found" not in errorMsg:
-                raise Exception('Unexpected exception')
         pass
+
 
 
     def test_updateValuesInBulk(self):
         client = self.getPIWebApiClient()
-        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None);
-        point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None);
-        point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None);
+        point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid");
+        point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", selected_fields="WebId");
+        point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", web_id_type="PathOnly");
         streamValuesItems = PIItemsStreamValues()
         streamValue1 = PIStreamValues()
         streamValue2 = PIStreamValues()
@@ -143,7 +146,7 @@ class TestMain(unittest.TestCase):
         streamValues.append(streamValue1)
         streamValues.append(streamValue2)
         streamValues.append(streamValue3)
-        response = client.streamSet.update_values_ad_hoc_with_http_info(streamValues, None, None)
+        response = client.streamSet.update_values_ad_hoc_with_http_info(streamValues)
         pass
 
 

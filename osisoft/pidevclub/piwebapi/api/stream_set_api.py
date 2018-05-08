@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class StreamSetApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_channel(self, web_id, category_name, heartbeat_rate, include_initial_values, name_filter, search_full_hierarchy, show_excluded, show_hidden, template_name, web_id_type, **kwargs):
+	def get_channel(self, web_id, category_name=None, heartbeat_rate=None, include_initial_values=None, name_filter=None, search_full_hierarchy=None, show_excluded=None, show_hidden=None, template_name=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_channel_with_http_info(web_id, category_name, heartbeat_rate, include_initial_values, name_filter, search_full_hierarchy, show_excluded, show_hidden, template_name, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class StreamSetApi(object):
 			(data) = self.get_channel_with_http_info(web_id, category_name, heartbeat_rate, include_initial_values, name_filter, search_full_hierarchy, show_excluded, show_hidden, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_channel_with_http_info(self, web_id, category_name, heartbeat_rate, include_initial_values, name_filter, search_full_hierarchy, show_excluded, show_hidden, template_name, web_id_type, **kwargs):
+	def get_channel_with_http_info(self, web_id, category_name=None, heartbeat_rate=None, include_initial_values=None, name_filter=None, search_full_hierarchy=None, show_excluded=None, show_hidden=None, template_name=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'heartbeat_rate', 'include_initial_values', 'name_filter', 'search_full_hierarchy', 'show_excluded', 'show_hidden', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -117,7 +114,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_end(self, web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, web_id_type, **kwargs):
+	def get_end(self, web_id, category_name=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, template_name=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_end_with_http_info(web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, web_id_type, **kwargs)
@@ -125,7 +122,7 @@ class StreamSetApi(object):
 			(data) = self.get_end_with_http_info(web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, web_id_type, **kwargs)
 			return data
 
-	def get_end_with_http_info(self, web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, web_id_type, **kwargs):
+	def get_end_with_http_info(self, web_id, category_name=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, template_name=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'template_name', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -213,7 +210,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated(self, web_id, category_name, end_time, filter_expression, include_filtered_values, interval, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, template_name, time_zone, web_id_type, **kwargs):
+	def get_interpolated(self, web_id, category_name=None, end_time=None, filter_expression=None, include_filtered_values=None, interval=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_time=None, sync_time=None, sync_time_boundary_type=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_interpolated_with_http_info(web_id, category_name, end_time, filter_expression, include_filtered_values, interval, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, template_name, time_zone, web_id_type, **kwargs)
@@ -221,7 +218,7 @@ class StreamSetApi(object):
 			(data) = self.get_interpolated_with_http_info(web_id, category_name, end_time, filter_expression, include_filtered_values, interval, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, template_name, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_interpolated_with_http_info(self, web_id, category_name, end_time, filter_expression, include_filtered_values, interval, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, template_name, time_zone, web_id_type, **kwargs):
+	def get_interpolated_with_http_info(self, web_id, category_name=None, end_time=None, filter_expression=None, include_filtered_values=None, interval=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_time=None, sync_time=None, sync_time_boundary_type=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_time', 'sync_time', 'sync_time_boundary_type', 'template_name', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -333,7 +330,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated_at_times(self, web_id, time, category_name, filter_expression, include_filtered_values, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs):
+	def get_interpolated_at_times(self, web_id, time, category_name=None, filter_expression=None, include_filtered_values=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_order=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_interpolated_at_times_with_http_info(web_id, time, category_name, filter_expression, include_filtered_values, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs)
@@ -341,7 +338,7 @@ class StreamSetApi(object):
 			(data) = self.get_interpolated_at_times_with_http_info(web_id, time, category_name, filter_expression, include_filtered_values, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_interpolated_at_times_with_http_info(self, web_id, time, category_name, filter_expression, include_filtered_values, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs):
+	def get_interpolated_at_times_with_http_info(self, web_id, time, category_name=None, filter_expression=None, include_filtered_values=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_order=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'time', 'category_name', 'filter_expression', 'include_filtered_values', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_order', 'template_name', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -441,7 +438,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_plot(self, web_id, category_name, end_time, intervals, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs):
+	def get_plot(self, web_id, category_name=None, end_time=None, intervals=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_time=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_plot_with_http_info(web_id, category_name, end_time, intervals, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs)
@@ -449,7 +446,7 @@ class StreamSetApi(object):
 			(data) = self.get_plot_with_http_info(web_id, category_name, end_time, intervals, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_plot_with_http_info(self, web_id, category_name, end_time, intervals, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs):
+	def get_plot_with_http_info(self, web_id, category_name=None, end_time=None, intervals=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_time=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'end_time', 'intervals', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_time', 'template_name', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -549,7 +546,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded(self, web_id, boundary_type, category_name, end_time, filter_expression, include_filtered_values, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs):
+	def get_recorded(self, web_id, boundary_type=None, category_name=None, end_time=None, filter_expression=None, include_filtered_values=None, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_time=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_with_http_info(web_id, boundary_type, category_name, end_time, filter_expression, include_filtered_values, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs)
@@ -557,7 +554,7 @@ class StreamSetApi(object):
 			(data) = self.get_recorded_with_http_info(web_id, boundary_type, category_name, end_time, filter_expression, include_filtered_values, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_recorded_with_http_info(self, web_id, boundary_type, category_name, end_time, filter_expression, include_filtered_values, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_time, template_name, time_zone, web_id_type, **kwargs):
+	def get_recorded_with_http_info(self, web_id, boundary_type=None, category_name=None, end_time=None, filter_expression=None, include_filtered_values=None, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_time=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'boundary_type', 'category_name', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_time', 'template_name', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -666,7 +663,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_values(self, web_id, values, buffer_option, update_option, **kwargs):
+	def update_values(self, web_id, values, buffer_option=None, update_option=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_values_with_http_info(web_id, values, buffer_option, update_option, **kwargs)
@@ -674,7 +671,7 @@ class StreamSetApi(object):
 			(data) = self.update_values_with_http_info(web_id, values, buffer_option, update_option, **kwargs)
 			return data
 
-	def update_values_with_http_info(self, web_id, values, buffer_option, update_option, **kwargs):
+	def update_values_with_http_info(self, web_id, values, buffer_option=None, update_option=None, **kwargs):
 		all_params = ['web_id', 'values', 'buffer_option', 'update_option']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -742,7 +739,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_at_time(self, web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, template_name, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_time(self, web_id, time, category_name=None, name_filter=None, retrieval_mode=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_at_time_with_http_info(web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, template_name, time_zone, web_id_type, **kwargs)
@@ -750,7 +747,7 @@ class StreamSetApi(object):
 			(data) = self.get_recorded_at_time_with_http_info(web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, template_name, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_recorded_at_time_with_http_info(self, web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, template_name, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_time_with_http_info(self, web_id, time, category_name=None, name_filter=None, retrieval_mode=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'time', 'category_name', 'name_filter', 'retrieval_mode', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'template_name', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -843,7 +840,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_at_times(self, web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_times(self, web_id, time, category_name=None, name_filter=None, retrieval_mode=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_order=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_at_times_with_http_info(web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs)
@@ -851,7 +848,7 @@ class StreamSetApi(object):
 			(data) = self.get_recorded_at_times_with_http_info(web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_recorded_at_times_with_http_info(self, web_id, time, category_name, name_filter, retrieval_mode, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_order, template_name, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_times_with_http_info(self, web_id, time, category_name=None, name_filter=None, retrieval_mode=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_order=None, template_name=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'time', 'category_name', 'name_filter', 'retrieval_mode', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_order', 'template_name', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -948,7 +945,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_summaries(self, web_id, calculation_basis, category_name, end_time, filter_expression, name_filter, sample_interval, sample_type, search_full_hierarchy, selected_fields, show_excluded, show_hidden, start_time, summary_duration, summary_type, template_name, time_type, time_zone, web_id_type, **kwargs):
+	def get_summaries(self, web_id, calculation_basis=None, category_name=None, end_time=None, filter_expression=None, name_filter=None, sample_interval=None, sample_type=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, start_time=None, summary_duration=None, summary_type=None, template_name=None, time_type=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_summaries_with_http_info(web_id, calculation_basis, category_name, end_time, filter_expression, name_filter, sample_interval, sample_type, search_full_hierarchy, selected_fields, show_excluded, show_hidden, start_time, summary_duration, summary_type, template_name, time_type, time_zone, web_id_type, **kwargs)
@@ -956,7 +953,7 @@ class StreamSetApi(object):
 			(data) = self.get_summaries_with_http_info(web_id, calculation_basis, category_name, end_time, filter_expression, name_filter, sample_interval, sample_type, search_full_hierarchy, selected_fields, show_excluded, show_hidden, start_time, summary_duration, summary_type, template_name, time_type, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_summaries_with_http_info(self, web_id, calculation_basis, category_name, end_time, filter_expression, name_filter, sample_interval, sample_type, search_full_hierarchy, selected_fields, show_excluded, show_hidden, start_time, summary_duration, summary_type, template_name, time_type, time_zone, web_id_type, **kwargs):
+	def get_summaries_with_http_info(self, web_id, calculation_basis=None, category_name=None, end_time=None, filter_expression=None, name_filter=None, sample_interval=None, sample_type=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, start_time=None, summary_duration=None, summary_type=None, template_name=None, time_type=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'calculation_basis', 'category_name', 'end_time', 'filter_expression', 'name_filter', 'sample_interval', 'sample_type', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'start_time', 'summary_duration', 'summary_type', 'template_name', 'time_type', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1069,7 +1066,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_values(self, web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, time, time_zone, web_id_type, **kwargs):
+	def get_values(self, web_id, category_name=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, template_name=None, time=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_values_with_http_info(web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, time, time_zone, web_id_type, **kwargs)
@@ -1077,7 +1074,7 @@ class StreamSetApi(object):
 			(data) = self.get_values_with_http_info(web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, time, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_values_with_http_info(self, web_id, category_name, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, template_name, time, time_zone, web_id_type, **kwargs):
+	def get_values_with_http_info(self, web_id, category_name=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, template_name=None, time=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'template_name', 'time', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1171,7 +1168,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_value(self, web_id, values, buffer_option, update_option, **kwargs):
+	def update_value(self, web_id, values, buffer_option=None, update_option=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_value_with_http_info(web_id, values, buffer_option, update_option, **kwargs)
@@ -1179,7 +1176,7 @@ class StreamSetApi(object):
 			(data) = self.update_value_with_http_info(web_id, values, buffer_option, update_option, **kwargs)
 			return data
 
-	def update_value_with_http_info(self, web_id, values, buffer_option, update_option, **kwargs):
+	def update_value_with_http_info(self, web_id, values, buffer_option=None, update_option=None, **kwargs):
 		all_params = ['web_id', 'values', 'buffer_option', 'update_option']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1247,7 +1244,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_channel_ad_hoc(self, web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs):
+	def get_channel_ad_hoc(self, web_id, heartbeat_rate=None, include_initial_values=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_channel_ad_hoc_with_http_info(web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs)
@@ -1255,7 +1252,7 @@ class StreamSetApi(object):
 			(data) = self.get_channel_ad_hoc_with_http_info(web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs)
 			return data
 
-	def get_channel_ad_hoc_with_http_info(self, web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs):
+	def get_channel_ad_hoc_with_http_info(self, web_id, heartbeat_rate=None, include_initial_values=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'heartbeat_rate', 'include_initial_values', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1323,7 +1320,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_end_ad_hoc(self, web_id, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+	def get_end_ad_hoc(self, web_id, selected_fields=None, sort_field=None, sort_order=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_end_ad_hoc_with_http_info(web_id, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
@@ -1331,7 +1328,7 @@ class StreamSetApi(object):
 			(data) = self.get_end_ad_hoc_with_http_info(web_id, selected_fields, sort_field, sort_order, web_id_type, **kwargs)
 			return data
 
-	def get_end_ad_hoc_with_http_info(self, web_id, selected_fields, sort_field, sort_order, web_id_type, **kwargs):
+	def get_end_ad_hoc_with_http_info(self, web_id, selected_fields=None, sort_field=None, sort_order=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'sort_field', 'sort_order', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1402,7 +1399,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated_ad_hoc(self, web_id, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type, **kwargs):
+	def get_interpolated_ad_hoc(self, web_id, end_time=None, filter_expression=None, include_filtered_values=None, interval=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, sync_time=None, sync_time_boundary_type=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_interpolated_ad_hoc_with_http_info(web_id, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type, **kwargs)
@@ -1410,7 +1407,7 @@ class StreamSetApi(object):
 			(data) = self.get_interpolated_ad_hoc_with_http_info(web_id, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_interpolated_ad_hoc_with_http_info(self, web_id, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type, **kwargs):
+	def get_interpolated_ad_hoc_with_http_info(self, web_id, end_time=None, filter_expression=None, include_filtered_values=None, interval=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, sync_time=None, sync_time_boundary_type=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'sort_field', 'sort_order', 'start_time', 'sync_time', 'sync_time_boundary_type', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1505,7 +1502,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated_at_times_ad_hoc(self, time, web_id, filter_expression, include_filtered_values, selected_fields, sort_order, time_zone, web_id_type, **kwargs):
+	def get_interpolated_at_times_ad_hoc(self, time, web_id, filter_expression=None, include_filtered_values=None, selected_fields=None, sort_order=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_interpolated_at_times_ad_hoc_with_http_info(time, web_id, filter_expression, include_filtered_values, selected_fields, sort_order, time_zone, web_id_type, **kwargs)
@@ -1513,7 +1510,7 @@ class StreamSetApi(object):
 			(data) = self.get_interpolated_at_times_ad_hoc_with_http_info(time, web_id, filter_expression, include_filtered_values, selected_fields, sort_order, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_interpolated_at_times_ad_hoc_with_http_info(self, time, web_id, filter_expression, include_filtered_values, selected_fields, sort_order, time_zone, web_id_type, **kwargs):
+	def get_interpolated_at_times_ad_hoc_with_http_info(self, time, web_id, filter_expression=None, include_filtered_values=None, selected_fields=None, sort_order=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['time', 'web_id', 'filter_expression', 'include_filtered_values', 'selected_fields', 'sort_order', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1596,7 +1593,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_plot_ad_hoc(self, web_id, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs):
+	def get_plot_ad_hoc(self, web_id, end_time=None, intervals=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_plot_ad_hoc_with_http_info(web_id, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs)
@@ -1604,7 +1601,7 @@ class StreamSetApi(object):
 			(data) = self.get_plot_ad_hoc_with_http_info(web_id, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_plot_ad_hoc_with_http_info(self, web_id, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs):
+	def get_plot_ad_hoc_with_http_info(self, web_id, end_time=None, intervals=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'end_time', 'intervals', 'selected_fields', 'sort_field', 'sort_order', 'start_time', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1687,7 +1684,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_ad_hoc(self, web_id, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs):
+	def get_recorded_ad_hoc(self, web_id, boundary_type=None, end_time=None, filter_expression=None, include_filtered_values=None, max_count=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_ad_hoc_with_http_info(web_id, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs)
@@ -1695,7 +1692,7 @@ class StreamSetApi(object):
 			(data) = self.get_recorded_ad_hoc_with_http_info(web_id, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_recorded_ad_hoc_with_http_info(self, web_id, boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type, **kwargs):
+	def get_recorded_ad_hoc_with_http_info(self, web_id, boundary_type=None, end_time=None, filter_expression=None, include_filtered_values=None, max_count=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'boundary_type', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'selected_fields', 'sort_field', 'sort_order', 'start_time', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1787,7 +1784,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_values_ad_hoc(self, values, buffer_option, update_option, **kwargs):
+	def update_values_ad_hoc(self, values, buffer_option=None, update_option=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_values_ad_hoc_with_http_info(values, buffer_option, update_option, **kwargs)
@@ -1795,7 +1792,7 @@ class StreamSetApi(object):
 			(data) = self.update_values_ad_hoc_with_http_info(values, buffer_option, update_option, **kwargs)
 			return data
 
-	def update_values_ad_hoc_with_http_info(self, values, buffer_option, update_option, **kwargs):
+	def update_values_ad_hoc_with_http_info(self, values, buffer_option=None, update_option=None, **kwargs):
 		all_params = ['values', 'buffer_option', 'update_option']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1858,7 +1855,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_at_time_ad_hoc(self, time, web_id, retrieval_mode, selected_fields, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_time_ad_hoc(self, time, web_id, retrieval_mode=None, selected_fields=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_at_time_ad_hoc_with_http_info(time, web_id, retrieval_mode, selected_fields, time_zone, web_id_type, **kwargs)
@@ -1866,7 +1863,7 @@ class StreamSetApi(object):
 			(data) = self.get_recorded_at_time_ad_hoc_with_http_info(time, web_id, retrieval_mode, selected_fields, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_recorded_at_time_ad_hoc_with_http_info(self, time, web_id, retrieval_mode, selected_fields, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_time_ad_hoc_with_http_info(self, time, web_id, retrieval_mode=None, selected_fields=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['time', 'web_id', 'retrieval_mode', 'selected_fields', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -1942,7 +1939,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_at_times_ad_hoc(self, time, web_id, retrieval_mode, selected_fields, sort_order, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_times_ad_hoc(self, time, web_id, retrieval_mode=None, selected_fields=None, sort_order=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_at_times_ad_hoc_with_http_info(time, web_id, retrieval_mode, selected_fields, sort_order, time_zone, web_id_type, **kwargs)
@@ -1950,7 +1947,7 @@ class StreamSetApi(object):
 			(data) = self.get_recorded_at_times_ad_hoc_with_http_info(time, web_id, retrieval_mode, selected_fields, sort_order, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_recorded_at_times_ad_hoc_with_http_info(self, time, web_id, retrieval_mode, selected_fields, sort_order, time_zone, web_id_type, **kwargs):
+	def get_recorded_at_times_ad_hoc_with_http_info(self, time, web_id, retrieval_mode=None, selected_fields=None, sort_order=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['time', 'web_id', 'retrieval_mode', 'selected_fields', 'sort_order', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -2030,7 +2027,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_summaries_ad_hoc(self, web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, web_id_type, **kwargs):
+	def get_summaries_ad_hoc(self, web_id, calculation_basis=None, end_time=None, filter_expression=None, sample_interval=None, sample_type=None, selected_fields=None, start_time=None, summary_duration=None, summary_type=None, time_type=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_summaries_ad_hoc_with_http_info(web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, web_id_type, **kwargs)
@@ -2038,7 +2035,7 @@ class StreamSetApi(object):
 			(data) = self.get_summaries_ad_hoc_with_http_info(web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_summaries_ad_hoc_with_http_info(self, web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, web_id_type, **kwargs):
+	def get_summaries_ad_hoc_with_http_info(self, web_id, calculation_basis=None, end_time=None, filter_expression=None, sample_interval=None, sample_type=None, selected_fields=None, start_time=None, summary_duration=None, summary_type=None, time_type=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'calculation_basis', 'end_time', 'filter_expression', 'sample_interval', 'sample_type', 'selected_fields', 'start_time', 'summary_duration', 'summary_type', 'time_type', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -2134,7 +2131,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_values_ad_hoc(self, web_id, selected_fields, sort_field, sort_order, time, time_zone, web_id_type, **kwargs):
+	def get_values_ad_hoc(self, web_id, selected_fields=None, sort_field=None, sort_order=None, time=None, time_zone=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_values_ad_hoc_with_http_info(web_id, selected_fields, sort_field, sort_order, time, time_zone, web_id_type, **kwargs)
@@ -2142,7 +2139,7 @@ class StreamSetApi(object):
 			(data) = self.get_values_ad_hoc_with_http_info(web_id, selected_fields, sort_field, sort_order, time, time_zone, web_id_type, **kwargs)
 			return data
 
-	def get_values_ad_hoc_with_http_info(self, web_id, selected_fields, sort_field, sort_order, time, time_zone, web_id_type, **kwargs):
+	def get_values_ad_hoc_with_http_info(self, web_id, selected_fields=None, sort_field=None, sort_order=None, time=None, time_zone=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'sort_field', 'sort_order', 'time', 'time_zone', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -2219,7 +2216,7 @@ class StreamSetApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_value_ad_hoc(self, values, buffer_option, update_option, **kwargs):
+	def update_value_ad_hoc(self, values, buffer_option=None, update_option=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_value_ad_hoc_with_http_info(values, buffer_option, update_option, **kwargs)
@@ -2227,7 +2224,7 @@ class StreamSetApi(object):
 			(data) = self.update_value_ad_hoc_with_http_info(values, buffer_option, update_option, **kwargs)
 			return data
 
-	def update_value_ad_hoc_with_http_info(self, values, buffer_option, update_option, **kwargs):
+	def update_value_ad_hoc_with_http_info(self, values, buffer_option=None, update_option=None, **kwargs):
 		all_params = ['values', 'buffer_option', 'update_option']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

@@ -4,7 +4,7 @@ PI Web API client library for Python (2017 R2)
 ## Overview
 This repository has the source code package of the PI Web API client libraries for Python. This version was developed on top of the PI Web API 2017 R2 swagger specification.
 
-## Requirements.
+## Requirements
 
  - PI Web API 2017 R2 installed within your domain using Kerberos or Basic Authentication. If you are using an older version, some methods might not work.
  - Python 2.7 and 3.4+
@@ -38,7 +38,7 @@ Then import the package:
 import osisoft.pidevclub.piwebapi
 ```
 
-This library was tested using PyCharm 2017.1.5.
+This library was tested using PyCharm 2018.1.2.
 
 ## Documentation
 
@@ -56,28 +56,35 @@ Please check the [test_main.py](/test/test_main.py) from this repository. Below 
 
 ### Create an instance of the PI Web API top level object.
 
+#### Basic Authentication
 ```python
     from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
-    client = PIWebApiClient("https://test.osisoft.com/piwebapi", False, "username", "password", True)  
+    client = PIWebApiClient("https://test.osisoft.com/piwebapi", False, "username", "password")  
 ``` 
 
-Only Basic Authentication is available in this version. Therefore, the variable useKerberos should always be False. Do not forget to set the username and password accordingly.
+#### Kerberos Authentication
+```python
+    from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
+    client = PIWebApiClient("https://test.osisoft.com/piwebapi", True)  
+``` 
+
+
 
 
 ### Retrieving PI data to an Python pandas data frame
 
 
 ```python
-    df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid",None, None, "*", None, None, None, None, "*-1d", None)
-    df2 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", None, "*", None, None, "1h", None, "*-1d", None, None, None)
-    df3 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", None, "*", 15, None, "*-1d", None)
-    df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", None, None, "*", None, None, None, "items.value;items.timestamp", "*-1d", None)
+    df1 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", start_time="*-1d", end_time="*")
+    df2 = client.data.get_interpolated_values("pi:\\PISRV1\\sinusoid", start_time="*-1d", end_time="*", interval="1h")
+    df3 = client.data.get_plot_values("pi:\\\\PISRV1\\sinusoid", end_time="*", intervals=15, start_time= "*-1d")
+    df4 = client.data.get_recorded_values("pi:\\\\PISRV1\\sinusoid", start_time="*-1d", end_time="*", selected_fields="items.value;items.timestamp")
 	
     paths  = ["pi:\\\\PISRV1\\sinusoid", "pi:\\\\PISRV1\\sinusoidu", "pi:\\\\PISRV1\\cdt158"];
-    dfs1 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, None, None, None, "*-1d", None, None)
-    dfs2 = client.data.get_multiple_interpolated_values(paths, "*", None, None, "1d", None, None, None, "*-5d", None, None, None, None)
-    dfs3 = client.data.get_multiple_plot_values(paths, "*", 10, None, None, None, "*-1d", None, None)
-    dfs4 = client.data.get_multiple_recorded_values(paths, None, "*", None, None, None, "items.items.value;items.items.timestamp", None, None, "*-1d", None, None)
+    dfs1 = client.data.get_multiple_recorded_values(paths, start_time="*-1d", end_time= "*")
+    dfs2 = client.data.get_multiple_interpolated_values(paths, start_time="*-1d", end_time="*", interval="1h")
+    dfs3 = client.data.get_multiple_plot_values(paths,  start_time="*-1d", end_time="*", intervals="14")
+    dfs4 = client.data.get_multiple_recorded_values(paths, start_time="*-1d", end_time="*", selected_fields="items.items.value;items.items.timestamp")
 ```
 
 The path from the methods above should start with "pi:" (if your stream is a PI Point) or "af:" (if your stream is an AF attribute).
@@ -88,7 +95,7 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
 ### Get the PI Data Archive WebId
 
 ```python
-    dataServer = client.dataServer.get_by_path("\\\\PISRV1", None, None);
+    dataServer = client.dataServer.get_by_path("\\\\PISRV1");
 ```
 
 ### Create a new PI Point
@@ -100,15 +107,15 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     newPoint.point_class = "classic"
     newPoint.point_type = "float32"
     newPoint.future = False
-    res = client.dataServer.create_point_with_http_info(dataServer.web_id, newPoint, None);         
+    res = client.dataServer.create_point_with_http_info(dataServer.web_id, newPoint);         
 ```
 
 ### Get PI Points WebIds
 
 ```python
-    point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid", None, None);
-    point2 = client.point.get_by_path("\\\\PISRV1\\cdt158", None, None);
-    point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None);
+    point1 = client.point.get_by_path("\\\\PISRV1\\sinusoid");
+    point2 = client.point.get_by_path("\\\\PISRV1\\cdt158");
+    point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu");
 ```
 
 ### Get recorded values in bulk using the StreamSet/GetRecordedAdHoc
@@ -118,7 +125,8 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     webIds.append(point1.web_id);
     webIds.append(point2.web_id);
     webIds.append(point3.web_id);
-    piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, None, "*", None, True, 1000, None, None, None, "*-3d", None, None);
+    piItemsStreamValues = client.streamSet.get_recorded_ad_hoc(webIds, start_time="*-3d", end_time="*",
+                                                                   include_filtered_values=True, max_count=1000)
             
 ```
 
@@ -173,15 +181,16 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     streamValues.append(streamValue1)
     streamValues.append(streamValue2)
     streamValues.append(streamValue3)
-    response = client.streamSet.update_values_ad_hoc_with_http_info(streamValues, None, None)
+    response = client.streamSet.update_values_ad_hoc_with_http_info(streamValues)
 ```
 
 
 ### Get an element and an attribute by path
 
 ```python
-    element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE", None, None)
-    attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots", "Name", None)      
+    element = client.element.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE")
+    attribute = client.attribute.get_by_path("\\\\PISRV1\\City Bikes\\(TO)BIKE\\01. Certosa   P.le Avis|Empty Slots",
+                                                 selected_fields="Name")     
 ```
 
 

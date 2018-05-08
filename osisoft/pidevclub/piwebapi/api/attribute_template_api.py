@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class AttributeTemplateApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class AttributeTemplateApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -96,7 +93,7 @@ class AttributeTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -104,7 +101,7 @@ class AttributeTemplateApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -304,7 +301,7 @@ class AttributeTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attribute_templates(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_attribute_templates(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attribute_templates_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -312,7 +309,7 @@ class AttributeTemplateApi(object):
 			(data) = self.get_attribute_templates_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_attribute_templates_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_attribute_templates_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -376,7 +373,7 @@ class AttributeTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute_template(self, web_id, template, web_id_type, **kwargs):
+	def create_attribute_template(self, web_id, template, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_attribute_template_with_http_info(web_id, template, web_id_type, **kwargs)
@@ -384,7 +381,7 @@ class AttributeTemplateApi(object):
 			(data) = self.create_attribute_template_with_http_info(web_id, template, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_template_with_http_info(self, web_id, template, web_id_type, **kwargs):
+	def create_attribute_template_with_http_info(self, web_id, template, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'template', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -449,7 +446,7 @@ class AttributeTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_categories(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -457,7 +454,7 @@ class AttributeTemplateApi(object):
 			(data) = self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_categories_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

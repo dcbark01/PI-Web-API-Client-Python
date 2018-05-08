@@ -16,38 +16,37 @@
 """
 from pprint import pformat
 from six import iteritems
-import re
 
 
 class PISearchByAttribute(object):
 	swagger_types = {
 		'search_root': 'str',
 		'element_template': 'str',
+		'items': 'list[PIValueQuery]',
 		'web_exception': 'PIWebException',
-		'value_queries': 'list[PIValueQuery]',
 	}
 
 	attribute_map = {
 		'search_root': 'SearchRoot',
 		'element_template': 'ElementTemplate',
+		'items': 'Items',
 		'web_exception': 'WebException',
-		'value_queries': 'ValueQueries',
 	}
-	def __init__(self, search_root=None, element_template=None, web_exception=None, value_queries=None):
+	def __init__(self, search_root=None, element_template=None, items=None, web_exception=None):
 
 		self._search_root = None
 		self._element_template = None
+		self._items = None
 		self._web_exception = None
-		self._value_queries = None
 
 		if search_root is not None:
 			self.search_root = search_root
 		if element_template is not None:
 			self.element_template = element_template
+		if items is not None:
+			self.items = items
 		if web_exception is not None:
 			self.web_exception = web_exception
-		if value_queries is not None:
-			self.value_queries = value_queries
 
 	@property
 	def search_root(self):
@@ -66,20 +65,20 @@ class PISearchByAttribute(object):
 		self._element_template = element_template
 
 	@property
+	def items(self):
+		return self._items
+
+	@items.setter
+	def items(self, items):
+		self._items = items
+
+	@property
 	def web_exception(self):
 		return self._web_exception
 
 	@web_exception.setter
 	def web_exception(self, web_exception):
 		self._web_exception = web_exception
-
-	@property
-	def value_queries(self):
-		return self._value_queries
-
-	@value_queries.setter
-	def value_queries(self, value_queries):
-		self._value_queries = value_queries
 
 	def to_dict(self):
 		result = {}

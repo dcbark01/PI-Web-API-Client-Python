@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class ElementTemplateApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -96,7 +93,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -104,7 +101,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -304,7 +301,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_analysis_templates(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_analysis_templates(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_analysis_templates_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -312,7 +309,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_analysis_templates_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_analysis_templates_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_analysis_templates_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -376,7 +373,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attribute_templates(self, web_id, selected_fields, show_inherited, web_id_type, **kwargs):
+	def get_attribute_templates(self, web_id, selected_fields=None, show_inherited=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attribute_templates_with_http_info(web_id, selected_fields, show_inherited, web_id_type, **kwargs)
@@ -384,7 +381,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_attribute_templates_with_http_info(web_id, selected_fields, show_inherited, web_id_type, **kwargs)
 			return data
 
-	def get_attribute_templates_with_http_info(self, web_id, selected_fields, show_inherited, web_id_type, **kwargs):
+	def get_attribute_templates_with_http_info(self, web_id, selected_fields=None, show_inherited=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'show_inherited', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -451,7 +448,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute_template(self, web_id, template, web_id_type, **kwargs):
+	def create_attribute_template(self, web_id, template, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_attribute_template_with_http_info(web_id, template, web_id_type, **kwargs)
@@ -459,7 +456,7 @@ class ElementTemplateApi(object):
 			(data) = self.create_attribute_template_with_http_info(web_id, template, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_template_with_http_info(self, web_id, template, web_id_type, **kwargs):
+	def create_attribute_template_with_http_info(self, web_id, template, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'template', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -524,7 +521,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, show_inherited, web_id_type, **kwargs):
+	def get_categories(self, web_id, selected_fields=None, show_inherited=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_categories_with_http_info(web_id, selected_fields, show_inherited, web_id_type, **kwargs)
@@ -532,7 +529,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_categories_with_http_info(web_id, selected_fields, show_inherited, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, show_inherited, web_id_type, **kwargs):
+	def get_categories_with_http_info(self, web_id, selected_fields=None, show_inherited=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'show_inherited', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -599,7 +596,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+	def get_security(self, web_id, user_identity, force_refresh=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
@@ -607,7 +604,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_security_with_http_info(web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_with_http_info(self, web_id, user_identity, force_refresh, selected_fields, web_id_type, **kwargs):
+	def get_security_with_http_info(self, web_id, user_identity, force_refresh=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'user_identity', 'force_refresh', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -680,7 +677,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entries(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
+	def get_security_entries(self, web_id, name_filter=None, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
@@ -688,7 +685,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_security_entries_with_http_info(web_id, name_filter, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entries_with_http_info(self, web_id, name_filter, selected_fields, web_id_type, **kwargs):
+	def get_security_entries_with_http_info(self, web_id, name_filter=None, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'name_filter', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -755,7 +752,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_security_entry(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
+	def create_security_entry(self, web_id, security_entry, apply_to_children=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
@@ -763,7 +760,7 @@ class ElementTemplateApi(object):
 			(data) = self.create_security_entry_with_http_info(web_id, security_entry, apply_to_children, web_id_type, **kwargs)
 			return data
 
-	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children, web_id_type, **kwargs):
+	def create_security_entry_with_http_info(self, web_id, security_entry, apply_to_children=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'security_entry', 'apply_to_children', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -831,7 +828,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_security_entry_by_name(self, name, web_id, selected_fields, web_id_type, **kwargs):
+	def get_security_entry_by_name(self, name, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
@@ -839,7 +836,7 @@ class ElementTemplateApi(object):
 			(data) = self.get_security_entry_by_name_with_http_info(name, web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields, web_id_type, **kwargs):
+	def get_security_entry_by_name_with_http_info(self, name, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['name', 'web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -908,7 +905,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_security_entry(self, name, web_id, security_entry, apply_to_children, **kwargs):
+	def update_security_entry(self, name, web_id, security_entry, apply_to_children=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_security_entry_with_http_info(name, web_id, security_entry, apply_to_children, **kwargs)
@@ -916,7 +913,7 @@ class ElementTemplateApi(object):
 			(data) = self.update_security_entry_with_http_info(name, web_id, security_entry, apply_to_children, **kwargs)
 			return data
 
-	def update_security_entry_with_http_info(self, name, web_id, security_entry, apply_to_children, **kwargs):
+	def update_security_entry_with_http_info(self, name, web_id, security_entry, apply_to_children=None, **kwargs):
 		all_params = ['name', 'web_id', 'security_entry', 'apply_to_children']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -986,7 +983,7 @@ class ElementTemplateApi(object):
 				collection_formats =collection_formats)
 
 
-	def delete_security_entry(self, name, web_id, apply_to_children, **kwargs):
+	def delete_security_entry(self, name, web_id, apply_to_children=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.delete_security_entry_with_http_info(name, web_id, apply_to_children, **kwargs)
@@ -994,7 +991,7 @@ class ElementTemplateApi(object):
 			(data) = self.delete_security_entry_with_http_info(name, web_id, apply_to_children, **kwargs)
 			return data
 
-	def delete_security_entry_with_http_info(self, name, web_id, apply_to_children, **kwargs):
+	def delete_security_entry_with_http_info(self, name, web_id, apply_to_children=None, **kwargs):
 		all_params = ['name', 'web_id', 'apply_to_children']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

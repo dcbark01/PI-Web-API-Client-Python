@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class CalculationApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_at_intervals(self, end_time, expression, sample_interval, selected_fields, start_time, web_id, **kwargs):
+	def get_at_intervals(self, end_time=None, expression=None, sample_interval=None, selected_fields=None, start_time=None, web_id=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_at_intervals_with_http_info(end_time, expression, sample_interval, selected_fields, start_time, web_id, **kwargs)
@@ -32,7 +29,7 @@ class CalculationApi(object):
 			(data) = self.get_at_intervals_with_http_info(end_time, expression, sample_interval, selected_fields, start_time, web_id, **kwargs)
 			return data
 
-	def get_at_intervals_with_http_info(self, end_time, expression, sample_interval, selected_fields, start_time, web_id, **kwargs):
+	def get_at_intervals_with_http_info(self, end_time=None, expression=None, sample_interval=None, selected_fields=None, start_time=None, web_id=None, **kwargs):
 		all_params = ['end_time', 'expression', 'sample_interval', 'selected_fields', 'start_time', 'web_id']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -103,7 +100,7 @@ class CalculationApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_at_recorded(self, end_time, expression, selected_fields, start_time, web_id, **kwargs):
+	def get_at_recorded(self, end_time=None, expression=None, selected_fields=None, start_time=None, web_id=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_at_recorded_with_http_info(end_time, expression, selected_fields, start_time, web_id, **kwargs)
@@ -111,7 +108,7 @@ class CalculationApi(object):
 			(data) = self.get_at_recorded_with_http_info(end_time, expression, selected_fields, start_time, web_id, **kwargs)
 			return data
 
-	def get_at_recorded_with_http_info(self, end_time, expression, selected_fields, start_time, web_id, **kwargs):
+	def get_at_recorded_with_http_info(self, end_time=None, expression=None, selected_fields=None, start_time=None, web_id=None, **kwargs):
 		all_params = ['end_time', 'expression', 'selected_fields', 'start_time', 'web_id']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -179,7 +176,7 @@ class CalculationApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_summary(self, calculation_basis, end_time, expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, web_id, **kwargs):
+	def get_summary(self, calculation_basis=None, end_time=None, expression=None, sample_interval=None, sample_type=None, selected_fields=None, start_time=None, summary_duration=None, summary_type=None, time_type=None, web_id=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_summary_with_http_info(calculation_basis, end_time, expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, web_id, **kwargs)
@@ -187,7 +184,7 @@ class CalculationApi(object):
 			(data) = self.get_summary_with_http_info(calculation_basis, end_time, expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, web_id, **kwargs)
 			return data
 
-	def get_summary_with_http_info(self, calculation_basis, end_time, expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, web_id, **kwargs):
+	def get_summary_with_http_info(self, calculation_basis=None, end_time=None, expression=None, sample_interval=None, sample_type=None, selected_fields=None, start_time=None, summary_duration=None, summary_type=None, time_type=None, web_id=None, **kwargs):
 		all_params = ['calculation_basis', 'end_time', 'expression', 'sample_interval', 'sample_type', 'selected_fields', 'start_time', 'summary_duration', 'summary_type', 'time_type', 'web_id']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -274,7 +271,7 @@ class CalculationApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_at_times(self, expression, selected_fields, sort_order, time, web_id, **kwargs):
+	def get_at_times(self, expression=None, selected_fields=None, sort_order=None, time=None, web_id=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_at_times_with_http_info(expression, selected_fields, sort_order, time, web_id, **kwargs)
@@ -282,7 +279,7 @@ class CalculationApi(object):
 			(data) = self.get_at_times_with_http_info(expression, selected_fields, sort_order, time, web_id, **kwargs)
 			return data
 
-	def get_at_times_with_http_info(self, expression, selected_fields, sort_order, time, web_id, **kwargs):
+	def get_at_times_with_http_info(self, expression=None, selected_fields=None, sort_order=None, time=None, web_id=None, **kwargs):
 		all_params = ['expression', 'selected_fields', 'sort_order', 'time', 'web_id']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

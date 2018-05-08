@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class StreamApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_channel(self, web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs):
+	def get_channel(self, web_id, heartbeat_rate=None, include_initial_values=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_channel_with_http_info(web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class StreamApi(object):
 			(data) = self.get_channel_with_http_info(web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs)
 			return data
 
-	def get_channel_with_http_info(self, web_id, heartbeat_rate, include_initial_values, web_id_type, **kwargs):
+	def get_channel_with_http_info(self, web_id, heartbeat_rate=None, include_initial_values=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'heartbeat_rate', 'include_initial_values', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -99,7 +96,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_end(self, web_id, desired_units, selected_fields, **kwargs):
+	def get_end(self, web_id, desired_units=None, selected_fields=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_end_with_http_info(web_id, desired_units, selected_fields, **kwargs)
@@ -107,7 +104,7 @@ class StreamApi(object):
 			(data) = self.get_end_with_http_info(web_id, desired_units, selected_fields, **kwargs)
 			return data
 
-	def get_end_with_http_info(self, web_id, desired_units, selected_fields, **kwargs):
+	def get_end_with_http_info(self, web_id, desired_units=None, selected_fields=None, **kwargs):
 		all_params = ['web_id', 'desired_units', 'selected_fields']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -171,7 +168,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated(self, web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs):
+	def get_interpolated(self, web_id, desired_units=None, end_time=None, filter_expression=None, include_filtered_values=None, interval=None, selected_fields=None, start_time=None, sync_time=None, sync_time_boundary_type=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_interpolated_with_http_info(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs)
@@ -179,7 +176,7 @@ class StreamApi(object):
 			(data) = self.get_interpolated_with_http_info(web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs)
 			return data
 
-	def get_interpolated_with_http_info(self, web_id, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone, **kwargs):
+	def get_interpolated_with_http_info(self, web_id, desired_units=None, end_time=None, filter_expression=None, include_filtered_values=None, interval=None, selected_fields=None, start_time=None, sync_time=None, sync_time_boundary_type=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'desired_units', 'end_time', 'filter_expression', 'include_filtered_values', 'interval', 'selected_fields', 'start_time', 'sync_time', 'sync_time_boundary_type', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -267,7 +264,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_interpolated_at_times(self, web_id, desired_units, filter_expression, include_filtered_values, selected_fields, sort_order, time, time_zone, **kwargs):
+	def get_interpolated_at_times(self, web_id, desired_units=None, filter_expression=None, include_filtered_values=None, selected_fields=None, sort_order=None, time=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_interpolated_at_times_with_http_info(web_id, desired_units, filter_expression, include_filtered_values, selected_fields, sort_order, time, time_zone, **kwargs)
@@ -275,7 +272,7 @@ class StreamApi(object):
 			(data) = self.get_interpolated_at_times_with_http_info(web_id, desired_units, filter_expression, include_filtered_values, selected_fields, sort_order, time, time_zone, **kwargs)
 			return data
 
-	def get_interpolated_at_times_with_http_info(self, web_id, desired_units, filter_expression, include_filtered_values, selected_fields, sort_order, time, time_zone, **kwargs):
+	def get_interpolated_at_times_with_http_info(self, web_id, desired_units=None, filter_expression=None, include_filtered_values=None, selected_fields=None, sort_order=None, time=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'desired_units', 'filter_expression', 'include_filtered_values', 'selected_fields', 'sort_order', 'time', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -355,7 +352,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_plot(self, web_id, desired_units, end_time, intervals, selected_fields, start_time, time_zone, **kwargs):
+	def get_plot(self, web_id, desired_units=None, end_time=None, intervals=None, selected_fields=None, start_time=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_plot_with_http_info(web_id, desired_units, end_time, intervals, selected_fields, start_time, time_zone, **kwargs)
@@ -363,7 +360,7 @@ class StreamApi(object):
 			(data) = self.get_plot_with_http_info(web_id, desired_units, end_time, intervals, selected_fields, start_time, time_zone, **kwargs)
 			return data
 
-	def get_plot_with_http_info(self, web_id, desired_units, end_time, intervals, selected_fields, start_time, time_zone, **kwargs):
+	def get_plot_with_http_info(self, web_id, desired_units=None, end_time=None, intervals=None, selected_fields=None, start_time=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'desired_units', 'end_time', 'intervals', 'selected_fields', 'start_time', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -439,7 +436,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded(self, web_id, boundary_type, desired_units, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone, **kwargs):
+	def get_recorded(self, web_id, boundary_type=None, desired_units=None, end_time=None, filter_expression=None, include_filtered_values=None, max_count=None, selected_fields=None, start_time=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_with_http_info(web_id, boundary_type, desired_units, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone, **kwargs)
@@ -447,7 +444,7 @@ class StreamApi(object):
 			(data) = self.get_recorded_with_http_info(web_id, boundary_type, desired_units, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone, **kwargs)
 			return data
 
-	def get_recorded_with_http_info(self, web_id, boundary_type, desired_units, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone, **kwargs):
+	def get_recorded_with_http_info(self, web_id, boundary_type=None, desired_units=None, end_time=None, filter_expression=None, include_filtered_values=None, max_count=None, selected_fields=None, start_time=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'boundary_type', 'desired_units', 'end_time', 'filter_expression', 'include_filtered_values', 'max_count', 'selected_fields', 'start_time', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -532,7 +529,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_values(self, web_id, values, buffer_option, update_option, **kwargs):
+	def update_values(self, web_id, values, buffer_option=None, update_option=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_values_with_http_info(web_id, values, buffer_option, update_option, **kwargs)
@@ -540,7 +537,7 @@ class StreamApi(object):
 			(data) = self.update_values_with_http_info(web_id, values, buffer_option, update_option, **kwargs)
 			return data
 
-	def update_values_with_http_info(self, web_id, values, buffer_option, update_option, **kwargs):
+	def update_values_with_http_info(self, web_id, values, buffer_option=None, update_option=None, **kwargs):
 		all_params = ['web_id', 'values', 'buffer_option', 'update_option']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -608,7 +605,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_at_time(self, web_id, time, desired_units, retrieval_mode, selected_fields, time_zone, **kwargs):
+	def get_recorded_at_time(self, web_id, time, desired_units=None, retrieval_mode=None, selected_fields=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_at_time_with_http_info(web_id, time, desired_units, retrieval_mode, selected_fields, time_zone, **kwargs)
@@ -616,7 +613,7 @@ class StreamApi(object):
 			(data) = self.get_recorded_at_time_with_http_info(web_id, time, desired_units, retrieval_mode, selected_fields, time_zone, **kwargs)
 			return data
 
-	def get_recorded_at_time_with_http_info(self, web_id, time, desired_units, retrieval_mode, selected_fields, time_zone, **kwargs):
+	def get_recorded_at_time_with_http_info(self, web_id, time, desired_units=None, retrieval_mode=None, selected_fields=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'time', 'desired_units', 'retrieval_mode', 'selected_fields', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -691,7 +688,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_recorded_at_times(self, web_id, desired_units, retrieval_mode, selected_fields, sort_order, time, time_zone, **kwargs):
+	def get_recorded_at_times(self, web_id, desired_units=None, retrieval_mode=None, selected_fields=None, sort_order=None, time=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_recorded_at_times_with_http_info(web_id, desired_units, retrieval_mode, selected_fields, sort_order, time, time_zone, **kwargs)
@@ -699,7 +696,7 @@ class StreamApi(object):
 			(data) = self.get_recorded_at_times_with_http_info(web_id, desired_units, retrieval_mode, selected_fields, sort_order, time, time_zone, **kwargs)
 			return data
 
-	def get_recorded_at_times_with_http_info(self, web_id, desired_units, retrieval_mode, selected_fields, sort_order, time, time_zone, **kwargs):
+	def get_recorded_at_times_with_http_info(self, web_id, desired_units=None, retrieval_mode=None, selected_fields=None, sort_order=None, time=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'desired_units', 'retrieval_mode', 'selected_fields', 'sort_order', 'time', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -776,7 +773,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_summary(self, web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, **kwargs):
+	def get_summary(self, web_id, calculation_basis=None, end_time=None, filter_expression=None, sample_interval=None, sample_type=None, selected_fields=None, start_time=None, summary_duration=None, summary_type=None, time_type=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_summary_with_http_info(web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, **kwargs)
@@ -784,7 +781,7 @@ class StreamApi(object):
 			(data) = self.get_summary_with_http_info(web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, **kwargs)
 			return data
 
-	def get_summary_with_http_info(self, web_id, calculation_basis, end_time, filter_expression, sample_interval, sample_type, selected_fields, start_time, summary_duration, summary_type, time_type, time_zone, **kwargs):
+	def get_summary_with_http_info(self, web_id, calculation_basis=None, end_time=None, filter_expression=None, sample_interval=None, sample_type=None, selected_fields=None, start_time=None, summary_duration=None, summary_type=None, time_type=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'calculation_basis', 'end_time', 'filter_expression', 'sample_interval', 'sample_type', 'selected_fields', 'start_time', 'summary_duration', 'summary_type', 'time_type', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -876,7 +873,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_value(self, web_id, desired_units, selected_fields, time, time_zone, **kwargs):
+	def get_value(self, web_id, desired_units=None, selected_fields=None, time=None, time_zone=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_value_with_http_info(web_id, desired_units, selected_fields, time, time_zone, **kwargs)
@@ -884,7 +881,7 @@ class StreamApi(object):
 			(data) = self.get_value_with_http_info(web_id, desired_units, selected_fields, time, time_zone, **kwargs)
 			return data
 
-	def get_value_with_http_info(self, web_id, desired_units, selected_fields, time, time_zone, **kwargs):
+	def get_value_with_http_info(self, web_id, desired_units=None, selected_fields=None, time=None, time_zone=None, **kwargs):
 		all_params = ['web_id', 'desired_units', 'selected_fields', 'time', 'time_zone']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -954,7 +951,7 @@ class StreamApi(object):
 				collection_formats =collection_formats)
 
 
-	def update_value(self, web_id, value, buffer_option, update_option, web_id_type, **kwargs):
+	def update_value(self, web_id, value, buffer_option=None, update_option=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.update_value_with_http_info(web_id, value, buffer_option, update_option, web_id_type, **kwargs)
@@ -962,7 +959,7 @@ class StreamApi(object):
 			(data) = self.update_value_with_http_info(web_id, value, buffer_option, update_option, web_id_type, **kwargs)
 			return data
 
-	def update_value_with_http_info(self, web_id, value, buffer_option, update_option, web_id_type, **kwargs):
+	def update_value_with_http_info(self, web_id, value, buffer_option=None, update_option=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'value', 'buffer_option', 'update_option', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

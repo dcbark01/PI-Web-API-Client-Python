@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class AnalysisRuleApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class AnalysisRuleApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -96,7 +93,7 @@ class AnalysisRuleApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -104,7 +101,7 @@ class AnalysisRuleApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -304,7 +301,7 @@ class AnalysisRuleApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_analysis_rules(self, web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
+	def get_analysis_rules(self, web_id, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, sort_field=None, sort_order=None, start_index=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_analysis_rules_with_http_info(web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
@@ -312,7 +309,7 @@ class AnalysisRuleApi(object):
 			(data) = self.get_analysis_rules_with_http_info(web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs)
 			return data
 
-	def get_analysis_rules_with_http_info(self, web_id, max_count, name_filter, search_full_hierarchy, selected_fields, sort_field, sort_order, start_index, web_id_type, **kwargs):
+	def get_analysis_rules_with_http_info(self, web_id, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, sort_field=None, sort_order=None, start_index=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'sort_field', 'sort_order', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -394,7 +391,7 @@ class AnalysisRuleApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_analysis_rule(self, web_id, analysis_rule, web_id_type, **kwargs):
+	def create_analysis_rule(self, web_id, analysis_rule, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_analysis_rule_with_http_info(web_id, analysis_rule, web_id_type, **kwargs)
@@ -402,7 +399,7 @@ class AnalysisRuleApi(object):
 			(data) = self.create_analysis_rule_with_http_info(web_id, analysis_rule, web_id_type, **kwargs)
 			return data
 
-	def create_analysis_rule_with_http_info(self, web_id, analysis_rule, web_id_type, **kwargs):
+	def create_analysis_rule_with_http_info(self, web_id, analysis_rule, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'analysis_rule', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

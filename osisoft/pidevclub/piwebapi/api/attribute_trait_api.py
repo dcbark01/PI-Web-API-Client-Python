@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class AttributeTraitApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_category(self, category, selected_fields, **kwargs):
+	def get_by_category(self, category, selected_fields=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_category_with_http_info(category, selected_fields, **kwargs)
@@ -32,7 +29,7 @@ class AttributeTraitApi(object):
 			(data) = self.get_by_category_with_http_info(category, selected_fields, **kwargs)
 			return data
 
-	def get_by_category_with_http_info(self, category, selected_fields, **kwargs):
+	def get_by_category_with_http_info(self, category, selected_fields=None, **kwargs):
 		all_params = ['category', 'selected_fields']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -94,7 +91,7 @@ class AttributeTraitApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, name, selected_fields, **kwargs):
+	def get(self, name, selected_fields=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(name, selected_fields, **kwargs)
@@ -102,7 +99,7 @@ class AttributeTraitApi(object):
 			(data) = self.get_with_http_info(name, selected_fields, **kwargs)
 			return data
 
-	def get_with_http_info(self, name, selected_fields, **kwargs):
+	def get_with_http_info(self, name, selected_fields=None, **kwargs):
 		all_params = ['name', 'selected_fields']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')

@@ -15,12 +15,9 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
+
 import pandas as pd
-import numpy as np
-from six import iteritems
+
 
 class DataApi(object):
 	def __init__(self, streamApi, streamSetApi, attributeApi, pointApi):
@@ -176,7 +173,7 @@ class DataApi(object):
 		df = pd.DataFrame(data)
 		return  df
 
-	def get_recorded_values(self, path, boundary_type, desired_units, end_time, filter_expression, include_filtered_values, max_count, selected_fields, start_time, time_zone):
+	def get_recorded_values(self, path, boundary_type=None, desired_units=None, end_time="*", filter_expression=None, include_filtered_values=None, max_count=None, selected_fields=None, start_time="*-1h", time_zone=None):
 		if (path is None):
 			print("The variable path cannot be null.")
 			return
@@ -188,7 +185,7 @@ class DataApi(object):
 
 
 
-	def get_interpolated_values(self, path, desired_units, end_time, filter_expression, include_filtered_values, interval, selected_fields, start_time, sync_time, sync_time_boundary_type, time_zone):
+	def get_interpolated_values(self, path, desired_units=None, end_time="*", filter_expression=None, include_filtered_values=None, interval="1h", selected_fields=None, start_time=None, sync_time=None, sync_time_boundary_type=None, time_zone=None):
 		if (path is None):
 			print("The variable path cannot be null.")
 			return
@@ -199,7 +196,7 @@ class DataApi(object):
 		return df
 
 
-	def get_plot_values(self, path, desired_units, end_time, intervals, selected_fields, start_time, time_zone):
+	def get_plot_values(self, path, desired_units=None, end_time="*", intervals = 10, selected_fields=None, start_time="*-1d", time_zone=None):
 		if (path is None):
 			print("The variable path cannot be null.")
 			return
@@ -209,7 +206,7 @@ class DataApi(object):
 		df = self.convert_to_df(res.items, selected_fields)
 		return df
 
-	def get_multiple_interpolated_values(self, paths, end_time, filter_expression, include_filtered_values, interval, selected_fields, sort_field, sort_order, start_time, sync_time, sync_time_boundary_type, time_zone, web_id_type):
+	def get_multiple_interpolated_values(self, paths, end_time="*", filter_expression=None, include_filtered_values=None, interval="1h", selected_fields=None, sort_field=None, sort_order=None, start_time="*-1d", sync_time=None, sync_time_boundary_type=None, time_zone=None, web_id_type=None):
 		if (paths is None):
 			print("The variable paths cannot be null.")
 			return
@@ -219,7 +216,7 @@ class DataApi(object):
 		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, selected_fields, None)
 		return df
 
-	def get_multiple_plot_values(self, paths, end_time, intervals, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type):
+	def get_multiple_plot_values(self, paths, end_time="*", intervals="1h", selected_fields=None, sort_field=None, sort_order=None, start_time="*-1d", time_zone=None, web_id_type=None):
 		if (paths is None):
 			print("The variable paths cannot be null.")
 			return
@@ -229,7 +226,7 @@ class DataApi(object):
 		df = self.convert_multiple_streams_to_df(res.items, True, web_ids, selected_fields, None)
 		return df
 
-	def get_multiple_recorded_values(self, paths,  boundary_type, end_time, filter_expression, include_filtered_values, max_count, selected_fields, sort_field, sort_order, start_time, time_zone, web_id_type):
+	def get_multiple_recorded_values(self, paths,  boundary_type=None, end_time="*", filter_expression=None, include_filtered_values=None, max_count=None, selected_fields=None, sort_field=None, sort_order=None, start_time=None, time_zone=None, web_id_type=None):
 		if (paths is None):
 			print("The variable paths cannot be null.")
 			return

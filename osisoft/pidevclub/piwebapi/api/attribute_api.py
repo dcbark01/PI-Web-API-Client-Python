@@ -15,16 +15,13 @@
 	limitations under the License.
 """
 from __future__ import absolute_import
-import sys
-import os
-import re
 from six import iteritems
 
 class AttributeApi(object):
 	def __init__(self, api_client):
 		self.api_client = api_client
 
-	def get_by_path(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
@@ -32,7 +29,7 @@ class AttributeApi(object):
 			(data) = self.get_by_path_with_http_info(path, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_by_path_with_http_info(self, path, selected_fields, web_id_type, **kwargs):
+	def get_by_path_with_http_info(self, path, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['path', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -96,7 +93,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -104,7 +101,7 @@ class AttributeApi(object):
 			(data) = self.get_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -304,7 +301,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attributes(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
+	def get_attributes(self, web_id, category_name=None, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_index=None, template_name=None, value_type=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
@@ -312,7 +309,7 @@ class AttributeApi(object):
 			(data) = self.get_attributes_with_http_info(web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs)
 			return data
 
-	def get_attributes_with_http_info(self, web_id, category_name, max_count, name_filter, search_full_hierarchy, selected_fields, show_excluded, show_hidden, sort_field, sort_order, start_index, template_name, value_type, web_id_type, **kwargs):
+	def get_attributes_with_http_info(self, web_id, category_name=None, max_count=None, name_filter=None, search_full_hierarchy=None, selected_fields=None, show_excluded=None, show_hidden=None, sort_field=None, sort_order=None, start_index=None, template_name=None, value_type=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'category_name', 'max_count', 'name_filter', 'search_full_hierarchy', 'selected_fields', 'show_excluded', 'show_hidden', 'sort_field', 'sort_order', 'start_index', 'template_name', 'value_type', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -409,7 +406,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_attribute(self, web_id, attribute, web_id_type, **kwargs):
+	def create_attribute(self, web_id, attribute, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
@@ -417,7 +414,7 @@ class AttributeApi(object):
 			(data) = self.create_attribute_with_http_info(web_id, attribute, web_id_type, **kwargs)
 			return data
 
-	def create_attribute_with_http_info(self, web_id, attribute, web_id_type, **kwargs):
+	def create_attribute_with_http_info(self, web_id, attribute, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'attribute', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -482,7 +479,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_categories(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_categories(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
@@ -490,7 +487,7 @@ class AttributeApi(object):
 			(data) = self.get_categories_with_http_info(web_id, selected_fields, web_id_type, **kwargs)
 			return data
 
-	def get_categories_with_http_info(self, web_id, selected_fields, web_id_type, **kwargs):
+	def get_categories_with_http_info(self, web_id, selected_fields=None, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'selected_fields', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -554,7 +551,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def create_config(self, web_id, web_id_type, **kwargs):
+	def create_config(self, web_id, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.create_config_with_http_info(web_id, web_id_type, **kwargs)
@@ -562,7 +559,7 @@ class AttributeApi(object):
 			(data) = self.create_config_with_http_info(web_id, web_id_type, **kwargs)
 			return data
 
-	def create_config_with_http_info(self, web_id, web_id_type, **kwargs):
+	def create_config_with_http_info(self, web_id, web_id_type=None, **kwargs):
 		all_params = ['web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -623,7 +620,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_value(self, web_id, selected_fields, **kwargs):
+	def get_value(self, web_id, selected_fields=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_value_with_http_info(web_id, selected_fields, **kwargs)
@@ -631,7 +628,7 @@ class AttributeApi(object):
 			(data) = self.get_value_with_http_info(web_id, selected_fields, **kwargs)
 			return data
 
-	def get_value_with_http_info(self, web_id, selected_fields, **kwargs):
+	def get_value_with_http_info(self, web_id, selected_fields=None, **kwargs):
 		all_params = ['web_id', 'selected_fields']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -762,7 +759,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_multiple(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+	def get_multiple(self, as_parallel=None, include_mode=None, path=None, selected_fields=None, web_id=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
@@ -770,7 +767,7 @@ class AttributeApi(object):
 			(data) = self.get_multiple_with_http_info(as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs)
 			return data
 
-	def get_multiple_with_http_info(self, as_parallel, include_mode, path, selected_fields, web_id, web_id_type, **kwargs):
+	def get_multiple_with_http_info(self, as_parallel=None, include_mode=None, path=None, selected_fields=None, web_id=None, web_id_type=None, **kwargs):
 		all_params = ['as_parallel', 'include_mode', 'path', 'selected_fields', 'web_id', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
@@ -843,7 +840,7 @@ class AttributeApi(object):
 				collection_formats =collection_formats)
 
 
-	def get_attributes_query(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+	def get_attributes_query(self, database_web_id=None, max_count=None, query=None, selected_fields=None, start_index=None, web_id_type=None, **kwargs):
 		kwargs['_return_http_data_only'] = True
 		if kwargs.get('callback'):
 			return self.get_attributes_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
@@ -851,7 +848,7 @@ class AttributeApi(object):
 			(data) = self.get_attributes_query_with_http_info(database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs)
 			return data
 
-	def get_attributes_query_with_http_info(self, database_web_id, max_count, query, selected_fields, start_index, web_id_type, **kwargs):
+	def get_attributes_query_with_http_info(self, database_web_id=None, max_count=None, query=None, selected_fields=None, start_index=None, web_id_type=None, **kwargs):
 		all_params = ['database_web_id', 'max_count', 'query', 'selected_fields', 'start_index', 'web_id_type']
 		all_params.append('callback')
 		all_params.append('_return_http_data_only')
