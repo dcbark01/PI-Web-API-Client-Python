@@ -1,7 +1,7 @@
 # PIWebApiClient
 
 ## **Constructor**
-> PIWebApiClient(str baseUrl, bool useKerberos = True, str username = None, str password = None, bool verifySsl = True)
+> PIWebApiClient(String baseUrl, bool String username, String password, Boolean verifySsl, Boolean debug)
 
 Creates an instance of the PI Web API client top level object. Currently, only Basic authentication can be used. Do not try to use Kerberos Authentication.
 
@@ -10,10 +10,10 @@ Creates an instance of the PI Web API client top level object. Currently, only B
 Name | Type | Description | Notes
 ------------- | ------------- | ------------- | -------------
 **baseUrl** | **str**| PI Web API base service url. | [required]
-**useKerberos** | **bool**| Select True for Kerberos auth or False for Basic auth. | [optional]
-**username** | **str**| The username for basic authentication to authenticate against PI Web API. | [optional]
-**password** | **str**| The password for basic authentication to authenticate against PI Web API. | [optional]
-**verifySsl** | **bool**| Verify SSL certificate.| [optional]
+**useKerberos** | **bool**| Select True for Kerberos auth or False for Basic auth. | [required]
+**username** | **str**| The username for basic authentication to authenticate against PI Web API. | [required]
+**password** | **str**| The password for basic authentication to authenticate against PI Web API. | [required]
+**verifySsl** | **bool**| Verify SSL certificate.| [required]
 
 ## **Properties**
 
@@ -31,6 +31,7 @@ Property | Controller
 **attribute** | [**AttributeApi**](/docs/api/AttributeApi.md)
 **attributeTemplate** | [**AttributeTemplateApi**](/docs/api/AttributeTemplateApi.md)
 **attributeTrait** | [**AttributeTraitApi**](/docs/api/AttributeTraitApi.md)
+**batch** | [**BatchApi**](/docs/api/BatchApi.md)
 **calculation** | [**CalculationApi**](/docs/api/CalculationApi.md)
 **channel** | [**ChannelApi**](/docs/api/ChannelApi.md)
 **data** | [**DataApi**](/docs/api/DataApi.md)

@@ -18,6 +18,7 @@
 
 
 from osisoft.pidevclub.piwebapi import api_client
+from osisoft.pidevclub.piwebapi.api.batch_api import BatchApi
 from osisoft.pidevclub.piwebapi.api.home_api import HomeApi
 from osisoft.pidevclub.piwebapi.api.analysis_api import AnalysisApi
 from osisoft.pidevclub.piwebapi.api.analysis_category_api import AnalysisCategoryApi
@@ -90,6 +91,7 @@ class PIWebApiClient(object):
         self.__attributeTemplateApi = AttributeTemplateApi(self.__api_client)
         self.__attributeTraitApi = AttributeTraitApi(self.__api_client)
         self.__calculationApi = CalculationApi(self.__api_client)
+        self.__batchApi = BatchApi(self.__api_client)
         self.__channelApi = ChannelApi(self.__api_client)
         self.__dataServerApi = DataServerApi(self.__api_client)
         self.__elementCategoryApi = ElementCategoryApi(self.__api_client)
@@ -115,6 +117,10 @@ class PIWebApiClient(object):
         self.__web_id_helper = WebIdHelper()
 
 
+
+    @property
+    def api_client(self):
+        return self.__api_client
     @property
     def baseUrl(self):
         return self.__baseUrl
@@ -172,6 +178,10 @@ class PIWebApiClient(object):
     @property
     def attributeTrait(self):
         return self.__attributeTraitApi
+
+    @property
+    def batch(self):
+        return self.__batchApi;
 
     @property
     def calculation(self):

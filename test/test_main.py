@@ -20,7 +20,8 @@ import  unittest
 from threading import Thread
 from time import sleep, time
 
-from osisoft.pidevclub.piwebapi.models import PIAnalysis, PIItemsStreamValues, PIStreamValues, PITimedValue
+from osisoft.pidevclub.piwebapi.models import PIAnalysis, PIItemsStreamValues, PIStreamValues, PITimedValue, PIRequest, \
+    PIResponse, PIPoint
 from osisoft.pidevclub.piwebapi.pi_web_api_client import PIWebApiClient
 from osisoft.pidevclub.piwebapi.rest import ApiException
 
@@ -29,7 +30,7 @@ from osisoft.pidevclub.piwebapi.rest import ApiException
 class TestMain(unittest.TestCase):
 
     def getPIWebApiClient(self):
-        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", useKerberos=False, username="webapiuser", password="!try3.14webapi!", verifySsl=True)
+        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", useKerberos=False, username="webapiuser", password="!try3.14webapi!", verifySsl=False)
 
 
     def test_getHome(self):
@@ -53,6 +54,22 @@ class TestMain(unittest.TestCase):
         point3 = client.point.get_by_path("\\\\PISRV1\\sinusoidu", None, None)
 
         pass
+
+
+
+    def test_calculations(self):
+        client = self.getPIWebApiClient()
+        data_server = client.dataServer.get_by_path("\\\\PISRV1", None, None);
+        expression = "'sinusoid'*2 + 'cdt158'"
+        time = list()
+        time.append("*-1d")
+        values = client.calculation.get_at_times(web_id=data_server.web_id, expression=expression, time=time)
+
+        expression2 = "'cdt158'+tagval('sinusoid','*-1d')"
+        values2 = client.calculation.get_at_times(web_id=data_server.web_id, expression=expression2, time=time)
+
+        pass
+
 
 
     def test_getDataInBulkTest(self):
@@ -93,7 +110,41 @@ class TestMain(unittest.TestCase):
             errorMsg = e.error['Errors'][0]
         pass
 
+    def test_getBatch(self):
+        client = PIWebApiClient("https://marc-rras.osisoft.int/piwebapi", useKerberos=False, username="marc.adm", password="kk", verifySsl=False)
+        landing = client.home.get();
+        req1 = PIRequest()
+        req2 = PIRequest()
+        req3 = PIRequest()
+        req1.method = "GET"
+        req1.resource = "https://marc-rras.osisoft.int/piwebapi/points?path=\\\\MARC-PI2016\\sinusoid"
+        req2.method = "GET"
+        req2.resource = "https://marc-rras.osisoft.int/piwebapi/points?path=\\\\MARC-PI2016\\cdt158"
+        req3.method = "GET"
+        req3.resource = "https://marc-rras.osisoft.int/piwebapi/streamsets/value?webid={0}&webid={1}"
+        req3.parameters = ["$.1.Content.WebId", "$.2.Content.WebId"]
+        req3.parent_ids = ["1", "2"]
 
+        batch = {
+            "1": req1,
+            "2": req2,
+            "3": req3
+        }
+
+        batchResponse = client.batch.execute(batch)
+        point1 = client.api_client.deserialize_object(batchResponse["1"].content, 'PIPoint')
+        point2 = client.api_client.deserialize_object(batchResponse["2"].content, 'PIPoint')
+        itemsStreamValue = client.api_client.deserialize_object(batchResponse["3"].content, 'PIItemsStreamValue')
+        pass
+
+    def test_updatePoint(self):
+        client = PIWebApiClient("https://marc-rras.osisoft.int/piwebapi", useKerberos=False, username="marc.adm",
+                                password="kk", verifySsl=False)
+        sinusoid_point = client.point.get_by_path("\\\\marc-pi2016\\sinusoid");
+        updated_point = PIPoint()
+        updated_point.descriptor = "New desc"
+        client.point.update_with_http_info(sinusoid_point.web_id, updated_point)
+        pass
 
     def test_updateValuesInBulk(self):
         client = self.getPIWebApiClient()

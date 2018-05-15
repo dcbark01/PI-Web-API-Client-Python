@@ -106,6 +106,8 @@ class ApiClient(object):
         header_params = {}
         header_params['X-Requested-With'] = 'PIWebApiWrapper'
         header_params['Content-Type'] = 'application/json'
+        header_params['Accept'] = 'application/json'
+
 
         # path parameters
         if path_params:
@@ -219,9 +221,9 @@ class ApiClient(object):
         except ValueError:
             data = response.data
 
-        return self.__deserialize(data, response_type)
+        return self.deserialize_object(data, response_type)
 
-    def __deserialize(self, data, klass):
+    def deserialize_object(self, data, klass):
         """
         Deserializes dict, list, str into an object.
 
@@ -236,12 +238,12 @@ class ApiClient(object):
         if type(klass) == str:
             if klass.startswith('list['):
                 sub_kls = re.match('list\[(.*)\]', klass).group(1)
-                return [self.__deserialize(sub_data, sub_kls)
+                return [self.deserialize_object(sub_data, sub_kls)
                         for sub_data in data]
 
             if klass.startswith('dict('):
                 sub_kls = re.match('dict\(([^,]*), (.*)\)', klass).group(2)
-                return {k: self.__deserialize(v, sub_kls)
+                return {k: self.deserialize_object(v, sub_kls)
                         for k, v in iteritems(data)}
 
             # convert str to class
@@ -494,7 +496,7 @@ class ApiClient(object):
                and klass.attribute_map[attr] in data \
                and isinstance(data, (list, dict)):
                 value = data[klass.attribute_map[attr]]
-                kwargs[attr] = self.__deserialize(value, attr_type)
+                kwargs[attr] = self.deserialize_object(value, attr_type)
 
         instance = klass(**kwargs)     
 

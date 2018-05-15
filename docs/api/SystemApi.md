@@ -90,6 +90,6 @@ Name | Type | Description | Notes
 
 ### Return type
 
-dict<str, PIVersion>
+dict(str, PIVersion)
 
 [[Back to top]](#) [[Back to API list]](../../DOCUMENTATION.md#documentation-for-api-endpoints) [[Back to Model list]](../../DOCUMENTATION.md#documentation-for-models) [[Back to DOCUMENTATION]](../../DOCUMENTATION.md)

@@ -186,6 +186,33 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     response = client.streamSet.update_values_ad_hoc_with_http_info(streamValues)
 ```
 
+### PI Web API Batch
+
+```python
+    req1 = PIRequest()
+    req2 = PIRequest()
+    req3 = PIRequest()
+    req1.method = "GET"
+    req1.resource = "https://localhost/piwebapi/points?path=\\\\MARC-PI2016\\sinusoid"
+    req2.method = "GET"
+    req2.resource = "https://localhost/piwebapi/points?path=\\\\MARC-PI2016\\cdt158"
+    req3.method = "GET"
+    req3.resource = "https://localhost/piwebapi/streamsets/value?webid={0}&webid={1}"
+    req3.parameters = ["$.1.Content.WebId", "$.2.Content.WebId"]
+    req3.parent_ids = ["1", "2"]
+
+    batch = {
+		"1": req1,
+		"2": req2,
+		"3": req3
+    }
+
+    batchResponse = client.batch.execute(batch)
+    point1 = client.api_client.deserialize_object(batchResponse["1"].content, 'PIPoint')
+    point2 = client.api_client.deserialize_object(batchResponse["2"].content, 'PIPoint')
+    itemsStreamValue = client.api_client.deserialize_object(batchResponse["3"].content, 'PIItemsStreamValue') 
+```
+
 
 ### Get an element and an attribute by path
 

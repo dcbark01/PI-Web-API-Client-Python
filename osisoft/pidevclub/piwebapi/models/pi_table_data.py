@@ -20,7 +20,7 @@ from six import iteritems
 
 class PITableData(object):
 	swagger_types = {
-		'columns': 'dict<str, str>',
+		'columns': 'dict(str, str)',
 		'rows': 'list[dict(str, object)]',
 		'web_exception': 'PIWebException',
 	}

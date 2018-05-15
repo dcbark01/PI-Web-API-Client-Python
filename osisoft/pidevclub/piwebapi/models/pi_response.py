@@ -21,7 +21,7 @@ from six import iteritems
 class PIResponse(object):
 	swagger_types = {
 		'status': 'int',
-		'headers': 'dict<str, str>',
+		'headers': 'dict(str, str)',
 		'content': 'object',
 	}
 

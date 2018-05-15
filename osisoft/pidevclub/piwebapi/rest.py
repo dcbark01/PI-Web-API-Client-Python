@@ -60,11 +60,11 @@ class RESTClientObject(object):
         elif method == "OPTIONS":
             response = requests.options(url, auth=self.auth, headers=headers, verify=self.verifySsl)
         elif method == "POST":
-            response = requests.post(url, data=body, auth=self.auth, headers=headers, verify=self.verifySsl)
+            response = requests.post(url, json=body, auth=self.auth, headers=headers, verify=self.verifySsl)
         elif method == "PUT":
-            response = requests.put(url, data=body, auth=self.auth, headers=headers, verify=self.verifySsl)
+            response = requests.put(url, json=body, auth=self.auth, headers=headers, verify=self.verifySsl)
         elif method == "PATCH":
-            response = requests.patch(url, data=body, auth=self.auth, headers=headers, verify=self.verifySsl)
+            response = requests.patch(url, json=body, auth=self.auth, headers=headers, verify=self.verifySsl)
         elif method == "DELETE":
             response = requests.delete(url, auth=self.auth, headers=headers, verify=self.verifySsl)
         else:

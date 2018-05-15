@@ -7,7 +7,7 @@ Name | Type | Notes
 **resource** | **str**
 **request_template** | **[**PIRequestTemplate**](../models/PIRequestTemplate.md)**
 **parameters** | **list[str]**
-**headers** | **dict<str, str>**
+**headers** | **dict(str, str)**
 **content** | **str**
 **parent_ids** | **list[str]**
 

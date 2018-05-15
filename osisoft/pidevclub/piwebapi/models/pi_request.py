@@ -24,7 +24,7 @@ class PIRequest(object):
 		'resource': 'str',
 		'request_template': 'PIRequestTemplate',
 		'parameters': 'list[str]',
-		'headers': 'dict<str, str>',
+		'headers': 'dict(str, str)',
 		'content': 'str',
 		'parent_ids': 'list[str]',
 	}
