@@ -30,7 +30,8 @@ from osisoft.pidevclub.piwebapi.rest import ApiException
 class TestMain(unittest.TestCase):
 
     def getPIWebApiClient(self):
-        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", useKerberos=False, username="webapiuser", password="!try3.14webapi!", verifySsl=False)
+        return PIWebApiClient("https://devdata.osisoft.com/piwebapi", useKerberos=False, username="webapiuser",
+                              password="!try3.14webapi!", verifySsl=False)
 
 
     def test_getHome(self):
@@ -111,7 +112,8 @@ class TestMain(unittest.TestCase):
         pass
 
     def test_getBatch(self):
-        client = PIWebApiClient("https://marc-rras.osisoft.int/piwebapi", useKerberos=False, username="marc.adm", password="kk", verifySsl=False)
+        client = PIWebApiClient("https://marc-rras.osisoft.int/piwebapi", useKerberos=False, username="marc.adm",
+                                password="kk", verifySsl=False)
         landing = client.home.get();
         req1 = PIRequest()
         req2 = PIRequest()

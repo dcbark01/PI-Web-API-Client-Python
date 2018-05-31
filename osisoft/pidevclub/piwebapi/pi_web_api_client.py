@@ -62,22 +62,26 @@ from osisoft.pidevclub.piwebapi.web_id.web_id_helper import WebIdHelper
 class PIWebApiClient(object):
     __baseUrl = None
     __useKerberos = True
+    __useNtlm = False
     __username = None
     __password = None
     __verifySsl = True
     __config = None
-    def __init__(self, baseUrl, useKerberos = True, username = None, password = None, verifySsl = True):
+
+    def __init__(self, baseUrl, useKerberos=True, username=None, password=None, verifySsl=True, useNtlm=False):
         self.__baseUrl = baseUrl
         self.__useKerberos = useKerberos
+        self.__useNtlm = useNtlm
         self.__username = username
         self.__password = password
         self.__verifySsl = verifySsl
         self.__api_client = api_client.ApiClient(self.__baseUrl, self.__verifySsl)
-        if (self.__useKerberos == True):
+        if self.__useKerberos is True:
             self.__api_client.set_kerberos_auth()
+        elif self.__useNtlm is True:
+            self.__api_client.set_ntlm_auth(username, password)
         else:
             self.__api_client.set_basic_auth(self.__username, self.__password)
-
         self.__homeApi = HomeApi(self.__api_client)
         self.__analysisApi = AnalysisApi(self.__api_client)
         self.__analysisCategoryApi = AnalysisCategoryApi(self.__api_client)

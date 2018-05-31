@@ -1,6 +1,7 @@
 # coding: utf-8
 from requests.auth import HTTPBasicAuth
 from requests_kerberos import HTTPKerberosAuth, OPTIONAL
+from requests_ntlm import HttpNtlmAuth
 """
 	Copyright 2017 OSIsoft, LLC
 	Licensed under the Apache License, Version 2.0 (the "License");
@@ -82,15 +83,14 @@ class ApiClient(object):
         self.default_headers['User-Agent'] = value
 
 
-
     def set_kerberos_auth(self):
         self.rest_client.auth = HTTPKerberosAuth(force_preemptive=True, mutual_authentication=OPTIONAL, delegate=True)
 
-
+    def set_ntlm_auth(self, username, password):
+        self.rest_client.auth = HttpNtlmAuth(username, password)
 
     def set_basic_auth(self, username, password):
         self.rest_client.auth = HTTPBasicAuth(username, password)
-
 
     def set_default_header(self, header_name, header_value):
         self.default_headers[header_name] = header_value

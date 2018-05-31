@@ -2,6 +2,9 @@
 .idea/
 build/
 osisoft.pidevclub.piwebapi.egg-info/
+credentials.py
+test/dcb_tests.py
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
