@@ -246,12 +246,13 @@ The path from the methods above should start with "pi:" (if your stream is a PI 
     pi_attribute_web_id_info = client.webIdHelper.get_web_id_info(pi_attribute_web_id)
     pi_element_web_id_info= client.webIdHelper.get_web_id_info(pi_element_web_id)
     pi_dataServer_web_id_info = client.webIdHelper.get_web_id_info(pi_data_server_web_id)
-
-
+```
 
 ## Licensing
+
 Copyright 2018 OSIsoft, LLC.
 
+```
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
@@ -263,5 +264,6 @@ Copyright 2018 OSIsoft, LLC.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+```
    
 Please see the file named [LICENSE.md](LICENSE.md).
