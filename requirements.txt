@@ -4,7 +4,7 @@ setuptools >= 21.0.0
 requests >= 2.18.4
 requests-kerberos >= 0.12.0
 asn1crypto==0.24.0
-certifi==2018.4.16
+certifi==2022.12.7
 cffi==1.11.5
 chardet==3.0.4
 cryptography==2.2.2
